@@ -7,9 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -20,15 +18,24 @@ public class Main {
 
         Main main = new Main();
         Map<String,Card> cards = main.readCardData();
-        cards.entrySet().stream().forEach(main.printit);
+        //cards.entrySet().stream().forEach(main.printit);
         System.out.println("TAMAÑO: "+cards.size());
+        List<Card> listaCartas = new ArrayList<>(cards.values());
+        //listaCartas.removeIf(carta -> !carta.getClan().equals("lion") && !carta.getClan().equals("neutral"));
+        listaCartas.stream().filter(carta -> carta.getPackCards().getPack().getId().equals("core")).forEach(carta -> carta.getPackCards().setQuantity(carta.getPackCards().getQuantity()*3));
+
+        listaCartas.stream().filter(carta -> carta.getDeck().equals("role")).forEach(System.out::println);
+
+        System.out.println("TAMAÑO LISTA "+listaCartas.size());
 
     }
+
+
+
 
     /**
      * Esto imrpime todas las cartas
      */
-
     private static Consumer<Map.Entry<String, Card>> printit = cartas -> {
         final Card card = cartas.getValue();
         System.out.println("Detalles ");
@@ -53,9 +60,9 @@ public class Main {
     public Map<String, Card> readCardData() {
         Map<String, Card> cards = null;
 
-        File customer = getCardFileReader.apply("todascartas.json");
+        File archivo = getCardFileReader.apply("todascartas.json");
         JSONParser parser = new JSONParser();
-        try (Reader is = new FileReader(customer)) {
+        try (Reader is = new FileReader(archivo)) {
             JSONArray jsonArray = (JSONArray) parser.parse(is);
 
             cards = (Map<String, Card>) jsonArray.stream().collect(
@@ -82,17 +89,20 @@ public class Main {
     private Function<JSONObject, String> key_card = c -> (String) ((JSONObject) c)
             .get("id");
 
+
     /**
      * Read the JSON entry and return the request Customer
      */
     @SuppressWarnings("unchecked")
     private Function<JSONObject, Card> value_requestCard = json -> {
         Card card = new Card();
+        String clan = (String) json.get("clan");
+        if(clan.equals("lion"))
+            System.out.println(clan);
         card.setId((String) json.get("id"));
         card.setClan((String) json.get("clan"));
         card.setName((String) json.get("name"));
         card.setDeck((String) json.get("side"));
-
 
         ArrayList<PackCards> packCardsList = new ArrayList<>();
         JSONArray packCardsJsonArray = (JSONArray) json.get("pack_cards");
@@ -114,11 +124,7 @@ public class Main {
 
         card.setPackCards(packCardsObj);
 
-
         return card;
     };
-
-
-
 
 }

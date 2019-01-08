@@ -1,0 +1,12 @@
+1) Elige clan principal
+2) Eliege clan secundario
+3) Elige rol
+4) Elige fortaleza
+5) Elige provincias
+- Provincia de Agua
+- Provincia de Aire
+- Provincia de Fuego
+- Provincia de Tierra
+- Provincia de Vac�o
+6) Elige cartas para el mazo de Dinast�a
+7) Elige cartas para el mazo de Conflicto
