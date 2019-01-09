@@ -10,7 +10,8 @@ import java.util.List;
 public class Jugador {
 
     private List<Card> mazo;
-    private String rol;
+    private String roleRestrictionElement;
+    private String roleRestriction;
     private String clan;
     private String clanSecundario;
 

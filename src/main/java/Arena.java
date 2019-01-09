@@ -31,10 +31,36 @@ public class Arena {
         for(int i = 0; i<2; i++) {
             System.out.println("Elige tu rol, jugador "+(1+i));
             imprimirRoles(roles);
-
+            int rolElegido = leerEntero();
+            Card rol = roles.get(rolElegido-1);
+            darRol(rol,jugadores[i]);
+            rol.getPackCards().setQuantity(rol.getPackCards().getQuantity()-1);
+            if(rol.getPackCards().getQuantity() == 0)
+                roles.remove(rolElegido-1);
         }
 
 
+    }
+
+    private void darRol(Card rolCard, Jugador jugador) {
+        String rolSubStr = rolCard.getName().substring(0,2);
+        switch(rolSubStr) {
+            case "ke":
+                jugador.setRoleRestriction("keeper");
+                darRolElemental(rolCard.getRoleRestriction(),jugador);
+                break;
+            case "se":
+                jugador.setRoleRestriction("seeker");
+                darRolElemental(rolCard.getRoleRestriction(),jugador);
+                break;
+            default:
+                //support
+                break;
+        }
+    }
+
+    private void darRolElemental(String rolElemental, Jugador jugador) {
+        rolElemental.lastIndexOf(" ");
     }
 
     private void imprimirRoles(List<Card> roles) {
@@ -81,7 +107,7 @@ public class Arena {
                 System.out.println(index+") "+clan);
             }
             int queClan = leerEntero();
-            jugadores[i].setClan(seleccionarClan(queClan));
+            jugadores[i].setClanSecundario(seleccionarClan(queClan));
             clanesSecundarios.remove(queClan-1);
         }
     }

@@ -1,3 +1,5 @@
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,22 +14,29 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Main {
+@NoArgsConstructor
+public class CreateDecksL5R {
+
+    private Map<String, Card> allCards;
+    private Map<String, RoleCard> roleCards;
 
     public static void main(String[] args) {
 
-        Main main = new Main();
-        Map<String,Card> cards = main.readCardData();
-        //cards.entrySet().stream().forEach(main.printit);
+        CreateDecksL5R l5r = new CreateDecksL5R();
+        Map<String,Card> cards = l5r.readCardData();
+        // Esto lo que hace es imprimir todas las cartas
+        // cards.entrySet().stream().forEach(main.printit);
         System.out.println("TAMAÑO: "+cards.size());
         List<Card> listaCartas = new ArrayList<>(cards.values());
-        //listaCartas.removeIf(carta -> !carta.getClan().equals("lion") && !carta.getClan().equals("neutral"));
-        listaCartas.stream().filter(carta -> carta.getPackCards().getPack().getId().equals("core")).forEach(carta -> carta.getPackCards().setQuantity(carta.getPackCards().getQuantity()*3));
+        // Esto lo que hace es borrar las cartas que no sean del clan que se indica
+        // listaCartas.removeIf(carta -> !carta.getClan().equals("lion") && !carta.getClan().equals("neutral"));
 
-        listaCartas.stream().filter(carta -> carta.getDeck().equals("role")).forEach(System.out::println);
+        //Esto actualiza a tres cores en la colección
+        listaCartas.stream().filter(carta -> carta.getPackCards().getPack().getId().equals("core")).forEach(carta -> carta.getPackCards().setQuantity(carta.getPackCards().getQuantity()*3));
+        // Esto imprime los roles que hay en la colección
+        // listaCartas.stream().filter(carta -> carta.getDeck().equals("role")).forEach(System.out::println);
 
         System.out.println("TAMAÑO LISTA "+listaCartas.size());
-
     }
 
 
@@ -74,6 +83,7 @@ public class Main {
         return cards;
     }
 
+
     /**
      * Obtiene un archivo con un nombre específico.
      */
@@ -103,6 +113,8 @@ public class Main {
         card.setClan((String) json.get("clan"));
         card.setName((String) json.get("name"));
         card.setDeck((String) json.get("side"));
+        card.setRoleRestriction((String) json.get("role_restriction"));
+        card.setLimit((Long) json.get("deck_limit"));
 
         ArrayList<PackCards> packCardsList = new ArrayList<>();
         JSONArray packCardsJsonArray = (JSONArray) json.get("pack_cards");

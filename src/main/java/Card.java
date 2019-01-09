@@ -11,6 +11,8 @@ public class Card {
     private String clan;
     private String name;
     private String deck;
+    private String roleRestriction;
+    private Long limit;
     private PackCards packCards;
 
     public String toString() {
@@ -19,6 +21,7 @@ public class Card {
                         "Clan: "+getClan()+"\n"+
                 "Nombre: "+getName()+"\n"+
                 "Mazo: "+getDeck()+"\n"+
+                "Restricción de rol: "+getRoleRestriction()+"\n"+
                 "Pack: "+getPackCards().getPack().getId()+"\n"+
                 "Número: "+getPackCards().getNumber()+"\n"+
                 "Cantidad: "+getPackCards().getQuantity()+"\n");
