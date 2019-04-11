@@ -43,7 +43,7 @@ public class CreateDecksL5R {
 
 
     /**
-     * Esto imrpime todas las cartas
+     * Esto imprime todas las cartas
      */
     private static Consumer<Map.Entry<String, Card>> printit = cartas -> {
         final Card card = cartas.getValue();

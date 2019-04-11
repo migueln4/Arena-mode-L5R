@@ -11,6 +11,8 @@ public class RoleCard extends Card {
 
     private String text;
     private List<String> traits;
+    private String name;
+
 
 
 }

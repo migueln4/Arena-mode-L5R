@@ -14,6 +14,7 @@ public class Card {
     private String roleRestriction;
     private Long limit;
     private PackCards packCards;
+    private String type;
 
     public String toString() {
         StringBuilder salida = new StringBuilder();
