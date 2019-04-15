@@ -1,18 +1,15 @@
+package cards;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class RoleCard extends Card {
 
-    private String text;
-    private List<String> traits;
-    private String name;
-
-
-
+    private String role;
+    private String element;
+    private String clan;
 }

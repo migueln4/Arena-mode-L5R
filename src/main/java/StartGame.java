@@ -13,14 +13,20 @@ public class StartGame {
     Deck player1;
     Deck player2;
 
+    CollectionL5R collectionL5R;
+
     public void start() {
 
-        player1 = new Deck();
-        System.out.println("Jugador 1, selecciona el clan que quieras");
-        player1.setClan(selectClan());
-        player1.setSplash(selectSplash(player1.getClan()));
+        //player1 = new Deck();
+        //System.out.println("Jugador 1, selecciona el clan que quieras");
+        //player1.setClan(selectClan());
+        //player1.setSplash(selectSplash(player1.getClan()));
+        collectionL5R = new CollectionL5R();
+        collectionL5R.readFile();
+        collectionL5R.initializeConflictCardList();
+        collectionL5R.initializeDynastyCardList();
     }
-
+/*
     private String selectSplash(String primaryClan) {
         ArrayList<String> selectingSplash = randomClan(primaryClan);
         for(int i= 0; i<selectingSplash.size();i++)
@@ -87,5 +93,7 @@ public class StartGame {
     private int leerEntero() {
         return LEER_CONSOLA.nextInt();
     }
+
+ */
 
 }
