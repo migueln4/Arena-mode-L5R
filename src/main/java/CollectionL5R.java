@@ -48,32 +48,66 @@ public class CollectionL5R {
             this.obj = parser.parse(new FileReader(file));
             this.jsonObject = (JsonObject) obj;
             this.records = jsonObject.getAsJsonArray("records");
-            this.type = new TypeToken<List<JsonCard>>() {}.getType();
-            this.allCards = gson.fromJson(records,type);
-        }catch (Exception e) {
+            this.type = new TypeToken<List<JsonCard>>() {
+            }.getType();
+            this.allCards = gson.fromJson(records, type);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void initializeConflictCardList() {
-            allCards.stream().filter(card -> card.getSide().equals("conflict")).
-                    forEach(card -> conflictCardList.add(jsonCardToConflictCard.apply(card)));
-            System.out.println(conflictCardList.get(0).toString());
-        System.out.println("Hasta aquí, todo OK");
+        allCards.stream().filter(card -> card.getSide().equals("conflict")).
+                forEach(card -> conflictCardList.add(jsonCardToConflictCard.apply(card)));
+        System.out.println("Conflict Card List: OK");
     }
 
     public void initializeDynastyCardList() {
-        System.out.println("Vengo a la dinastía");
-            allCards.stream().filter(card -> card.getSide().equals("dynasty")).
-                    forEach(card -> dynastyCardList.add(jsonCardToDynastyCard.apply(card)));
-        System.out.println(dynastyCardList.get(0).toString());
-        System.out.println(dynastyCardList.size());
+        allCards.stream().filter(card -> card.getSide().equals("dynasty")).
+                forEach(card -> dynastyCardList.add(jsonCardToDynastyCard.apply(card)));
+        System.out.println("Dynasty Card List: OK");
+
     }
 
+    private Function<String, String> getPackName = str -> {
+        switch(str) {
+            case "core":
+                return "CORE";
+            case "tears-of-amaterasu":
+            case "for-honor-and-glory":
+            case "into-the-forbidden-city":
+            case "the-chrysanthemun-throne":
+            case "fate-has-no-secrets":
+            case "meditations-on-the-ephemeral":
+                return "IMPERIAL CYCLE";
+            case "breath-of-the-kami":
+            case "tainted-lands":
+            case "the-fires-within":
+            case "the-ebb-and-flow":
+            case "all-and-nothing":
+            case "elements-unbound":
+                return "ELEMENTAL CYCLE";
+            case "warriors-of-the-wind":
+                return "UNICORN CLAN PACK";
+            case "masters-of-the-court":
+                return "CRANE CLAN PACK";
+            case "disciples-of-the-void":
+                return "PHOENIX CLAN PACK";
+            case "underhand-of-the-emperor":
+                return "SCORPION CLAN PACK";
+            case "children-of-the-empire":
+                return "PREMIUM EXPANSIONS #1";
+            default:
+                return null;
+        }
+    };
 
-    private ThreeParametersLambda<String,String,String> getCardName = (name,number) -> {
+    private ThreeParametersLambda<String, String, String> getCardName = (name, number) -> {
         StringBuilder strb = new StringBuilder("[");
-        strb.append(name.substring(1,name.length()-1));
+        strb.append(name);
+        strb.append(" (");
+        strb.append(getPackName.apply(name));
+        strb.append(")");
         strb.append(" - #");
         strb.append(number);
         strb.append("]");
@@ -83,84 +117,94 @@ public class CollectionL5R {
 
     private Function<JsonCard, DynastyCard> jsonCardToDynastyCard = jsonCard -> {
         DynastyCard newCard = new DynastyCard();
-        Type type = new TypeToken<List<JsonPackCards>>() {}.getType();
-        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(),type);
+        Type type = new TypeToken<List<JsonPackCards>>() {
+        }.getType();
+        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
         String nameCard = packCards.get(0).getPack().get("id").toString();
+        nameCard = nameCard.substring(1, nameCard.length() - 1);
 
-        newCard.setId(getCardName.apply(nameCard,packCards.get(0).getPosition()));
+        if ("core".equals(nameCard))
+            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
+        else
+            newCard.setQuantity(packCards.get(0).getQuantity());
+
+        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
 
-        JsonArray traits = jsonCard.getTraits();
-        elementAndRoleRestrictions(newCard,traits);
+        if (jsonCard.getRole_restriction() != null)
+            elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
 
         newCard.setElement(newCard.getElementLimit());
 
         return newCard;
     };
 
-    private void elementAndRoleRestrictions(Card newCard, JsonArray traits) {
-        for(JsonElement trait : traits) {
-            switch (trait.getAsString()) {
-                case "keeper":
-                    newCard.setRoleLimit("keeper");
-                    break;
-                case "seeker":
-                    newCard.setRoleLimit("seeker");
-                    break;
-                case "air":
-                    newCard.setElementLimit("air");
-                    break;
-                case "water":
-                    newCard.setElementLimit("water");
-                    break;
-                case "fire":
-                    newCard.setElementLimit("fire");
-                    break;
-                case "void":
-                    newCard.setElementLimit("void");
-                    break;
-                case "earth":
-                    newCard.setElementLimit("earth");
-                    break;
-                default:
-                    break;
-            }
+    private void elementAndRoleRestrictions(Card newCard, String role) {
+        switch (role) {
+            case "keeper":
+                newCard.setRoleLimit("keeper");
+                break;
+            case "seeker":
+                newCard.setRoleLimit("seeker");
+                break;
+            case "air":
+                newCard.setElementLimit("air");
+                break;
+            case "water":
+                newCard.setElementLimit("water");
+                break;
+            case "fire":
+                newCard.setElementLimit("fire");
+                break;
+            case "void":
+                newCard.setElementLimit("void");
+                break;
+            case "earth":
+                newCard.setElementLimit("earth");
+                break;
+            default:
+                break;
         }
     }
 
-    private Function<JsonCard,ConflictCard> jsonCardToConflictCard = jsonCard -> {
+    private Function<JsonCard, ConflictCard> jsonCardToConflictCard = jsonCard -> {
         ConflictCard newCard = new ConflictCard();
-        Type type = new TypeToken<List<JsonPackCards>>() {}.getType();
-        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(),type);
+        Type type = new TypeToken<List<JsonPackCards>>() {
+        }.getType();
+        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
         String nameCard = packCards.get(0).getPack().get("id").toString();
+        nameCard = nameCard.substring(1, nameCard.length() - 1);
 
-        newCard.setId(getCardName.apply(nameCard,packCards.get(0).getPosition()));
+        if ("core".equals(nameCard))
+            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
+        else
+            newCard.setQuantity(packCards.get(0).getQuantity());
+
+        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
-
         newCard.setClan(jsonCard.getClan());
 
-        JsonArray traits = jsonCard.getTraits();
+        if (jsonCard.getRole_restriction() != null)
+            elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
 
-        elementAndRoleRestrictions(newCard,traits);
+        if ("character".equals(jsonCard.getType()))
+            newCard.setCharacter(Boolean.TRUE);
+        else
+            newCard.setCharacter(Boolean.FALSE);
 
-            if("character".equals(jsonCard.getType()))
-                newCard.setCharacter(Boolean.TRUE);
-            else
-                newCard.setCharacter(Boolean.FALSE);
 
-            if(jsonCard.getInfluence_cost() != null)
-                newCard.setInfluence(jsonCard.getInfluence_cost());
+        if (jsonCard.getInfluence_cost() != null)
+            newCard.setInfluence(jsonCard.getInfluence_cost());
 
 
         return newCard;
     };
-
 
 
     /**

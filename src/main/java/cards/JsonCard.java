@@ -27,4 +27,5 @@ public class JsonCard {
     private Boolean unicity;
     private String type;
     private Integer influence_cost;
+    private String role_restriction;
 }
