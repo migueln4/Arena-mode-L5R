@@ -11,7 +11,6 @@ public class StrongholdCard extends Card {
 
     //Se sabe por "type": "stronghold"
 
-    private String clan;
     private Integer influence;
 
 }

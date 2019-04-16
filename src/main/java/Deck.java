@@ -10,10 +10,18 @@ import java.util.List;
 @AllArgsConstructor
 public class Deck {
 
+    final Integer MAX_CONFLICT_CARDS = 45;
+    final Integer MIN_CONFLICT_CARDS = 40;
+    final Integer MAX_CONFLICT_CHARACTERS = 10;
+    final Integer MAX_PROVINCE_CARDS = 5;
+    final Integer MAX_STRONGHOLD_CARDS = 1;
+
     private String clan;
     private String splash;
-    private RoleCard role;
+    private RoleCard roleCard;
+    private String role;
     private Integer influence;
+    private Integer numberCharacters;
 
     private StrongholdCard stronghold;
 

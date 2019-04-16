@@ -2,6 +2,7 @@ import cards.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import interfaces.ThreeParametersLambda;
+import lombok.Data;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.io.File;
 import java.util.function.Function;
 
+@Data
 public class CollectionL5R {
 
     //https://api.fiveringsdb.com/cards GET
@@ -69,8 +71,26 @@ public class CollectionL5R {
 
     }
 
+    public void initializeProvinceCardList() { //OJO con la provincia Toshi Ranbo, que está inédita todavía
+        allCards.stream().filter(card -> !card.getId().equals("toshi-ranbo") && card.getSide().equals("province")).
+                forEach(card -> provinceCardList.add(jsonCardToProvinceCard.apply(card)));
+        System.out.println("Province Card List: OK");
+    }
+
+    public void initializeRoleCardList() {
+        allCards.stream().filter(card -> card.getSide().equals("role")).
+                forEach(card -> roleCardList.add(jsonCardToRoleCard.apply(card)));
+        System.out.println("Role Card List: OK");
+    }
+
+    public void initializeStrongholdCardList() {
+        allCards.stream().filter(card -> card.getSide().equals("stronghold")).
+                forEach(card -> strongStrongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
+        System.out.println("Stronghold Card List: OK");
+    }
+
     private Function<String, String> getPackName = str -> {
-        switch(str) {
+        switch (str) {
             case "core":
                 return "CORE";
             case "tears-of-amaterasu":
@@ -143,6 +163,92 @@ public class CollectionL5R {
         return newCard;
     };
 
+    private Function<JsonCard, ProvinceCard> jsonCardToProvinceCard = jsonCard -> {
+        ProvinceCard newCard = new ProvinceCard();
+        Type type = new TypeToken<List<JsonPackCards>>() {
+        }.getType();
+        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
+
+        String nameCard = packCards.get(0).getPack().get("id").toString();
+        nameCard = nameCard.substring(1, nameCard.length() - 1);
+
+        if ("core".equals(nameCard))
+            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
+        else
+            newCard.setQuantity(packCards.get(0).getQuantity());
+
+        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
+
+        newCard.setDeckLimit(jsonCard.getDeck_limit());
+        newCard.setName(jsonCard.getName());
+        newCard.setClan(jsonCard.getClan());
+
+        if (jsonCard.getRole_restriction() != null)
+            elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
+
+        newCard.setElement(jsonCard.getElement());
+
+        return newCard;
+    };
+
+    private Function<JsonCard, StrongholdCard> jsonCardToStrongholdCard = jsonCard -> {
+      StrongholdCard newCard = new StrongholdCard();
+
+        Type type = new TypeToken<List<JsonPackCards>>() {
+        }.getType();
+        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
+
+        String nameCard = packCards.get(0).getPack().get("id").toString();
+        nameCard = nameCard.substring(1, nameCard.length() - 1);
+
+        if ("core".equals(nameCard))
+            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
+        else
+            newCard.setQuantity(packCards.get(0).getQuantity());
+
+        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
+
+        newCard.setDeckLimit(jsonCard.getDeck_limit());
+        newCard.setName(jsonCard.getName());
+        newCard.setClan(jsonCard.getClan());
+
+        newCard.setInfluence(jsonCard.getInfluence_pool());
+
+      return newCard;
+    };
+
+    private Function<JsonCard, RoleCard> jsonCardToRoleCard = jsonCard -> {
+        RoleCard newCard = new RoleCard();
+
+        Type type = new TypeToken<List<JsonPackCards>>() {
+        }.getType();
+        List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
+
+        String nameCard = packCards.get(0).getPack().get("id").toString();
+        nameCard = nameCard.substring(1, nameCard.length() - 1);
+
+        if ("core".equals(nameCard))
+            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
+        else
+            newCard.setQuantity(packCards.get(0).getQuantity());
+
+        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
+
+        String name = jsonCard.getName();
+        newCard.setName(name);
+
+        JsonArray traits = jsonCard.getTraits();
+
+        if (name.contains("Support")) {
+            newCard.setClan(traits.get(0).toString().substring(1, traits.get(0).toString().length() - 1));
+        } else {
+            newCard.setRole(traits.get(0).toString());
+            newCard.setElement(traits.get(1).toString());
+        }
+
+        return newCard;
+    };
+
     private void elementAndRoleRestrictions(Card newCard, String role) {
         switch (role) {
             case "keeper":
@@ -205,7 +311,6 @@ public class CollectionL5R {
 
         return newCard;
     };
-
 
     /**
      * Obtiene un archivo con un nombre específico.

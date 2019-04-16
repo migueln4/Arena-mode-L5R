@@ -28,4 +28,6 @@ public class JsonCard {
     private String type;
     private Integer influence_cost;
     private String role_restriction;
+    private String element;
+    private Integer influence_pool;
 }
