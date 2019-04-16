@@ -16,10 +16,13 @@ public class Deck {
     final Integer MAX_PROVINCE_CARDS = 5;
     final Integer MAX_STRONGHOLD_CARDS = 1;
 
+    private String namePlayer;
+
     private String clan;
     private String splash;
     private RoleCard roleCard;
     private String role;
+    private String element;
     private Integer influence;
     private Integer numberCharacters;
 
@@ -29,5 +32,10 @@ public class Deck {
 
     private List<ConflictCard> conflictCardDeck;
     private List<DynastyCard> dynastyCardDeck;
+
+    public Deck(String namePlayer) {
+        this.namePlayer = namePlayer;
+        this.influence = 0;
+    }
 
 }

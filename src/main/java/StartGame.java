@@ -1,6 +1,8 @@
 import cards.RoleCard;
+import cards.StrongholdCard;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @NoArgsConstructor
@@ -19,8 +21,8 @@ public class StartGame {
 
     public void start() {
 
-        this.player1 = new Deck();
-        this.player2 = new Deck();
+        this.player1 = new Deck("UNO");
+        this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
         this.collectionL5R.readFile();
         this.collectionL5R.initializeConflictCardList();
@@ -33,8 +35,73 @@ public class StartGame {
 
     private void playerTurn () {
         selectingClan();
-        selectingRole();
-        //player1.setSplash(selectSplash(player1.getClan()));
+        selectingRole(player1);
+        selectingRole(player2);
+        if(player1.getSplash() == null)
+            selectSplash(player1);
+        if(player2.getSplash() == null)
+            selectSplash(player2);
+        selectStronghold(player1);
+        selectStronghold(player2);
+        System.out.println("Resumen de los jugadores: ");
+        System.out.println(player1.getNamePlayer()+"\n\tClan: "+player1.getClan()+"\n\tRol: "+player1.getRoleCard()+
+                "\n\tSplash: "+player1.getSplash()+"Stronghold: "+player1.getStronghold());
+        System.out.println(player2.getNamePlayer()+"\n\tClan: "+player2.getClan()+"\n\tRol: "+player2.getRoleCard()+
+                "\n\tSplash: "+player2.getSplash()+"Stronghold: "+player2.getStronghold());
+    }
+
+    private void selectStronghold(Deck player) {
+        List<StrongholdCard> strongholdValidList = new ArrayList<>();
+        this.collectionL5R.getStrongholdCardList().stream()
+                .filter(card -> player.getClan().equals(card.getClan()))
+                .forEach(card -> strongholdValidList.add(card));
+        System.out.println("Jugador "+player.getNamePlayer()+" elige un Stronghold para tu clan "+player.getClan());
+        for(int i=0; i<strongholdValidList.size(); i++) {
+            System.out.println((i+1)+") "+strongholdValidList.get(i));
+        }
+        int option = leerEntero();
+        StrongholdCard selectedCard = strongholdValidList.get(option-1);
+        player.setStronghold(selectedCard);
+        player.setInfluence(player.getInfluence()+selectedCard.getInfluence());
+        int indexCard = this.collectionL5R.getStrongholdCardList().indexOf(selectedCard);
+        int quantity = this.collectionL5R.getStrongholdCardList().get(indexCard).getQuantity();
+        this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
+        if(quantity == 0)
+            this.collectionL5R.getStrongholdCardList().remove(selectedCard);
+    }
+
+    private void selectSplash(Deck player) {
+        String mainClan = player.getClan();
+        int mainClanIndex = -1;
+        for(int i = 0; i<CLANS.length; i++) {
+            if(CLANS[i].equals(mainClan))
+                mainClanIndex = i;
+        }
+        int[] arrayClans = createArrayNumbers(CLANS.length,mainClanIndex);
+        int[] arrayOptions = new int[NUMBER_OPTIONS];
+        for(int i = 0; i<NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random()*(arrayClans.length-1-i));
+            arrayOptions[i] = arrayClans[rnd];
+            arrayClans[rnd] = arrayClans.length-1-i;
+        }
+        System.out.println("Jugador "+player.getNamePlayer()+" elige cuál es tu clan secundario");
+        for(int i = 0; i<NUMBER_OPTIONS; i++)
+            System.out.println((i+1)+") "+CLANS[arrayOptions[i]]);
+        int option = leerEntero();
+        player.setSplash(CLANS[arrayOptions[option-1]]);
+    }
+
+    private int[] createArrayNumbers (int size, int exclude) {
+        int[] result = new int[size-1];
+        int aux = 0;
+        for(int i=0; aux<result.length; i++) {
+            if(i == exclude)
+                continue;
+            else
+                result[aux] = i;
+            aux++;
+        }
+        return result;
     }
 
     private void selectingClan() {
@@ -65,31 +132,48 @@ public class StartGame {
         return selectingClan;
     }
 
-    private void selectingRole() {
-        int indexMainClan = checkMainClan(player1);
+    private void selectingRole(Deck player) {
+        int indexMainClan = checkMainClan(player);
         System.out.println("LOG --- Se va a excluir el número "+indexMainClan);
         int[] arrayNumbers;
         if(indexMainClan > -1)
             arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size()-2,indexMainClan);
         else
             arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size()-1);
-        for(int i : arrayNumbers)
-            System.out.println(i);
-    }
-
-
-    private int[] createArrayNumbers (int size, int exclude) {
-        int[] result = new int[size-1];
-        int aux = 0;
-        for(int i=0; i<result.length; i++) {
-            if(i == exclude)
-                continue;
-            else
-                result[aux] = i;
-            aux++;
+        int[] arrayOptions = new int[NUMBER_OPTIONS];
+        System.out.println("LOG --- El tamaño del arrayNumbers es "+arrayNumbers.length);
+        for(int i = 0; i<NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random()*(arrayNumbers.length-1-i));
+            arrayOptions[i] = arrayNumbers[rnd];
+            int aux = arrayNumbers[arrayNumbers.length-1-i];
+            arrayNumbers[rnd] = aux;
         }
-        return result;
+        System.out.println("Jugador "+player.getNamePlayer()+" selecciona una carta de rol.");
+        for(int i = 0; i<arrayOptions.length;i++) {
+            System.out.println((i+1)+") "+this.collectionL5R.getRoleCardList().get(arrayOptions[i]));
+        }
+        int roleOption = leerEntero();
+        RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption-1]);
+        player.setRoleCard(roleCardSelected);
+        if(roleCardSelected.getName().contains("Support")) {
+            player.setSplash(roleCardSelected.getClan());
+            player.setInfluence(player.getInfluence()+8);
+        }
+        else {
+            player.setRole(roleCardSelected.getRole());
+            player.setElement(roleCardSelected.getElement());
+            if(roleCardSelected.getName().contains("Keeper"))
+                player.setInfluence(player.getInfluence()+3);
+        }
+        int cardSelected = this.collectionL5R.getRoleCardList().indexOf(roleCardSelected);
+        int quantityCard = this.collectionL5R.getRoleCardList().get(cardSelected).getQuantity();
+        this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
+        if(quantityCard == 0)
+            this.collectionL5R.getRoleCardList().remove(roleCardSelected);
+        System.out.println("LOG --- El jugador "+player.getNamePlayer()+" ha elegido la carta "+player.getRoleCard().toString());
+
     }
+
 
     private int[] createArrayNumbers (int size) {
         int[] result = new int[size];
@@ -107,16 +191,6 @@ public class StartGame {
             }
         }
         return -1;
-    }
-
-
-
-    private String selectSplash(String primaryClan) {
-        ArrayList<String> selectingSplash = randomClan(primaryClan);
-        for(int i= 0; i<selectingSplash.size();i++)
-            System.out.println("\t"+(i+1)+". "+selectingSplash.get(i));
-        int clanNumber = leerEntero();
-        return selectingSplash.get(clanNumber-1);
     }
 
 

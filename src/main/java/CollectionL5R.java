@@ -21,7 +21,7 @@ public class CollectionL5R {
     private List<DynastyCard> dynastyCardList;
     private List<ProvinceCard> provinceCardList;
     private List<RoleCard> roleCardList;
-    private List<StrongholdCard> strongStrongholdCardList;
+    private List<StrongholdCard> StrongholdCardList;
 
     private JsonParser parser;
 
@@ -42,7 +42,7 @@ public class CollectionL5R {
         this.dynastyCardList = new ArrayList<>();
         this.provinceCardList = new ArrayList<>();
         this.roleCardList = new ArrayList<>();
-        this.strongStrongholdCardList = new ArrayList<>();
+        this.StrongholdCardList = new ArrayList<>();
         this.parser = new JsonParser();
         this.gson = new Gson();
         this.file = getCardFileReader.apply("todascartas.json");
@@ -72,7 +72,7 @@ public class CollectionL5R {
     }
 
     public void initializeProvinceCardList() { //OJO con la provincia Toshi Ranbo, que está inédita todavía
-        allCards.stream().filter(card -> !card.getId().equals("toshi-ranbo") && card.getSide().equals("province")).
+        allCards.stream().filter(card -> !card.getId().equals("toshi-ranbo") && card.getType().equals("province")).
                 forEach(card -> provinceCardList.add(jsonCardToProvinceCard.apply(card)));
         System.out.println("Province Card List: OK");
     }
@@ -84,8 +84,8 @@ public class CollectionL5R {
     }
 
     public void initializeStrongholdCardList() {
-        allCards.stream().filter(card -> card.getSide().equals("stronghold")).
-                forEach(card -> strongStrongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
+        allCards.stream().filter(card -> card.getType().equals("stronghold")).
+                forEach(card -> StrongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
         System.out.println("Stronghold Card List: OK");
     }
 

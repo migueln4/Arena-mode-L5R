@@ -13,10 +13,9 @@ public class DynastyCard extends Card {
 
     @Override
     public String toString() {
-        StringBuilder strb = new StringBuilder(super.toString());
-        strb.append("\n");
-        strb.append("ConflictCard(element="+this.element+")");
-        return strb.toString();
+        return "[Name: "+super.getName()+
+                ", Clan: "+super.getClan()+
+                ", ID: "+super.getId()+"]";
     }
 
 }
