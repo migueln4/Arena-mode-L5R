@@ -1,17 +1,20 @@
+import cards.ProvinceCard;
 import cards.RoleCard;
 import cards.StrongholdCard;
 import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 public class StartGame {
 
     private static final Scanner LEER_CONSOLA = new Scanner(System.in);
 
-    final String[] CLANS = {"lion","scorpion","phoenix","crane","crab","unicorn","dragon"};
-    final String[] ELEMENTS = {"void","air","water","fire","earth"};
+    final String[] CLANS = {"lion", "scorpion", "phoenix", "crane", "crab", "unicorn", "dragon"};
+    final String[] ELEMENTS = {"void", "air", "water", "fire", "earth"};
     final int NUMBER_OPTIONS = 3;
 
     private Deck player1;
@@ -25,6 +28,7 @@ public class StartGame {
         this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
         this.collectionL5R.readFile();
+        this.collectionL5R.deleteExceptions();
         this.collectionL5R.initializeConflictCardList();
         this.collectionL5R.initializeDynastyCardList();
         this.collectionL5R.initializeProvinceCardList();
@@ -33,21 +37,111 @@ public class StartGame {
         playerTurn();
     }
 
-    private void playerTurn () {
+    private void playerTurn() {
         selectingClan();
         selectingRole(player1);
         selectingRole(player2);
-        if(player1.getSplash() == null)
+        if (player1.getSplash() == null)
             selectSplash(player1);
-        if(player2.getSplash() == null)
+        if (player2.getSplash() == null)
             selectSplash(player2);
         selectStronghold(player1);
         selectStronghold(player2);
+        selectProvinces(player1, player2);
+
+
+
         System.out.println("Resumen de los jugadores: ");
         System.out.println(player1.getNamePlayer()+"\n\tClan: "+player1.getClan()+"\n\tRol: "+player1.getRoleCard()+
                 "\n\tSplash: "+player1.getSplash()+"Stronghold: "+player1.getStronghold());
+        System.out.println("Provinces");
+        for(ProvinceCard card : player1.getProvinces())
+            System.out.println(card.toString());
         System.out.println(player2.getNamePlayer()+"\n\tClan: "+player2.getClan()+"\n\tRol: "+player2.getRoleCard()+
                 "\n\tSplash: "+player2.getSplash()+"Stronghold: "+player2.getStronghold());
+        System.out.println("Provinces");
+        for(ProvinceCard card : player2.getProvinces())
+            System.out.println(card.toString());
+
+    }
+
+
+    private void selectProvinces(Deck player1, Deck player2) {
+        while (player1.getProvinces().size() < 5 && player2.getProvinces().size() < 5) {
+            if (player1.getProvinces().size() < 5) {
+                playerSelectingProvince(player1);
+            }
+            if (player2.getProvinces().size() < 5) {
+                playerSelectingProvince(player2);
+            }
+        }
+    }
+
+    private void playerSelectingProvince(Deck player) {
+        System.out.println("Jugador " + player.getNamePlayer() + " elige tu provincia número " + (player.getProvinces().size() + 1));
+        List<String> elementsAvailables = new ArrayList<>();
+        List<ProvinceCard> provincesAvailables = new ArrayList<>();
+        for(int i = 0; i<ELEMENTS.length; i++) {
+            if (player.getLimitProvince()[i] > 0) {
+                elementsAvailables.add(ELEMENTS[i]);
+            }
+        }
+        makeProvinceOptions(elementsAvailables,provincesAvailables,
+                player);
+        for(int i = 0; i<provincesAvailables.size();i++) {
+            System.out.println((i+1)+") "+provincesAvailables.get(i));
+        }
+        int option = leerEntero();
+        ProvinceCard selectedCard = provincesAvailables.get(option-1);
+        player.getProvinces().add(selectedCard);
+        for(int i = 0; i<player.getLimitProvince().length; i++) {
+            if(ELEMENTS[i].equals(selectedCard.getElement())) {
+                player.getLimitProvince()[i] = player.getLimitProvince()[i]-1;
+            }
+        }
+        int quantity = selectedCard.getQuantity()-1;
+        int index =
+                collectionL5R.getProvinceCardList().indexOf(selectedCard);
+        if(quantity < 1) {
+            collectionL5R.getProvinceCardList().remove(selectedCard);
+        } else {
+            collectionL5R.getProvinceCardList().get(index).setQuantity(Integer.valueOf(quantity));
+        }
+    }
+
+    private void makeProvinceOptions(List<String> elementsAvailables,
+                                     List<ProvinceCard> provincesAvailables,
+                                     Deck player) {
+        List<ProvinceCard> selection =
+                this.collectionL5R.getProvinceCardList().stream()
+                .filter(card -> elementsAvailables.contains(card.getElement())
+                        && !pronvinceIsPresent(player,card)
+                        && (card.getClan() == null
+                            || card.getClan().equals(player.getClan())
+                            || card.getClan().equals("neutral"))
+                        && (card.getRoleLimit() == null
+                            || card.getRoleLimit().equals(player.getRoleCard().getRole())
+                            || card.getRoleLimit().equals("null"))
+                        && (card.getElementLimit() == null
+                            || card.getElementLimit().equals(player.getRoleCard().getElement())
+                            || card.getElementLimit().equals("null")))
+                .collect(Collectors.toList());
+        int rndArray[] = createArrayNumbers(selection.size());
+        for(int i = 0; i<NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
+            provincesAvailables.add(selection.get(rndArray[rnd]));
+            rndArray[rnd] = rndArray[rndArray.length-1-i];
+        }
+
+    }
+
+    private boolean pronvinceIsPresent(Deck player,ProvinceCard province) {
+        for(ProvinceCard card : player.getProvinces()) {
+            if(card.getName().equals(province.getName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void selectStronghold(Deck player) {
@@ -55,47 +149,47 @@ public class StartGame {
         this.collectionL5R.getStrongholdCardList().stream()
                 .filter(card -> player.getClan().equals(card.getClan()))
                 .forEach(card -> strongholdValidList.add(card));
-        System.out.println("Jugador "+player.getNamePlayer()+" elige un Stronghold para tu clan "+player.getClan());
-        for(int i=0; i<strongholdValidList.size(); i++) {
-            System.out.println((i+1)+") "+strongholdValidList.get(i));
+        System.out.println("Jugador " + player.getNamePlayer() + " elige un Stronghold para tu clan " + player.getClan());
+        for (int i = 0; i < strongholdValidList.size(); i++) {
+            System.out.println((i + 1) + ") " + strongholdValidList.get(i));
         }
         int option = leerEntero();
-        StrongholdCard selectedCard = strongholdValidList.get(option-1);
+        StrongholdCard selectedCard = strongholdValidList.get(option - 1);
         player.setStronghold(selectedCard);
-        player.setInfluence(player.getInfluence()+selectedCard.getInfluence());
+        player.setInfluence(player.getInfluence() + selectedCard.getInfluence());
         int indexCard = this.collectionL5R.getStrongholdCardList().indexOf(selectedCard);
         int quantity = this.collectionL5R.getStrongholdCardList().get(indexCard).getQuantity();
         this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
-        if(quantity == 0)
+        if (quantity == 0)
             this.collectionL5R.getStrongholdCardList().remove(selectedCard);
     }
 
     private void selectSplash(Deck player) {
         String mainClan = player.getClan();
         int mainClanIndex = -1;
-        for(int i = 0; i<CLANS.length; i++) {
-            if(CLANS[i].equals(mainClan))
+        for (int i = 0; i < CLANS.length; i++) {
+            if (CLANS[i].equals(mainClan))
                 mainClanIndex = i;
         }
-        int[] arrayClans = createArrayNumbers(CLANS.length,mainClanIndex);
+        int[] arrayClans = createArrayNumbers(CLANS.length, mainClanIndex);
         int[] arrayOptions = new int[NUMBER_OPTIONS];
-        for(int i = 0; i<NUMBER_OPTIONS; i++) {
-            int rnd = (int) (Math.random()*(arrayClans.length-1-i));
+        for (int i = 0; i < NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random() * (arrayClans.length - 1 - i));
             arrayOptions[i] = arrayClans[rnd];
-            arrayClans[rnd] = arrayClans.length-1-i;
+            arrayClans[rnd] = arrayClans.length - 1 - i;
         }
-        System.out.println("Jugador "+player.getNamePlayer()+" elige cuál es tu clan secundario");
-        for(int i = 0; i<NUMBER_OPTIONS; i++)
-            System.out.println((i+1)+") "+CLANS[arrayOptions[i]]);
+        System.out.println("Jugador " + player.getNamePlayer() + " elige cuál es tu clan secundario");
+        for (int i = 0; i < NUMBER_OPTIONS; i++)
+            System.out.println((i + 1) + ") " + CLANS[arrayOptions[i]]);
         int option = leerEntero();
-        player.setSplash(CLANS[arrayOptions[option-1]]);
+        player.setSplash(CLANS[arrayOptions[option - 1]]);
     }
 
-    private int[] createArrayNumbers (int size, int exclude) {
-        int[] result = new int[size-1];
+    private int[] createArrayNumbers(int size, int exclude) {
+        int[] result = new int[size - 1];
         int aux = 0;
-        for(int i=0; aux<result.length; i++) {
-            if(i == exclude)
+        for (int i = 0; aux < result.length; i++) {
+            if (i == exclude)
                 continue;
             else
                 result[aux] = i;
@@ -106,107 +200,112 @@ public class StartGame {
 
     private void selectingClan() {
         player1.setClan(selectClan(1));
-        System.out.println("LOG --- El jugador 1 tiene el clan "+player1.getClan());
+        System.out.println("LOG --- El jugador 1 tiene el clan " + player1.getClan());
         player2.setClan(selectClan(2));
     }
 
     private String selectClan(int n) {
-        System.out.println("Jugador "+n+", selecciona el clan que quieras");
+        System.out.println("Jugador " + n + ", selecciona el clan que quieras");
         ArrayList<String> selectingClan = randomClan();
-        for (int i = 0; i<selectingClan.size(); i++)
-            System.out.println("\t"+(i+1)+". "+selectingClan.get(i));
+        for (int i = 0; i < selectingClan.size(); i++)
+            System.out.println("\t" + (i + 1) + ". " + selectingClan.get(i));
         int clanNumber = leerEntero();
-        return selectingClan.get(clanNumber-1);
+        return selectingClan.get(clanNumber - 1);
     }
 
     private ArrayList<String> randomClan() {
         ArrayList<String> selectingClan = new ArrayList<>();
         String[] clansRemaining = copyArray(CLANS);
-        for (int i = 0; i<NUMBER_OPTIONS; i++) {
-            int rnd = (int) (Math.random()*(clansRemaining.length-1-i));
+        for (int i = 0; i < NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random() * (clansRemaining.length - 1 - i));
             selectingClan.add(clansRemaining[rnd]);
             String aux = clansRemaining[rnd];
-            clansRemaining[rnd] = clansRemaining[clansRemaining.length-1-i];
-            clansRemaining[clansRemaining.length-1-i] = aux;
+            clansRemaining[rnd] = clansRemaining[clansRemaining.length - 1 - i];
+            clansRemaining[clansRemaining.length - 1 - i] = aux;
         }
         return selectingClan;
     }
 
     private void selectingRole(Deck player) {
         int indexMainClan = checkMainClan(player);
-        System.out.println("LOG --- Se va a excluir el número "+indexMainClan);
+        System.out.println("LOG --- Se va a excluir el número " + indexMainClan);
         int[] arrayNumbers;
-        if(indexMainClan > -1)
-            arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size()-2,indexMainClan);
+        if (indexMainClan > -1)
+            arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 2, indexMainClan);
         else
-            arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size()-1);
+            arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 1);
         int[] arrayOptions = new int[NUMBER_OPTIONS];
-        System.out.println("LOG --- El tamaño del arrayNumbers es "+arrayNumbers.length);
-        for(int i = 0; i<NUMBER_OPTIONS; i++) {
-            int rnd = (int) (Math.random()*(arrayNumbers.length-1-i));
+        System.out.println("LOG --- El tamaño del arrayNumbers es " + arrayNumbers.length);
+        for (int i = 0; i < NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random() * (arrayNumbers.length - 1 - i));
             arrayOptions[i] = arrayNumbers[rnd];
-            int aux = arrayNumbers[arrayNumbers.length-1-i];
+            int aux = arrayNumbers[arrayNumbers.length - 1 - i];
             arrayNumbers[rnd] = aux;
         }
-        System.out.println("Jugador "+player.getNamePlayer()+" selecciona una carta de rol.");
-        for(int i = 0; i<arrayOptions.length;i++) {
-            System.out.println((i+1)+") "+this.collectionL5R.getRoleCardList().get(arrayOptions[i]));
+        System.out.println("Jugador " + player.getNamePlayer() + " selecciona una carta de rol.");
+        for (int i = 0; i < arrayOptions.length; i++) {
+            System.out.println((i + 1) + ") " + this.collectionL5R.getRoleCardList().get(arrayOptions[i]));
         }
         int roleOption = leerEntero();
-        RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption-1]);
+        RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption - 1]);
         player.setRoleCard(roleCardSelected);
-        if(roleCardSelected.getName().contains("Support")) {
+        if (roleCardSelected.getName().contains("Support")) {
             player.setSplash(roleCardSelected.getClan());
-            player.setInfluence(player.getInfluence()+8);
-        }
-        else {
+            player.setInfluence(player.getInfluence() + 8);
+        } else {
             player.setRole(roleCardSelected.getRole());
             player.setElement(roleCardSelected.getElement());
-            if(roleCardSelected.getName().contains("Keeper"))
-                player.setInfluence(player.getInfluence()+3);
+            if (roleCardSelected.getRole().equals("keeper"))
+                player.setInfluence(player.getInfluence() + 3);
+            else if (roleCardSelected.getRole().equals("seeker")) {
+                for (int i = 0; i < ELEMENTS.length; i++) {
+                    if (roleCardSelected.getElement().equals(ELEMENTS[i])) {
+                        player.getLimitProvince()[i] =
+                                player.getLimitProvince()[i] + 1;
+                    }
+                }
+            }
         }
         int cardSelected = this.collectionL5R.getRoleCardList().indexOf(roleCardSelected);
         int quantityCard = this.collectionL5R.getRoleCardList().get(cardSelected).getQuantity();
         this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
-        if(quantityCard == 0)
+        if (quantityCard == 0)
             this.collectionL5R.getRoleCardList().remove(roleCardSelected);
-        System.out.println("LOG --- El jugador "+player.getNamePlayer()+" ha elegido la carta "+player.getRoleCard().toString());
+        System.out.println("LOG --- El jugador " + player.getNamePlayer() + " ha elegido la carta " + player.getRoleCard().toString());
 
     }
 
-
-    private int[] createArrayNumbers (int size) {
+    private int[] createArrayNumbers(int size) {
         int[] result = new int[size];
-        for(int i=0; i<size; i++)
+        for (int i = 0; i < size; i++)
             result[i] = i;
         return result;
     }
 
     private int checkMainClan(Deck player) {
-        for(RoleCard card : this.collectionL5R.getRoleCardList()) {
-            System.out.println("LOG --- Clan de la carta: "+card.getClan());
-            System.out.println("LOG --- Clan del jugador: "+player.getClan());
-            if(player.getClan().equals(card.getClan())) {
+        for (RoleCard card : this.collectionL5R.getRoleCardList()) {
+            System.out.println("LOG --- Clan de la carta: " + card.getClan());
+            System.out.println("LOG --- Clan del jugador: " + player.getClan());
+            if (player.getClan().equals(card.getClan())) {
                 return this.collectionL5R.getRoleCardList().indexOf(card);
             }
         }
         return -1;
     }
 
-
     private String[] copyArray(String[] array) {
         String[] result = new String[array.length];
-        for(int i=0;i<array.length;i++) {
+        for (int i = 0; i < array.length; i++) {
             result[i] = array[i];
         }
         return result;
     }
 
     private String[] copyArray(String[] array, String clan) {
-        String[] result = new String[array.length-1];
+        String[] result = new String[array.length - 1];
         int j = 0;
-        for(int i=0; i<array.length;i++) {
-            if(!clan.equals(array[i])) {
+        for (int i = 0; i < array.length; i++) {
+            if (!clan.equals(array[i])) {
                 result[j] = array[i];
                 j++;
             }
@@ -214,15 +313,15 @@ public class StartGame {
         return result;
     }
 
-    private ArrayList<String> randomClan (String clan) {
+    private ArrayList<String> randomClan(String clan) {
         ArrayList<String> selectingClan = new ArrayList<>();
-        String[] clansRemaining = copyArray(CLANS,clan);
-        for (int i = 0; i<NUMBER_OPTIONS; i++) {
-            int rnd = (int) (Math.random()*(clansRemaining.length-1-i));
+        String[] clansRemaining = copyArray(CLANS, clan);
+        for (int i = 0; i < NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random() * (clansRemaining.length - 1 - i));
             selectingClan.add(clansRemaining[rnd]);
             String aux = clansRemaining[rnd];
-            clansRemaining[rnd] = clansRemaining[clansRemaining.length-1-i];
-            clansRemaining[clansRemaining.length-1-i] = aux;
+            clansRemaining[rnd] = clansRemaining[clansRemaining.length - 1 - i];
+            clansRemaining[clansRemaining.length - 1 - i] = aux;
         }
         return selectingClan;
     }

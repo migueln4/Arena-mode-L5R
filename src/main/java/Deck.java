@@ -3,6 +3,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -33,9 +34,13 @@ public class Deck {
     private List<ConflictCard> conflictCardDeck;
     private List<DynastyCard> dynastyCardDeck;
 
+    private Integer[] limitProvince;
+
     public Deck(String namePlayer) {
         this.namePlayer = namePlayer;
         this.influence = 0;
+        this.limitProvince = new Integer[]{1,1,1,1,1};
+        this.provinces = new ArrayList<>();
     }
 
 }

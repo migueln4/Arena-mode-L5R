@@ -58,6 +58,28 @@ public class CollectionL5R {
         }
     }
 
+    public void deleteExceptions() {
+        List<JsonCard> newList = new ArrayList<>(this.allCards);
+        newList.stream().
+                filter(obj -> obj != null)
+                .filter(
+                card -> {
+                    Type type = new TypeToken<List<JsonPackCards>>() {
+                    }.getType();
+                        List<JsonPackCards> packCards =
+                                gson.fromJson(card.getPack_cards(), type);
+                        return packCards.size() == 0
+                                || "\"masters-of-the-court\"".equals(packCards.get(0).getPack().get("id").toString())
+                                || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
+                                || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
+                                || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
+                                || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString());
+                }
+        ).forEach(card -> this.allCards.remove(card));
+        System.out.println("Hay todas estas cartas "+this.allCards.size());
+
+    }
+
     public void initializeConflictCardList() {
         allCards.stream().filter(card -> card.getSide().equals("conflict")).
                 forEach(card -> conflictCardList.add(jsonCardToConflictCard.apply(card)));
@@ -71,8 +93,8 @@ public class CollectionL5R {
 
     }
 
-    public void initializeProvinceCardList() { //OJO con la provincia Toshi Ranbo, que está inédita todavía
-        allCards.stream().filter(card -> !card.getId().equals("toshi-ranbo") && card.getType().equals("province")).
+    public void initializeProvinceCardList() {
+        allCards.stream().filter(card -> card.getType().equals("province")).
                 forEach(card -> provinceCardList.add(jsonCardToProvinceCard.apply(card)));
         System.out.println("Province Card List: OK");
     }
@@ -96,7 +118,7 @@ public class CollectionL5R {
             case "tears-of-amaterasu":
             case "for-honor-and-glory":
             case "into-the-forbidden-city":
-            case "the-chrysanthemun-throne":
+            case "the-chrysanthemum-throne":
             case "fate-has-no-secrets":
             case "meditations-on-the-ephemeral":
                 return "IMPERIAL CYCLE";
@@ -135,21 +157,40 @@ public class CollectionL5R {
         return strb.toString();
     };
 
+    private void setNameCard(List<JsonPackCards> packCards, Card newCard) {
+        String nameCard = "";
+        int pos = -1;
+        for(JsonPackCards jsonPackCards : packCards) {
+            pos++;
+            String namePack = jsonPackCards.getPack().get("id").toString();
+            if("\"gen-con-2017\"".equals(namePack)
+                    || "\"2018-season-one-stronghold-kit\"".equals(namePack)
+                    || "\"battle-for-the-stronghold-kit\"".equals(namePack)) {
+                continue;
+            } else {
+                nameCard = namePack;
+                break;
+            }
+        }
+
+        nameCard = nameCard.substring(1, nameCard.length() - 1);
+
+        if ("core".equals(nameCard))
+            newCard.setQuantity((packCards.get(pos).getQuantity()) * 3);
+        else
+            newCard.setQuantity(packCards.get(pos).getQuantity());
+
+        newCard.setId(getCardName.apply(nameCard,
+                packCards.get(pos).getPosition()));
+    }
+
     private Function<JsonCard, DynastyCard> jsonCardToDynastyCard = jsonCard -> {
         DynastyCard newCard = new DynastyCard();
         Type type = new TypeToken<List<JsonPackCards>>() {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        String nameCard = packCards.get(0).getPack().get("id").toString();
-        nameCard = nameCard.substring(1, nameCard.length() - 1);
-
-        if ("core".equals(nameCard))
-            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
-        else
-            newCard.setQuantity(packCards.get(0).getQuantity());
-
-        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
+        setNameCard(packCards,newCard);
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
@@ -169,15 +210,7 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        String nameCard = packCards.get(0).getPack().get("id").toString();
-        nameCard = nameCard.substring(1, nameCard.length() - 1);
-
-        if ("core".equals(nameCard))
-            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
-        else
-            newCard.setQuantity(packCards.get(0).getQuantity());
-
-        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
+        setNameCard(packCards,newCard);
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
@@ -198,15 +231,8 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        String nameCard = packCards.get(0).getPack().get("id").toString();
-        nameCard = nameCard.substring(1, nameCard.length() - 1);
+        setNameCard(packCards,newCard);
 
-        if ("core".equals(nameCard))
-            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
-        else
-            newCard.setQuantity(packCards.get(0).getQuantity());
-
-        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
@@ -224,15 +250,8 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        String nameCard = packCards.get(0).getPack().get("id").toString();
-        nameCard = nameCard.substring(1, nameCard.length() - 1);
+        setNameCard(packCards,newCard);
 
-        if ("core".equals(nameCard))
-            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
-        else
-            newCard.setQuantity(packCards.get(0).getQuantity());
-
-        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
 
         String name = jsonCard.getName();
         newCard.setName(name);
@@ -241,9 +260,11 @@ public class CollectionL5R {
 
         if (name.contains("Support")) {
             newCard.setClan(traits.get(0).toString().substring(1, traits.get(0).toString().length() - 1));
+            newCard.setRole("support");
         } else {
-            newCard.setRole(traits.get(0).toString());
-            newCard.setElement(traits.get(1).toString());
+            newCard.setRole(traits.get(0).toString().substring(1, traits.get(0).toString().length() - 1));
+            newCard.setElement(traits.get(1).toString().substring(1,
+                    traits.get(1).toString().length() - 1));
         }
 
         return newCard;
@@ -283,15 +304,8 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        String nameCard = packCards.get(0).getPack().get("id").toString();
-        nameCard = nameCard.substring(1, nameCard.length() - 1);
+        setNameCard(packCards,newCard);
 
-        if ("core".equals(nameCard))
-            newCard.setQuantity((packCards.get(0).getQuantity()) * 3);
-        else
-            newCard.setQuantity(packCards.get(0).getQuantity());
-
-        newCard.setId(getCardName.apply(nameCard, packCards.get(0).getPosition()));
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
