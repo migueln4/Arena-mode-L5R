@@ -9,8 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StrongholdCard extends Card {
 
-    //Se sabe por "type": "stronghold"
     private Integer influence;
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof StrongholdCard)) return false;
+        StrongholdCard other = (StrongholdCard) o;
+        return (this.getId().equals(other.getId()));
+    }
 
     @Override
     public String toString() {

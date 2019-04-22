@@ -11,12 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Deck {
 
-    final Integer MAX_CONFLICT_CARDS = 45;
-    final Integer MIN_CONFLICT_CARDS = 40;
-    final Integer MAX_CONFLICT_CHARACTERS = 10;
-    final Integer MAX_PROVINCE_CARDS = 5;
-    final Integer MAX_STRONGHOLD_CARDS = 1;
-
     private String namePlayer;
 
     private String clan;
@@ -33,14 +27,21 @@ public class Deck {
 
     private List<ConflictCard> conflictCardDeck;
     private List<DynastyCard> dynastyCardDeck;
+    private Integer numberConflictCards;
+    private Integer numberDynastyCards;
 
     private Integer[] limitProvince;
 
     public Deck(String namePlayer) {
+        this.numberCharacters = 0;
+        this.numberConflictCards = 0;
+        this.numberDynastyCards = 0;
         this.namePlayer = namePlayer;
         this.influence = 0;
         this.limitProvince = new Integer[]{1,1,1,1,1};
         this.provinces = new ArrayList<>();
+        this.conflictCardDeck = new ArrayList<>();
+        this.dynastyCardDeck = new ArrayList<>();
     }
 
 }
