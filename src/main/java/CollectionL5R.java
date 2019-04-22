@@ -76,7 +76,7 @@ public class CollectionL5R {
                                 || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString());
                 }
         ).forEach(card -> this.allCards.remove(card));
-        System.out.println("Hay todas estas cartas "+this.allCards.size());
+        System.out.println("Total number of cards "+this.allCards.size());
 
     }
 
