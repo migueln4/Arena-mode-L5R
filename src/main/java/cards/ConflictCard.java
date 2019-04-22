@@ -7,17 +7,34 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ConflictCard extends Card {
+public class ConflictCard extends Card implements Cloneable {
 
     private Boolean character;
     private Integer influence;
 
     @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof ConflictCard)) return false;
+        ConflictCard other = (ConflictCard) o;
+        return (this.getId().equals(other.getId()));
+    }
+
+    @Override
+    public Object clone() throws
+            CloneNotSupportedException
+    {
+        return super.clone();
+    }
+
+    @Override
     public String toString() {
-        StringBuilder strb = new StringBuilder(super.toString());
-        strb.append("\n");
-        strb.append("ConflictCard(character="+this.character.toString()+", influence="+this.influence.toString()+")");
-        return strb.toString();
+        return "[Name: "+super.getName()+
+                ", Clan: "+super.getClan()+
+                ", ID: "+super.getId()+
+                ", Limit: "+super.getDeckLimit()+
+                ", Character: "+this.character+
+                ", Influence: "+this.influence+"]"+
+                "---> "+super.getQuantity()+" copies";
     }
 
 }

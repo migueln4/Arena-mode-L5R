@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StartGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/RoleCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/RoleCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/StrongholdCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/StrongholdCard.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,10 +23,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-230">
-              <caret line="78" column="49" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
+            <state relative-caret-position="208">
+              <caret line="321" column="29" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#deleteExceptions#0;class#CollectionL5R#0" />
                 <element signature="method#initializeRoleCardList#0;class#CollectionL5R#0" />
                 <element signature="method#initializeStrongholdCardList#0;class#CollectionL5R#0" />
                 <element signature="e#3246#4394#0" />
@@ -38,20 +36,24 @@
                 <element signature="e#7029#7913#0" />
                 <element signature="e#7978#9222#0" />
                 <element signature="method#elementAndRoleRestrictions#0;class#CollectionL5R#0" />
-                <element signature="e#10136#11371#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1559">
-              <caret line="107" column="42" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
+            <state relative-caret-position="313">
+              <caret line="234" column="66" lean-forward="true" selection-start-line="234" selection-start-column="66" selection-end-line="234" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#makeDynastyOptions#0;class#StartGame#0" />
+                <element signature="method#selectConflictDeck#0;class#StartGame#0" />
+                <element signature="method#selectConflictCard#0;class#StartGame#0" />
+                <element signature="method#splashCorrect#0;class#StartGame#0" />
+                <element signature="method#splashCorrect#0;class#StartGame#0" />
+                <element signature="method#characterCorrect#0;class#StartGame#0" />
+                <element signature="method#conflictCardIsPresent#0;class#StartGame#0" />
                 <element signature="e#2991#3154#1" />
                 <element signature="method#selectSplash#0;class#StartGame#0" />
                 <element signature="method#createArrayNumbers#0;class#StartGame#0" />
@@ -63,17 +65,8 @@
                 <element signature="method#copyArray#0;class#StartGame#0" />
                 <element signature="method#copyArray#1;class#StartGame#0" />
                 <element signature="method#randomClan#1;class#StartGame#0" />
-                <element signature="e#20956#20957#0" expanded="true" />
+                <element signature="e#28599#28600#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/ArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="1381" selection-start-line="1381" selection-end-line="1381" />
             </state>
           </provider>
         </entry>
@@ -90,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cards/DynastyCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="13" selection-start-line="13" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="157">
+              <caret line="27" selection-start-line="27" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,11 +101,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+            <state relative-caret-position="205">
+              <caret line="39" column="22" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cards/ConflictCard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,12 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selection</find>
-      <find>rolelimit</find>
-      <find>along the river</find>
-      <find>thron</find>
-      <find>getPackName</find>
-      <find>stronghold-kit</find>
       <find>strong</find>
       <find>getCardName</find>
       <find>stronghold</find>
@@ -198,6 +197,12 @@
       <find>SE</find>
       <find>log ---</find>
       <find>index</find>
+      <find>ispresent</find>
+      <find>MAX_CONFLICT_CHARACTERS</find>
+      <find>conflict</find>
+      <find>influ</find>
+      <find>copias</find>
+      <find>characterCorrect</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\miguel.garcia.munoz\IdeaProjects\Arena-mode-L5R\src\main\java</dir>
@@ -222,7 +227,6 @@
         <option value="$PROJECT_DIR$/src/main/java/RoleCard.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cards/JsonPackCards.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/interfaces/ThreeParametersLambda.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/DinastyCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/Card.java" />
@@ -231,11 +235,12 @@
         <option value="$PROJECT_DIR$/src/main/java/CollectionL5R.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/RoleCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/StrongholdCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/StartGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/Deck.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/StartGame.java" />
       </list>
     </option>
   </component>
@@ -387,15 +392,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.124333926" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.074600354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.54174066" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.80106574" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.053285968" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50121456" side_tool="true" weight="0.70515096" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.19715808" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.4689165" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -469,16 +474,6 @@
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar!/com/google/gson/JsonPrimitive.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cards/ConflictCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="14" selection-start-line="14" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cards/JsonPackCards.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -544,25 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-230">
-          <caret line="78" column="49" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initializeRoleCardList#0;class#CollectionL5R#0" />
-            <element signature="method#initializeStrongholdCardList#0;class#CollectionL5R#0" />
-            <element signature="e#3246#4394#0" />
-            <element signature="e#4469#4790#0" />
-            <element signature="e#5944#6952#0" />
-            <element signature="e#7029#7913#0" />
-            <element signature="e#7978#9222#0" />
-            <element signature="method#elementAndRoleRestrictions#0;class#CollectionL5R#0" />
-            <element signature="e#10136#11371#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -574,16 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cards/DynastyCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="13" selection-start-line="13" selection-end-line="18" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -610,13 +576,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1559">
-          <caret line="107" column="42" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
+        <state relative-caret-position="205">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#makeDynastyOptions#0;class#StartGame#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="321" column="29" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#deleteExceptions#0;class#CollectionL5R#0" />
+            <element signature="method#initializeRoleCardList#0;class#CollectionL5R#0" />
+            <element signature="method#initializeStrongholdCardList#0;class#CollectionL5R#0" />
+            <element signature="e#3246#4394#0" />
+            <element signature="e#4469#4790#0" />
+            <element signature="e#5944#6952#0" />
+            <element signature="e#7029#7913#0" />
+            <element signature="e#7978#9222#0" />
+            <element signature="method#elementAndRoleRestrictions#0;class#CollectionL5R#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cards/DynastyCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="27" selection-start-line="27" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cards/ConflictCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="234" column="66" lean-forward="true" selection-start-line="234" selection-start-column="66" selection-end-line="234" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#selectConflictDeck#0;class#StartGame#0" />
+            <element signature="method#selectConflictCard#0;class#StartGame#0" />
+            <element signature="method#splashCorrect#0;class#StartGame#0" />
+            <element signature="method#splashCorrect#0;class#StartGame#0" />
+            <element signature="method#characterCorrect#0;class#StartGame#0" />
+            <element signature="method#conflictCardIsPresent#0;class#StartGame#0" />
             <element signature="e#2991#3154#1" />
             <element signature="method#selectSplash#0;class#StartGame#0" />
             <element signature="method#createArrayNumbers#0;class#StartGame#0" />
@@ -628,17 +648,7 @@
             <element signature="method#copyArray#0;class#StartGame#0" />
             <element signature="method#copyArray#1;class#StartGame#0" />
             <element signature="method#randomClan#1;class#StartGame#0" />
-            <element signature="e#20956#20957#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#28599#28600#0" expanded="true" />
           </folding>
         </state>
       </provider>
