@@ -1,4 +1,5 @@
 import cards.*;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
@@ -84,170 +85,149 @@ public class StartGame {
 
     private void selectConflictDeck(Deck player1, Deck player2) throws CloneNotSupportedException {
         boolean flagPlayer1 = player1.getNumberConflictCards() < MIN_CONFLICT_CARDS;
-        boolean flagPlayer2 =
-                player2.getNumberConflictCards() < MIN_CONFLICT_CARDS;
-        while (flagPlayer1 || flagPlayer2) {
+        boolean flagPlayer2 = player2.getNumberConflictCards() < MIN_CONFLICT_CARDS;
+        while(flagPlayer1 || flagPlayer2) {
             if(flagPlayer1) {
                 selectConflictCard(player1);
                 if(player1.getNumberConflictCards() >= MIN_CONFLICT_CARDS
                     && player1.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Jugador " +player1.getNamePlayer() +
-                            " has llegado al mínimo del mazo (tienes "+player1.getNumberConflictCards()+" ). "+
-                            "¿Quieres terminar de añadir cartas?\n\t(1 = Sí / 2 = No)");
-                    if (leerEntero() == 1) {
+                    System.out.println("Jugador "+player1.getNamePlayer()+ " " +
+                            "has llegado al mínimo del mazo de Conflicto. Tienes "+player1.getNumberConflictCards()+
+                            " cartas. \n\t¿Quieres dejar de añadir cartas?\n\t(1 = Sí / 2 = No)");
+                    if(leerEntero() == 1) {
                         flagPlayer1 = false;
                     }
                 } else {
-                    flagPlayer1 =
-                            player1.getNumberConflictCards() < MAX_CONFLICT_CARDS;
-                }
-            }
-            if (flagPlayer2) {
-                selectConflictCard(player2);
-                if(player2.getNumberConflictCards() >= MIN_CONFLICT_CARDS
-                        && player2.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Jugador " +player2.getNamePlayer() +
-                                    " has llegado al mínimo del mazo (tienes "+player2.getNumberConflictCards()+" ). "+
-                            "¿Quieres terminar de añadir cartas?\n\t(1 = Sí / 2 = No)");
-                    if (leerEntero() == 1) {
-                        flagPlayer2 = false;
-                    }
-                } else {
-                    flagPlayer2 =
-                            player2.getNumberConflictCards() < MAX_CONFLICT_CARDS;
+                    flagPlayer1 = player1.getNumberConflictCards() < MAX_CONFLICT_CARDS;
                 }
             }
         }
     }
 
     private void selectConflictCard(Deck player) throws CloneNotSupportedException {
-        System.out.println("Jugador "+player.getNamePlayer()+"elige tu carta " +
-                "número "+ (player.getNumberConflictCards()+1)+"\n(tienes "+
-                player.getNumberConflictCards()+ " cartas en tu mazo de " +
-                "Conflicto) \n(Personajes: "+player.getNumberCharacters()+" /" +
-                " Influencia: "+player.getInfluence());
+        System.out.println("Jugador "+player.getNamePlayer()+ " elige tu carta"+
+                " número "+(player.getNumberConflictCards()+1)+"\n (tienes "+
+                player.getNumberConflictCards()+" cartas en tu mazo de Conflicto, "+
+                player.getNumberCharacters()+" de ellas, personajes.\n(influencia restante: "+
+                player.getInfluence()+" puntos)");
         List<ConflictCard> cardsAvailables = new ArrayList<>();
         makeConflictOptions(cardsAvailables,player);
         for(int i = 0; i<cardsAvailables.size(); i++) {
-            System.out.println((i+1)+") "+cardsAvailables.get(i));
+            System.out.println((i+1)+")"+cardsAvailables.get(i));
         }
         int option = leerEntero();
         ConflictCard cardSelected = cardsAvailables.get(option-1);
         int addQuantity = 1;
         if(cardSelected.getDeckLimit() != 1
-            && cardSelected.getQuantity() > 1
-            && player.getNumberConflictCards()+1 < MAX_CONFLICT_CARDS
-            && characterCorrect(cardSelected,player)
-            && splashCorrect(cardSelected,player)) {
-            System.out.println("Tienes " + player.getNumberConflictCards() +
-                    " cartas en tu mazo de Conflicto. ¿Cuántas copias quieres" +
-                    " de esta carta?");
-            for (int i = 1;
-                    i <= cardSelected.getQuantity()
-                    && MAX_CONFLICT_CARDS >= player.getNumberConflictCards() + i
-                    && i <= MAX_CARD_COPIES
-                    && characterCorrect(cardSelected,player,i)
-                    && splashCorrect(cardSelected,player,i);
-                    i++)
-                System.out.print(i + ", ");
+           && cardSelected.getQuantity() > 1
+           && player.getNumberConflictCards()+1 < MAX_CONFLICT_CARDS
+           && oneMoreCharacter(player,cardSelected,1)
+           && oneMoreSplashCard(player,cardSelected,1)) {
+            System.out.println("Tienes "+player.getNumberConflictCards() + " cartas en tu mazo "+
+                    "de Conflicto. ¿Cuántas copias quieres de esta carta?");
+            for (int i=1; i<=cardSelected.getQuantity()
+                            && MAX_CONFLICT_CARDS >= player.getNumberConflictCards()+i
+                            && i <= MAX_CARD_COPIES
+                            && i <= cardSelected.getDeckLimit()
+                            && oneMoreCharacter(player,cardSelected,i)
+                            && oneMoreSplashCard(player,cardSelected,i); i++) {
+                System.out.print(i+", ");
+            }
             addQuantity = leerEntero();
         }
         ConflictCard cardToAdd = (ConflictCard) cardSelected.clone();
-        cardToAdd.setQuantity(addQuantity);
         player.getConflictCardDeck().add(cardToAdd);
-        player.setNumberConflictCards(player.getNumberConflictCards() + addQuantity);
+        player.setNumberConflictCards(player.getNumberConflictCards()+addQuantity);
         if(cardToAdd.getCharacter())
-            player.setNumberDynastyCards(player.getNumberCharacters()+addQuantity);
+            player.setNumberCharacters(player.getNumberCharacters()+addQuantity);
         if(cardToAdd.getClan().equals(player.getSplash()))
-            player.setInfluence(player.getInfluence() - (cardToAdd.getInfluence()*addQuantity));
+            player.setInfluence(player.getInfluence()-(cardToAdd.getInfluence()*addQuantity));
         int quantity = cardSelected.getQuantity() - addQuantity;
-        int index =
-                this.collectionL5R.getConflictCardList().indexOf(cardSelected);
+        int index = this.collectionL5R.getConflictCardList().indexOf(cardSelected);
         if (quantity < 1) {
             this.collectionL5R.getConflictCardList().remove(cardSelected);
         } else {
             this.collectionL5R.getConflictCardList().get(index).setQuantity(Integer.valueOf(quantity));
         }
-
     }
 
-    private boolean splashCorrect(ConflictCard card,Deck player,int i) {
-        if(card.getClan().equals(player.getSplash())) {
+    private boolean oneMoreSplashCard(Deck player, ConflictCard card, int i) {
+        if(card.getClan() == null
+            || card.getClan().equals("neutral")
+            || card.getClan().equals(player.getClan())) {
+            return true;
+        } else {
             if(card.getInfluence()*i <= player.getInfluence()) {
                 return true;
             } else {
                 return false;
             }
-        } else {
-            return true;
         }
     }
 
-    private boolean splashCorrect(ConflictCard card,Deck player) {
-        if(card.getClan().equals(player.getSplash())) {
-            if(card.getInfluence()+1 < player.getInfluence()) {
+    private boolean oneMoreCharacter(Deck player, ConflictCard card, int i) {
+        if(!card.getCharacter()) {
+            return true;
+        } else {
+            if(player.getNumberCharacters()+i < MAX_CONFLICT_CHARACTERS) {
                 return true;
             } else {
                 return false;
             }
-        } else {
-            return true;
         }
     }
 
-    private boolean characterCorrect(ConflictCard card,Deck player,int i) {
-        if(card.getCharacter()) {
-            if(player.getNumberCharacters()+i <= MAX_CONFLICT_CHARACTERS) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
-
-    private boolean characterCorrect(ConflictCard card,Deck player) {
-        if(card.getCharacter())
-            if(player.getNumberCharacters()+1 < MAX_CONFLICT_CHARACTERS) {
-                return true;
-            } else {
-                return false;
-            }
-        else
-            return true;
-    }
-
-    private void makeConflictOptions(List<ConflictCard> cardsAvailables,
-                                     Deck player) {
-        List<ConflictCard> selection =
-                this.collectionL5R.getConflictCardList().stream()
-                        .filter(card -> !conflictCardIsPresent(player, card)
-                                && (card.getClan().equals("neutral")
+    private void makeConflictOptions(List<ConflictCard> cardsAvailables, Deck player) {
+        List<ConflictCard> selection = this.collectionL5R.getConflictCardList().stream()
+                .filter(card -> !conflictCardIsPresent(player,card)
+                            && characterConditions(player,card)
+                            && (card.getClan().equals("neutral")
                                 || card.getClan().equals(player.getClan())
-                                || (card.getClan().equals(player.getSplash())
-                                    && card.getInfluence() != null
-                                    && card.getInfluence() > 0
-                                    && card.getInfluence() <= player.getInfluence()))
-                                && (card.getRoleLimit() == null
+                                || splashConditions(player,card))
+                            && (card.getRoleLimit() == null
                                 || card.getRoleLimit().equals("null")
                                 || card.getRoleLimit().equals(player.getRoleCard().getRole()))
-                                && (card.getElementLimit() == null
+                            && (card.getElementLimit() == null
                                 || card.getElementLimit().equals("null")
-                                || card.getElementLimit().equals(player.getElement()))
-                                && characterCorrect(card,player))
-                        .collect(Collectors.toList());
+                                || card.getElementLimit().equals(player.getElement())))
+                .collect(Collectors.toList());
         int rndArray[] = createArrayNumbers(selection.size());
-        for (int i = 0; i < NUMBER_OPTIONS; i++) {
+        for(int i = 0; i<NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             cardsAvailables.add(selection.get(rndArray[rnd]));
             rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
     }
 
-    private boolean conflictCardIsPresent(Deck player,
-                                          ConflictCard conflictCard) {
-        for(ConflictCard card : player.getConflictCardDeck()) {
+    private boolean splashConditions(Deck player, ConflictCard card) {
+        if(player.getSplash() == null
+                || player.getSplash().equals("null")
+                || !card.getClan().equals(player.getSplash())
+                || card.getInfluence() == null
+                || card.getInfluence().equals("null")
+                || card.getInfluence() < 1
+                || player.getInfluence() < 1
+                || card.getInfluence() > player.getInfluence()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean characterConditions(Deck player, ConflictCard card) {
+        if (!card.getCharacter()) {
+            return true;
+        } else {
+            if (player.getNumberCharacters() == MAX_CONFLICT_CHARACTERS) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    private boolean conflictCardIsPresent(Deck player, ConflictCard card) {
+        for(ConflictCard conflictCard : player.getConflictCardDeck()) {
             if(card.equals(conflictCard)) {
                 return true;
             }
@@ -313,6 +293,7 @@ public class StartGame {
                     "de esta carta?");
             for (int i = 1; i <= cardSelected.getQuantity()
                     && MAX_CONFLICT_CARDS >= player.getNumberDynastyCards() + i
+                    && i <= cardSelected.getDeckLimit()
                     && i <= MAX_CARD_COPIES; i++)
                 System.out.print(i + ", ");
             addQuantity = leerEntero();

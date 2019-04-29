@@ -564,7 +564,7 @@
 				{
 					"flavor": "\"I am sworn to the Lion. My former husband's acts with the Crane army are non of your concern.\"",
 					"illustrator": "Borja Pindado",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_16.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -1128,7 +1128,7 @@
 				{
 					"flavor": "\"We rule the Sea of the Sun Goddess by the skill of our sailors and the excellence of our quivers.\"",
 					"illustrator": "Immar Palomera",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_19.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -1281,7 +1281,7 @@
 				{
 					"flavor": "\"A red sun in the hour of the Hare. Not a bird in the sky. Do you not see that the battle is already won?\"",
 					"illustrator": "Lin Hsiang",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_9.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -1806,7 +1806,7 @@
 				{
 					"flavor": "\"I was honored to stand as your champion, Daisetsu-sama.\"",
 					"illustrator": "Le Vuong",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_18.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -2158,6 +2158,37 @@
 		},
 		{
 			"clan": "crane",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "beloved-advisor",
+			"military": "1",
+			"name": "Beloved Advisor",
+			"name_canonical": "beloved advisor",
+			"pack_cards": [
+				{
+					"flavor": "\"The children would love to see you again.\"\n\"As long as our lords maintain peace, I see no reason that could not happen.\"",
+					"illustrator": "Felipe Gaona",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_5.jpg",
+					"pack": {
+						"id": "masters-of-the-court"
+					},
+					"position": "5",
+					"quantity": 1
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> Choose an opponent - you and that opponent each draw a card.",
+			"text_canonical": "action: choose an opponent - you and that opponent each draw a card.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"clan": "crane",
 			"cost": 4,
 			"deck_limit": 3,
 			"glory": 2,
@@ -2169,7 +2200,7 @@
 				{
 					"flavor": "Crane generosity often end conflicts before a single blow is struck.",
 					"illustrator": "Lin Hsiang",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_10.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -3008,7 +3039,7 @@
 				{
 					"flavor": "When reading and writing proved impossible to her, the daughter of the Chukan daimyō set out to learn from the traditions kept alive by the people of Rokugan.",
 					"illustrator": "Andreja Ugrai",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_17.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -3398,7 +3429,7 @@
 				{
 					"flavor": "\"Why don't we discuss this in private?\"",
 					"illustrator": "Joyce Maureira",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_24.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -3613,7 +3644,7 @@
 				{
 					"flavor": "\"I'm proud of what Uji-sama has done with the Iron Cranes. But do they have the will to bear such crimson stains upon their white wings?\" - Bayushi Shoju",
 					"illustrator": "Amélie Hutt",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_11.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -3674,8 +3705,8 @@
 			"pack_cards": [
 				{
 					"flavor": "",
-					"illustrator": "",
-					"image_url": "",
+					"illustrator": "Robin Woulters",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_27.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -4017,7 +4048,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Matt Bulahao",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_13.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -5092,7 +5123,7 @@
 				{
 					"flavor": "Wisteria blooms \nPrayers fly on colored streamers \nArmies march to war",
 					"illustrator": "Borja Pindado",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_25.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -6016,7 +6047,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Richard Garcia",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_22.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -8893,6 +8924,37 @@
 			"unicity": false
 		},
 		{
+			"clan": "crane",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 0,
+			"id": "iwasaki-pupil",
+			"military": "1",
+			"name": "Iwasaki Pupil",
+			"name_canonical": "iwasaki pupil",
+			"pack_cards": [
+				{
+					"flavor": "\"Remember that with you, there are no samurai. There are only men and women in need of a compassionate friend and a listening ear.\"",
+					"illustrator": "Luis NCT",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_4.jpg",
+					"pack": {
+						"id": "masters-of-the-court"
+					},
+					"position": "4",
+					"quantity": 1
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "Each player draws 2 fewer cards from honor bids during the draw phase (to a minimum of 1).",
+			"text_canonical": "each player draws 2 fewer cards from honor bids during the draw phase (to a minimum of 1).",
+			"traits": [
+				"geisha"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
 			"clan": "dragon",
 			"cost": 1,
 			"deck_limit": 3,
@@ -9344,7 +9406,7 @@
 				{
 					"flavor": "\"They will forget your name when they hear of mine.\"",
 					"illustrator": "Drew Baker",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_6.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -9506,7 +9568,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Filipe Gaona",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_8.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -10130,7 +10192,7 @@
 				{
 					"flavor": "Rumors tell of a master duelist who has hung up his sword, unwilling to draw steel until he can find his disgraced father and complete the challenge cut short by circumstance.",
 					"illustrator": "Jake Murray",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_15.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -10564,7 +10626,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Nele Diel",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_1.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -10635,6 +10697,37 @@
 			"text_canonical": "action: choose an attachment - discard it.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"clan": "crane",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "letter-from-the-daimyo",
+			"influence_cost": 2,
+			"military_bonus": "+0",
+			"name": "Letter from the Daimyō",
+			"name_canonical": "letter from the daimyo",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Carlos Palma Cruchaga",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_21.jpg",
+					"pack": {
+						"id": "masters-of-the-court"
+					},
+					"position": "21",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+2",
+			"side": "conflict",
+			"text": "Attach to a character you control.\nRestricted.\n<b>Reaction:</b> After attached character wins a [conflict-political] conflict, sacrifice this attachment - your opponent chooses and discards 2 cards from his or her hand.",
+			"text_canonical": "attach to a character you control.\nrestricted.\nreaction: after attached character wins a [conflict-political] conflict, sacrifice this attachment - your opponent chooses and discards 2 cards from his or her hand.",
+			"traits": [
+				"item"
+			],
+			"type": "attachment",
 			"unicity": false
 		},
 		{
@@ -10911,7 +11004,7 @@
 				{
 					"flavor": "No two of her brushes are the same, each carved with a distinct grace that suits the kami dwelling within.",
 					"illustrator": "Lin Hsiang",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_7.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -11187,7 +11280,7 @@
 				{
 					"flavor": "The Daidoji learned long ago that the marketplace was merely another battlefield for them to master.",
 					"illustrator": "",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_2.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -13435,7 +13528,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Lukas Banas",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_20.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -13996,6 +14089,33 @@
 				"weapon"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"clan": "neutral",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "retreat",
+			"influence_cost": 0,
+			"name": "Retreat",
+			"name_canonical": "retreat",
+			"pack_cards": [
+				{
+					"flavor": "\"The astute warrior who lives reaps three victories over the foolish warrior who dies.\" - Book of Sun Tao",
+					"illustrator": "Luis Nunez De Castro",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_28.jpg",
+					"pack": {
+						"id": "masters-of-the-court"
+					},
+					"position": "28",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-military] conflict, choose a participating character you control - move that character home.",
+			"text_canonical": "action: during a [conflict-military] conflict, choose a participating character you control - move that character home.",
+			"traits": [],
+			"type": "event",
 			"unicity": false
 		},
 		{
@@ -15614,7 +15734,7 @@
 				{
 					"flavor": "\"I will forge my own destiny, and I do not need some treaty to do it.\"",
 					"illustrator": "Drew Baker",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_26.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -17184,8 +17304,8 @@
 				}
 			],
 			"side": "conflict",
-			"text": "<b>Interrupt:</b> When an opponent initiates a duel that targets a character you control - cancel the duel.",
-			"text_canonical": "interrupt: when an opponent initiates a duel that targets a character you control - cancel the duel.",
+			"text": "<b>Interrupt:</b> When a duel that targets a character you control would resolve - cancel the duel.",
+			"text_canonical": "interrupt: when a duel that targets a character you control would resolve - cancel the duel.",
 			"traits": [],
 			"type": "event",
 			"unicity": false
@@ -17589,7 +17709,7 @@
 				{
 					"flavor": "",
 					"illustrator": "",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_3.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -18400,7 +18520,7 @@
 				{
 					"flavor": "The Crane lives by the ceaseless vigilance of the Defenders of the Doji.",
 					"illustrator": "Mark Smylie",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_23.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -20300,8 +20420,8 @@
 			],
 			"political": "0",
 			"side": "dynasty",
-			"text": "No attachments.\n<b>Action</b>: During a conflict in which this character is not participating, choose up to 1 other creature you control - move this character and that character to the conflict.",
-			"text_canonical": "no attachments.\naction: during a conflict in which this character is not participating, choose up to 1 other creature you control - move this character and that character to the conflict.",
+			"text": "No attachments.\n<b>Action</b>: During a conflict in which this character is not participating, choose up to 1 other character you control - move this character and that character to the conflict.",
+			"text_canonical": "no attachments.\naction: during a conflict in which this character is not participating, choose up to 1 other character you control - move this character and that character to the conflict.",
 			"traits": [
 				"creature"
 			],
@@ -20378,7 +20498,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Kevin Sidharta",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_12.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -20501,7 +20621,7 @@
 				{
 					"flavor": "When Yasuki Fuzake discovered the Round Ear Nezumi, his gentle stoicism made him strong new allies. His sensei, fierce and stubborn, was not so fortunate.",
 					"illustrator": "Doug Shuler",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C18_14.jpg",
 					"pack": {
 						"id": "masters-of-the-court"
 					},
@@ -20910,6 +21030,6 @@
 			"unicity": false
 		}
 	],
-	"size": 683,
+	"size": 687,
 	"success": true
 }
