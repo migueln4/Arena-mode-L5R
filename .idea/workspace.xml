@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien.">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CollectionL5R.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CollectionL5R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/todascartas.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todascartas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/StartGame.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,15 +20,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-256">
+              <caret line="110" column="95" selection-start-line="110" selection-start-column="95" selection-end-line="110" selection-end-column="95" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#elementAndRoleRestrictions#0;class#CollectionL5R#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="111" column="47" selection-start-line="111" selection-start-column="47" selection-end-line="111" selection-end-column="47" />
+            <state relative-caret-position="143">
+              <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#playerTurn#0;class#StartGame#0" />
+                <element signature="method#selectConflictDeck#0;class#StartGame#0" />
+                <element signature="method#selectConflictCard#0;class#StartGame#0" />
+                <element signature="method#moreThanOneSplashCard#0;class#StartGame#0" />
+                <element signature="method#moreThanOneCharacter#0;class#StartGame#0" />
+                <element signature="method#makeConflictOptions#0;class#StartGame#0" />
+                <element signature="method#splashConditions#0;class#StartGame#0" />
+                <element signature="method#characterConditions#0;class#StartGame#0" />
                 <element signature="method#conflictCardIsPresent#0;class#StartGame#0" />
+                <element signature="method#selectDynastyDeck#0;class#StartGame#0" />
+                <element signature="method#selectDynastyCard#0;class#StartGame#0" />
                 <element signature="method#makeDynastyOptions#0;class#StartGame#0" />
+                <element signature="method#dynastyCardIsPresent#0;class#StartGame#0" />
                 <element signature="method#selectProvinces#0;class#StartGame#0" />
                 <element signature="method#playerSelectingProvince#0;class#StartGame#0" />
                 <element signature="method#makeProvinceOptions#0;class#StartGame#0" />
@@ -43,9 +67,8 @@
                 <element signature="method#createArrayNumbers#1;class#StartGame#0" />
                 <element signature="method#checkMainClan#0;class#StartGame#0" />
                 <element signature="method#copyArray#0;class#StartGame#0" />
-                <element signature="method#copyArray#1;class#StartGame#0" />
-                <element signature="method#randomClan#1;class#StartGame#0" />
-                <element signature="e#27870#27871#0" expanded="true" />
+                <element signature="e#20972#21018#1" />
+                <element signature="e#27537#27538#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,16 +91,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getCardName</find>
-      <find>stronghold</find>
-      <find>2017</find>
       <find>2018</find>
       <find>pero tiene 2</find>
       <find>ok</find>
@@ -105,6 +125,9 @@
       <find>copias</find>
       <find>characterCorrect</find>
       <find>splashCorrect</find>
+      <find>randomclan</find>
+      <find>copyArray</find>
+      <find>StrongholdCardList</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\miguel.garcia.munoz\IdeaProjects\Arena-mode-L5R\src\main\java</dir>
@@ -133,7 +156,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cards/DinastyCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/Card.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/JsonCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CollectionL5R.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/RoleCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" />
@@ -142,7 +164,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" />
         <option value="$PROJECT_DIR$/src/main/resources/todascartas.json" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/ClanUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/StartGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CollectionL5R.java" />
       </list>
     </option>
   </component>
@@ -189,14 +213,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena-mode-L5R" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena-mode-L5R" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cards" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Arena-mode-L5R" type="b2602c69:ProjectViewProjectNode" />
@@ -294,12 +310,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.27886322" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.589698" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.54174066" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.053285968" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31616342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50121456" side_tool="true" weight="0.70515096" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.4689165" />
@@ -498,19 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4680">
-          <caret line="321" column="29" selection-start-line="321" selection-start-column="24" selection-end-line="321" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initializeRoleCardList#0;class#CollectionL5R#0" />
-            <element signature="method#initializeStrongholdCardList#0;class#CollectionL5R#0" />
-            <element signature="method#elementAndRoleRestrictions#0;class#CollectionL5R#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cards/Card.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -521,14 +524,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/ClanUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="111" column="47" selection-start-line="111" selection-start-column="47" selection-end-line="111" selection-end-column="47" />
+        <state relative-caret-position="80">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-256">
+          <caret line="110" column="95" selection-start-line="110" selection-start-column="95" selection-end-line="110" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#elementAndRoleRestrictions#0;class#CollectionL5R#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#playerTurn#0;class#StartGame#0" />
+            <element signature="method#selectConflictDeck#0;class#StartGame#0" />
+            <element signature="method#selectConflictCard#0;class#StartGame#0" />
+            <element signature="method#moreThanOneSplashCard#0;class#StartGame#0" />
+            <element signature="method#moreThanOneCharacter#0;class#StartGame#0" />
+            <element signature="method#makeConflictOptions#0;class#StartGame#0" />
+            <element signature="method#splashConditions#0;class#StartGame#0" />
+            <element signature="method#characterConditions#0;class#StartGame#0" />
             <element signature="method#conflictCardIsPresent#0;class#StartGame#0" />
+            <element signature="method#selectDynastyDeck#0;class#StartGame#0" />
+            <element signature="method#selectDynastyCard#0;class#StartGame#0" />
             <element signature="method#makeDynastyOptions#0;class#StartGame#0" />
+            <element signature="method#dynastyCardIsPresent#0;class#StartGame#0" />
             <element signature="method#selectProvinces#0;class#StartGame#0" />
             <element signature="method#playerSelectingProvince#0;class#StartGame#0" />
             <element signature="method#makeProvinceOptions#0;class#StartGame#0" />
@@ -543,9 +575,8 @@
             <element signature="method#createArrayNumbers#1;class#StartGame#0" />
             <element signature="method#checkMainClan#0;class#StartGame#0" />
             <element signature="method#copyArray#0;class#StartGame#0" />
-            <element signature="method#copyArray#1;class#StartGame#0" />
-            <element signature="method#randomClan#1;class#StartGame#0" />
-            <element signature="e#27870#27871#0" expanded="true" />
+            <element signature="e#20972#21018#1" />
+            <element signature="e#27537#27538#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -21,7 +21,7 @@ public class CollectionL5R {
     private List<DynastyCard> dynastyCardList;
     private List<ProvinceCard> provinceCardList;
     private List<RoleCard> roleCardList;
-    private List<StrongholdCard> StrongholdCardList;
+    private List<StrongholdCard> strongholdCardList;
 
     private JsonParser parser;
 
@@ -42,7 +42,7 @@ public class CollectionL5R {
         this.dynastyCardList = new ArrayList<>();
         this.provinceCardList = new ArrayList<>();
         this.roleCardList = new ArrayList<>();
-        this.StrongholdCardList = new ArrayList<>();
+        this.strongholdCardList = new ArrayList<>();
         this.parser = new JsonParser();
         this.gson = new Gson();
         this.file = getCardFileReader.apply("todascartas.json");
@@ -63,52 +63,52 @@ public class CollectionL5R {
         newList.stream().
                 filter(obj -> obj != null)
                 .filter(
-                card -> {
-                    Type type = new TypeToken<List<JsonPackCards>>() {
-                    }.getType();
-                        List<JsonPackCards> packCards =
-                                gson.fromJson(card.getPack_cards(), type);
-                        return packCards.size() == 0
-                                || "\"masters-of-the-court\"".equals(packCards.get(0).getPack().get("id").toString())
-                                || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
-                                || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
-                                || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
-                                || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString());
-                }
-        ).forEach(card -> this.allCards.remove(card));
-        System.out.println("Total number of cards "+this.allCards.size());
+                        card -> {
+                            Type type = new TypeToken<List<JsonPackCards>>() {
+                            }.getType();
+                            List<JsonPackCards> packCards =
+                                    gson.fromJson(card.getPack_cards(), type);
+                            return packCards.size() == 0
+                                    || "\"masters-of-the-court\"".equals(packCards.get(0).getPack().get("id").toString())
+                                    || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
+                                    || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
+                                    || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
+                                    || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString());
+                        }
+                ).forEach(card -> this.allCards.remove(card));
+        System.out.println("Total number of cards " + this.allCards.size());
 
     }
 
     public void initializeConflictCardList() {
         allCards.stream().filter(card -> card.getSide().equals("conflict")).
                 forEach(card -> conflictCardList.add(jsonCardToConflictCard.apply(card)));
-        System.out.println("Conflict Card List: OK");
+        System.out.println("Conflict Card List: OK (" + this.conflictCardList.size() + " cards)");
     }
 
     public void initializeDynastyCardList() {
         allCards.stream().filter(card -> card.getSide().equals("dynasty")).
                 forEach(card -> dynastyCardList.add(jsonCardToDynastyCard.apply(card)));
-        System.out.println("Dynasty Card List: OK");
+        System.out.println("Dynasty Card List: OK (" + this.dynastyCardList.size() + " cards)");
 
     }
 
     public void initializeProvinceCardList() {
         allCards.stream().filter(card -> card.getType().equals("province")).
                 forEach(card -> provinceCardList.add(jsonCardToProvinceCard.apply(card)));
-        System.out.println("Province Card List: OK");
+        System.out.println("Province Card List: OK (" + this.provinceCardList.size() + " cards)");
     }
 
     public void initializeRoleCardList() {
         allCards.stream().filter(card -> card.getSide().equals("role")).
                 forEach(card -> roleCardList.add(jsonCardToRoleCard.apply(card)));
-        System.out.println("Role Card List: OK");
+        System.out.println("Role Card List: OK (" + this.roleCardList.size() + " cards)");
     }
 
     public void initializeStrongholdCardList() {
         allCards.stream().filter(card -> card.getType().equals("stronghold")).
-                forEach(card -> StrongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
-        System.out.println("Stronghold Card List: OK");
+                forEach(card -> strongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
+        System.out.println("Stronghold Card List: OK (" + this.strongholdCardList.size() + " cards)");
     }
 
     private Function<String, String> getPackName = str -> {
@@ -160,10 +160,10 @@ public class CollectionL5R {
     private void setNameCard(List<JsonPackCards> packCards, Card newCard) {
         String nameCard = "";
         int pos = -1;
-        for(JsonPackCards jsonPackCards : packCards) {
+        for (JsonPackCards jsonPackCards : packCards) {
             pos++;
             String namePack = jsonPackCards.getPack().get("id").toString();
-            if("\"gen-con-2017\"".equals(namePack)
+            if ("\"gen-con-2017\"".equals(namePack)
                     || "\"2018-season-one-stronghold-kit\"".equals(namePack)
                     || "\"battle-for-the-stronghold-kit\"".equals(namePack)) {
                 continue;
@@ -190,7 +190,7 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        setNameCard(packCards,newCard);
+        setNameCard(packCards, newCard);
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
@@ -210,7 +210,7 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        setNameCard(packCards,newCard);
+        setNameCard(packCards, newCard);
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
@@ -225,13 +225,13 @@ public class CollectionL5R {
     };
 
     private Function<JsonCard, StrongholdCard> jsonCardToStrongholdCard = jsonCard -> {
-      StrongholdCard newCard = new StrongholdCard();
+        StrongholdCard newCard = new StrongholdCard();
 
         Type type = new TypeToken<List<JsonPackCards>>() {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        setNameCard(packCards,newCard);
+        setNameCard(packCards, newCard);
 
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
@@ -240,7 +240,7 @@ public class CollectionL5R {
 
         newCard.setInfluence(jsonCard.getInfluence_pool());
 
-      return newCard;
+        return newCard;
     };
 
     private Function<JsonCard, RoleCard> jsonCardToRoleCard = jsonCard -> {
@@ -250,7 +250,7 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        setNameCard(packCards,newCard);
+        setNameCard(packCards, newCard);
 
 
         String name = jsonCard.getName();
@@ -304,7 +304,7 @@ public class CollectionL5R {
         }.getType();
         List<JsonPackCards> packCards = gson.fromJson(jsonCard.getPack_cards(), type);
 
-        setNameCard(packCards,newCard);
+        setNameCard(packCards, newCard);
 
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
