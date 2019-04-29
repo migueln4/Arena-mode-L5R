@@ -52,8 +52,8 @@ public class StartGame {
             selectSplash(player2);
         selectStronghold(player1);
         selectStronghold(player2);
-        //selectProvinces(player1, player2);
-        //selectDynastyDeck(player1, player2);
+        selectProvinces(player1, player2);
+        selectDynastyDeck(player1, player2);
         selectConflictDeck(player1,player2);
 
 
@@ -99,6 +99,20 @@ public class StartGame {
                     }
                 } else {
                     flagPlayer1 = player1.getNumberConflictCards() < MAX_CONFLICT_CARDS;
+                }
+            }
+            if(flagPlayer2) {
+                selectConflictCard(player1);
+                if(player2.getNumberConflictCards() >= MIN_CONFLICT_CARDS
+                        && player2.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
+                    System.out.println("Jugador "+player2.getNamePlayer()+ " " +
+                            "has llegado al mínimo del mazo de Conflicto. Tienes "+player2.getNumberConflictCards()+
+                            " cartas. \n\t¿Quieres dejar de añadir cartas?\n\t(1 = Sí / 2 = No)");
+                    if(leerEntero() == 1) {
+                        flagPlayer2 = false;
+                    }
+                } else {
+                    flagPlayer2 = player2.getNumberConflictCards() < MAX_CONFLICT_CARDS;
                 }
             }
         }
