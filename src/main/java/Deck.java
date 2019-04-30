@@ -32,6 +32,8 @@ public class Deck {
 
     private Integer[] limitProvince;
 
+    private Boolean containsRestrictedCards;
+
     public Deck(String namePlayer) {
         this.numberCharacters = 0;
         this.numberConflictCards = 0;
@@ -42,6 +44,7 @@ public class Deck {
         this.provinces = new ArrayList<>();
         this.conflictCardDeck = new ArrayList<>();
         this.dynastyCardDeck = new ArrayList<>();
+        this.containsRestrictedCards = Boolean.FALSE;
     }
 
 }
