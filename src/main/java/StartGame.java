@@ -1,6 +1,9 @@
 import cards.*;
 import lombok.NoArgsConstructor;
+import restrictions.RestrictedCards;
+import restrictions.RestrictedRoles;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,14 +29,17 @@ public class StartGame {
 
     private CollectionL5R collectionL5R;
     private RestrictedCards restrictedCards;
+    private RestrictedRoles restrictedRoles;
 
     private Boolean allowRestrictedCards;
+    private Boolean allowRestrictedRoles;
 
     public void start() throws CloneNotSupportedException {
         this.player1 = new Deck("UNO");
         this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
         this.restrictedCards = new RestrictedCards();
+        this.restrictedRoles = new RestrictedRoles();
         this.collectionL5R.readFile();
         this.collectionL5R.deleteExceptions();
         this.collectionL5R.initializeConflictCardList();
@@ -87,6 +93,14 @@ public class StartGame {
     }
 
     private void allowRestrictedRules() {
+        System.out.println("¿Queréis jugar con los roles oficiales para cada clan?\n(1 = SÍ / 2 = " +
+                "NO)");
+        if(leerEntero() == 1) {
+            this.allowRestrictedRoles = Boolean.TRUE;
+        } else {
+            this.allowRestrictedRoles = Boolean.FALSE;
+        }
+
         System.out.println("¿Queréis jugar con las reglas de cartas restringidas?\n(1 = SÍ / 2 = " +
                 "NO)");
         if(leerEntero() == 1) {
@@ -557,49 +571,68 @@ public class StartGame {
         return selectingClan;
     }
 
+    private void selectRestrictedRole(Deck player) {
+        List<RoleCard> options = new ArrayList<>(this.restrictedRoles.getRolesPerClan());
+        this.collectionL5R.getRoleCardList().stream()
+                .filter(card -> this.restrictedRoles.getRestrictedRolesLists().get(player.getClan()).contains(card.getName()))
+                .forEach(card -> options.add(card));
+        System.out.println("Jugador "+player.getNamePlayer()+" selecciona una carta: ");
+        for(int i=0;i<options.size();i++) {
+            System.out.println((i+1)+") "+options.get(i).toString());
+        }
+        RoleCard cardSelected = options.get(leerEntero()-1);
+        player.setRoleCard(cardSelected);
+        player.setRole(cardSelected.getRole());
+        player.setElement(cardSelected.getElement());
+    }
+
     private void selectingRole(Deck player) {
-        int indexMainClan = checkMainClan(player);
-        int[] arrayNumbers;
-        if (indexMainClan > -1)
-            arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 2, indexMainClan);
-        else
-            arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 1);
-        int[] arrayOptions = new int[NUMBER_OPTIONS];
-        for (int i = 0; i < NUMBER_OPTIONS; i++) {
-            int rnd = (int) (Math.random() * (arrayNumbers.length - 1 - i));
-            arrayOptions[i] = arrayNumbers[rnd];
-            int aux = arrayNumbers[arrayNumbers.length - 1 - i];
-            arrayNumbers[rnd] = aux;
-        }
-        System.out.println("Jugador " + player.getNamePlayer() + " selecciona una carta de rol.");
-        for (int i = 0; i < arrayOptions.length; i++) {
-            System.out.println((i + 1) + ") " + this.collectionL5R.getRoleCardList().get(arrayOptions[i]));
-        }
-        int roleOption = leerEntero();
-        RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption - 1]);
-        player.setRoleCard(roleCardSelected);
-        if (roleCardSelected.getName().contains("Support")) {
-            player.setSplash(roleCardSelected.getClan());
-            player.setInfluence(player.getInfluence() + 8);
+        if(allowRestrictedRoles) {
+            selectRestrictedRole(player);
         } else {
-            player.setRole(roleCardSelected.getRole());
-            player.setElement(roleCardSelected.getElement());
-            if (roleCardSelected.getRole().equals("keeper"))
-                player.setInfluence(player.getInfluence() + 3);
-            else if (roleCardSelected.getRole().equals("seeker")) {
-                for (int i = 0; i < ELEMENTS.length; i++) {
-                    if (roleCardSelected.getElement().equals(ELEMENTS[i])) {
-                        player.getLimitProvince()[i] =
-                                player.getLimitProvince()[i] + 1;
+            int indexMainClan = checkMainClan(player);
+            int[] arrayNumbers;
+            if (indexMainClan > -1)
+                arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 2, indexMainClan);
+            else
+                arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 1);
+            int[] arrayOptions = new int[NUMBER_OPTIONS];
+            for (int i = 0; i < NUMBER_OPTIONS; i++) {
+                int rnd = (int) (Math.random() * (arrayNumbers.length - 1 - i));
+                arrayOptions[i] = arrayNumbers[rnd];
+                int aux = arrayNumbers[arrayNumbers.length - 1 - i];
+                arrayNumbers[rnd] = aux;
+            }
+            System.out.println("Jugador " + player.getNamePlayer() + " selecciona una carta de rol.");
+            for (int i = 0; i < arrayOptions.length; i++) {
+                System.out.println((i + 1) + ") " + this.collectionL5R.getRoleCardList().get(arrayOptions[i]));
+            }
+            int roleOption = leerEntero();
+            RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption - 1]);
+            player.setRoleCard(roleCardSelected);
+            if (roleCardSelected.getName().contains("Support")) {
+                player.setSplash(roleCardSelected.getClan());
+                player.setInfluence(player.getInfluence() + 8);
+            } else {
+                player.setRole(roleCardSelected.getRole());
+                player.setElement(roleCardSelected.getElement());
+                if (roleCardSelected.getRole().equals("keeper"))
+                    player.setInfluence(player.getInfluence() + 3);
+                else if (roleCardSelected.getRole().equals("seeker")) {
+                    for (int i = 0; i < ELEMENTS.length; i++) {
+                        if (roleCardSelected.getElement().equals(ELEMENTS[i])) {
+                            player.getLimitProvince()[i] =
+                                    player.getLimitProvince()[i] + 1;
+                        }
                     }
                 }
             }
+            int cardSelected = this.collectionL5R.getRoleCardList().indexOf(roleCardSelected);
+            int quantityCard = this.collectionL5R.getRoleCardList().get(cardSelected).getQuantity();
+            this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
+            if (quantityCard == 0)
+                this.collectionL5R.getRoleCardList().remove(roleCardSelected);
         }
-        int cardSelected = this.collectionL5R.getRoleCardList().indexOf(roleCardSelected);
-        int quantityCard = this.collectionL5R.getRoleCardList().get(cardSelected).getQuantity();
-        this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
-        if (quantityCard == 0)
-            this.collectionL5R.getRoleCardList().remove(roleCardSelected);
     }
 
     private int[] createArrayNumbers(int size) {
