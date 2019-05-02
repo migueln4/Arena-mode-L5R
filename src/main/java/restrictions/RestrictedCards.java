@@ -10,7 +10,7 @@ import java.util.Map;
 @Data
 public class RestrictedCards {
 
-    //Last update: 29/04/2019
+    //Last update: 02/05/2019
 
     private Map<String,List<String>> restrictedLists;
 
@@ -31,11 +31,14 @@ public class RestrictedCards {
         restrictedConflictCards.add("Policy Debate");
         restrictedConflictCards.add("A Fate Worse than Death");
         restrictedConflictCards.add("Void Fist");
+        restrictedConflictCards.add("Steward of Law");
+        restrictedConflictCards.add("Embrace the Void");
 
         restrictedDynastyCards.add("Isawa Tadaka");
         restrictedDynastyCards.add("Niten Master");
         restrictedDynastyCards.add("Young Rumormonger");
         restrictedDynastyCards.add("Guest of Honor");
+        restrictedDynastyCards.add("Secluded Shrine");
 
         restrictedProvinceCards.add("Feast or Famine");
 

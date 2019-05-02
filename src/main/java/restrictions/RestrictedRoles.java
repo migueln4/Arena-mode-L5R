@@ -10,7 +10,7 @@ import java.util.Map;
 @Data
 public class RestrictedRoles {
 
-    //Last update: 30/04/2019
+    //Last update: 02/05/2019
 
     private Map<String,List<String>> restrictedRolesLists;
     private Integer rolesPerClan;
