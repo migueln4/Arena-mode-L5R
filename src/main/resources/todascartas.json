@@ -1816,8 +1816,8 @@
 			],
 			"political": "2",
 			"side": "dynasty",
-			"text": "<b>Action:</b> During a conflict in which this character is participating, choose a status token on another characters in play - move that token to this character.",
-			"text_canonical": "action: during a conflict in which this character is participating, choose a status token on another characters in play - move that token to this character.",
+			"text": "<b>Action:</b> During a conflict in which this character is participating, choose a status token on another character in play - move that token to this character.",
+			"text_canonical": "action: during a conflict in which this character is participating, choose a status token on another character in play - move that token to this character.",
 			"traits": [
 				"courtier",
 				"scholar"
@@ -3098,7 +3098,7 @@
 			"pack_cards": [
 				{
 					"illustrator": "Chris Ostrowski",
-					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C01_6.jpg",
+					"image_url": "https://images-cdn.fantasyflightgames.com/filer_public/ee/eb/eeeb8cbd-ca17-475b-bc69-e31520d8e952/l5c01_city-of-the-open-hand.png",
 					"pack": {
 						"id": "core"
 					},
@@ -3116,8 +3116,8 @@
 			],
 			"side": "province",
 			"strength_bonus": "+1",
-			"text": "<b>Action:</b> If you are less honorable than an opponent, bow this stronghold – take 1 honor from that player.",
-			"text_canonical": "action: if you are less honorable than an opponent, bow this stronghold - take 1 honor from that player.",
+			"text": "<b>Action:</b> If you are less honorable than an opponent, bow this stronghold and select one – either that opponent loses 1 honor, or you gain 1 honor.\n<i>Errata from RRG v9</i>",
+			"text_canonical": "action: if you are less honorable than an opponent, bow this stronghold and select one - either that opponent loses 1 honor, or you gain 1 honor.\nerrata from rrg v9",
 			"traits": [
 				"city"
 			],
@@ -4601,6 +4601,65 @@
 				"void"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"clan": "scorpion",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "emissary-of-lies",
+			"military": "2",
+			"name": "Emissary of Lies",
+			"name_canonical": "emissary of lies",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Hai Hoang",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "77",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating, choose a participating character controlled by your opponent - your opponent guesses the name of a card. You may reveal your hand. If you do, and the named card is not in your hand, move the chosen character home.",
+			"text_canonical": "action: during a conflict in which this character is participating, choose a participating character controlled by your opponent - your opponent guesses the name of a card. you may reveal your hand. if you do, and the named card is not in your hand, move the chosen character home.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"clan": "neutral",
+			"deck_limit": 1,
+			"element": "air",
+			"id": "emperor-s-summons",
+			"name": "Emperor's Summons",
+			"name_canonical": "emperor's summons",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Joyce Maureira",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "68",
+					"quantity": 1
+				}
+			],
+			"role_restriction": "seeker",
+			"side": "province",
+			"strength": "5",
+			"text": "<em>Seeker</em> role only.\n<b>Reaction:</b> After this province is revealed - search your dynasty deck for a character card and put it faceup into a non-stronghold province you control, discarding each other card in that province. Shuffle.",
+			"text_canonical": "seeker role only.\nreaction: after this province is revealed - search your dynasty deck for a character card and put it faceup into a non-stronghold province you control, discarding each other card in that province. shuffle.",
+			"traits": [],
+			"type": "province",
 			"unicity": false
 		},
 		{
@@ -6310,6 +6369,39 @@
 			"cost": 4,
 			"deck_limit": 3,
 			"glory": 3,
+			"id": "hantei-daisetsu",
+			"military": "3",
+			"name": "Hantei Daisetsu",
+			"name_canonical": "hantei daisetsu",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Polar Engine",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "80",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"side": "dynasty",
+			"text": "Sincerity.\n<b>Action: </b>During a [conflict-political] conflict in which this character is participating, choose a participating character - until the end of the conflict, treat that character as if its printed text box were blank (except for <em>Traits</em>).",
+			"text_canonical": "sincerity.\naction: during a [conflict-political] conflict in which this character is participating, choose a participating character - until the end of the conflict, treat that character as if its printed text box were blank (except for traits).",
+			"traits": [
+				"courtier",
+				"imperial",
+				"crown-prince"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"clan": "neutral",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 3,
 			"id": "hantei-sotorii",
 			"military": "4",
 			"name": "Hantei Sotorii",
@@ -6452,8 +6544,8 @@
 			],
 			"political_bonus": "+0",
 			"side": "conflict",
-			"text": "Attached character gains <em>Tattooed</em>.\n<b>Reaction:</b> After you play this attachment during a conflict – move attached character to the conflict. If attached character is a <em>Monk</em>, you may take another action after this one.",
-			"text_canonical": "attached character gains tattooed.\nreaction: after you play this attachment during a conflict - move attached character to the conflict. if attached character is a monk, you may take another action after this one.",
+			"text": "Attach to a character you control.\nAttached character gains <em>Tattooed</em>.\n<b>Reaction:</b> After you play this attachment during a conflict – move attached character to the conflict. If attached character is a <em>Monk</em>, you may take another action after this one.\n<i>Errata from RRG v1.6</i>",
+			"text_canonical": "attach to a character you control.\nattached character gains tattooed.\nreaction: after you play this attachment during a conflict - move attached character to the conflict. if attached character is a monk, you may take another action after this one.\nerrata from rrg v1.6",
 			"traits": [
 				"tattoo"
 			],
@@ -7659,8 +7751,8 @@
 			],
 			"political": "2",
 			"side": "dynasty",
-			"text": "<b>Interrupt:</b> When you would lose 1 honor for an unopposed conflict – cancel the honor loss. Then, lose 1 fate. (Unlimited.)",
-			"text_canonical": "interrupt: when you would lose 1 honor for an unopposed conflict - cancel the honor loss. then, lose 1 fate. (unlimited.)",
+			"text": "<b>Interrupt:</b> When you would lose 1 honor for an unopposed conflict – cancel that honor loss. Then, lose 1 fate. (Unlimited.)\n<i>Errata from RRG v1.7</i>",
+			"text_canonical": "interrupt: when you would lose 1 honor for an unopposed conflict - cancel that honor loss. then, lose 1 fate. (unlimited.)\nerrata from rrg v1.7",
 			"traits": [
 				"courtier"
 			],
@@ -8577,7 +8669,7 @@
 				{
 					"flavor": "As a mountain's roots run deep, I shall not be moved.",
 					"illustrator": "Amelie Hutt",
-					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C08_10.jpg",
+					"image_url": "https://images-cdn.fantasyflightgames.com/filer_public/19/a5/19a506fc-91c7-4e2a-89cd-b78bd19a4dbf/l5c01_isawa-tadaka.png",
 					"pack": {
 						"id": "disciples-of-the-void"
 					},
@@ -8587,8 +8679,8 @@
 			],
 			"political": "3",
 			"side": "dynasty",
-			"text": "Each opponent cannot play copies of event cards that are in his or her conflict discard pile unless the [element-earth] ring is in that player's claimed ring pool.",
-			"text_canonical": "each opponent cannot play copies of event cards that are in his or her conflict discard pile unless the [element-earth] ring is in that player's claimed ring pool.",
+			"text": "While the [element-earth] ring is contested or in your claimed ring pool, each opponent cannot play copies of event cards that are in his or her conflict discard pile.\n<i>Errata from RRG v9</i>",
+			"text_canonical": "while the [element-earth] ring is contested or in your claimed ring pool, each opponent cannot play copies of event cards that are in his or her conflict discard pile.\nerrata from rrg v9",
 			"traits": [
 				"shugenja",
 				"earth",
@@ -11139,8 +11231,8 @@
 				}
 			],
 			"side": "conflict",
-			"text": "<b>Reaction:</b> After an opponent declares an [element-earth] conflict, choose a <em>Monk</em> character or a character with a <em>Monk</em> attachment – until the end of the conflict, opponents' card abilities cannot choose that character as a target. Draw 1 card.",
-			"text_canonical": "reaction: after an opponent declares an [element-earth] conflict, choose a monk character or a character with a monk attachment - until the end of the conflict, opponents' card abilities cannot choose that character as a target. draw 1 card.",
+			"text": "<b>Reaction:</b> After an opponent declares an [element-earth] conflict, choose a <em>Monk</em> character or a character with a <em>Monk</em> attachment – until the end of the conflict, opponents’ card abilities cannot choose that character as a target. Draw 1 card.\n<i>Errata from RRG v1.7</i>",
+			"text_canonical": "reaction: after an opponent declares an [element-earth] conflict, choose a monk character or a character with a monk attachment - until the end of the conflict, opponents- card abilities cannot choose that character as a target. draw 1 card.\nerrata from rrg v1.7",
 			"traits": [
 				"kiho",
 				"earth"
@@ -13014,8 +13106,8 @@
 				}
 			],
 			"side": "conflict",
-			"text": "<b>Action:</b> Each player draws 2 cards. Then, each player discards 2 cards from his or her hand.",
-			"text_canonical": "action: each player draws 2 cards. then, each player discards 2 cards from his or her hand.",
+			"text": "<b>Action:</b> Each player draws 2 cards. Then, each player discards 2 cards from his or her hand.\n<i>Errata from RRG v1.7</i>",
+			"text_canonical": "action: each player draws 2 cards. then, each player discards 2 cards from his or her hand.\nerrata from rrg v1.7",
 			"traits": [
 				"spell",
 				"earth"
@@ -13183,6 +13275,33 @@
 			"unicity": false
 		},
 		{
+			"clan": "neutral",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "overhear",
+			"influence_cost": 0,
+			"name": "Overhear",
+			"name_canonical": "overhear",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Anna Christenson",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "88",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-political] conflict - your opponent reveals a random card from his or her hand and puts it on top of his or her conflict deck. If you control a participating <em>Courtier</em> character, you may give your opponent 1 honor to resolve this ability twice.",
+			"text_canonical": "action: during a [conflict-political] conflict - your opponent reveals a random card from his or her hand and puts it on top of his or her conflict deck. if you control a participating courtier character, you may give your opponent 1 honor to resolve this ability twice.",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
 			"clan": "phoenix",
 			"cost": 2,
 			"deck_limit": 3,
@@ -13266,8 +13385,8 @@
 			],
 			"political": "3",
 			"side": "dynasty",
-			"text": "<b>Action:</b> During a conflict in which this character is participating alone - your opponent chooses and discards 1 card from his or her hand. If this character is honored, that card is chosen at random instead.",
-			"text_canonical": "action: during a conflict in which this character is participating alone - your opponent chooses and discards 1 card from his or her hand. if this character is honored, that card is chosen at random instead.",
+			"text": "<b>Action:</b> During a conflict in which this character is participating on your side alone - your opponent chooses and discards 1 card from his or her hand. If this character is honored, that card is chosen at random instead.\n<i>Errata from RRG v9</i>",
+			"text_canonical": "action: during a conflict in which this character is participating on your side alone - your opponent chooses and discards 1 card from his or her hand. if this character is honored, that card is chosen at random instead.\nerrata from rrg v9",
 			"traits": [
 				"bushi",
 				"courtier"
@@ -14043,7 +14162,7 @@
 			"pack_cards": [
 				{
 					"illustrator": "Anna Christenson",
-					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C01_10.jpg",
+					"image_url": "https://images-cdn.fantasyflightgames.com/filer_public/bd/7a/bd7a25c3-b0ba-4eb8-b391-03792a795f5b/l5c01_restoration-of-balance.png",
 					"pack": {
 						"id": "core"
 					},
@@ -14053,8 +14172,8 @@
 			],
 			"side": "province",
 			"strength": "3",
-			"text": "<b>Reaction:</b> After this province is revealed – your opponent chooses and discards cards from his or her hand until that player has 4 or fewer cards in hand.",
-			"text_canonical": "reaction: after this province is revealed - your opponent chooses and discards cards from his or her hand until that player has 4 or fewer cards in hand.",
+			"text": "<b>Interrupt:</b> When this province is broken – your opponent chooses and discards cards from his or her hand until that player has 4 or fewer cards in hand.\n<i>Errata from RRG v9</i>",
+			"text_canonical": "interrupt: when this province is broken - your opponent chooses and discards cards from his or her hand until that player has 4 or fewer cards in hand.\nerrata from rrg v9",
 			"traits": [],
 			"type": "province",
 			"unicity": false
@@ -14235,6 +14354,35 @@
 			"text_canonical": "action: during a conflict at this province, if you control 3 or more participating bushi characters, choose a participating character - bow that character.",
 			"traits": [],
 			"type": "province",
+			"unicity": false
+		},
+		{
+			"clan": "dragon",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "rising-stars-kata",
+			"influence_cost": 2,
+			"name": "Rising Stars Kata",
+			"name_canonical": "rising stars kata",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Carlos Nunez De Castro",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "83",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a conflict, choose a participating unique character – that character gets +3[conflict-military] until the end of the conflict. (+5[conflict-military] instead if that character has won a duel this conflict). (Max 1 per conflict.)",
+			"text_canonical": "action: during a conflict, choose a participating unique character - that character gets +3[conflict-military] until the end of the conflict. (+5[conflict-military] instead if that character has won a duel this conflict). (max 1 per conflict.)",
+			"traits": [
+				"technique"
+			],
+			"type": "event",
 			"unicity": false
 		},
 		{
@@ -17304,8 +17452,8 @@
 				}
 			],
 			"side": "conflict",
-			"text": "<b>Interrupt:</b> When a duel that targets a character you control would resolve - cancel the duel.",
-			"text_canonical": "interrupt: when a duel that targets a character you control would resolve - cancel the duel.",
+			"text": "<b>Interrupt:</b> When a duel that targets a character you control would resolve - cancel the duel.\n<i>Errata from RRG v2.0</i>",
+			"text_canonical": "interrupt: when a duel that targets a character you control would resolve - cancel the duel.\nerrata from rrg v2.0",
 			"traits": [],
 			"type": "event",
 			"unicity": false
@@ -18529,8 +18677,8 @@
 				}
 			],
 			"side": "conflict",
-			"text": "<b>Action:</b> During a [conflict-military] conflict, discard an honor token from a participating <i>(friendly)</i> character and choose a participating character your opponent controls - bow that character.",
-			"text_canonical": "action: during a [conflict-military] conflict, discard an honor token from a participating (friendly) character and choose a participating character your opponent controls - bow that character.",
+			"text": "<b>Action:</b> During a [conflict-military] conflict, discard an honored status token from a participating <i>(friendly)</i> character and choose a participating character your opponent controls - bow that character.\n<i>Errata from RRG v9</i>",
+			"text_canonical": "action: during a [conflict-military] conflict, discard an honored status token from a participating (friendly) character and choose a participating character your opponent controls - bow that character.\nerrata from rrg v9",
 			"traits": [
 				"philosophy"
 			],
@@ -18890,6 +19038,38 @@
 			"unicity": true
 		},
 		{
+			"clan": "dragon",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "togashi-yoshi",
+			"military": "1",
+			"name": "Togashi Yoshi",
+			"name_canonical": "togashi yoshi",
+			"pack_cards": [
+				{
+					"flavor": "\"If I can provide some solace to those less fortunate, then perhaps I will understand my Champion's wisdom.\"",
+					"illustrator": "Amélie Hutt",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "72",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character wins a conflict - gain 1 fate from an unclaimed ring.",
+			"text_canonical": "reaction: after this character wins a conflict - gain 1 fate from an unclaimed ring.",
+			"traits": [
+				"monk",
+				"tattooed"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
 			"clan": "scorpion",
 			"deck_limit": 1,
 			"element": "all",
@@ -19023,6 +19203,37 @@
 				"technique"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"clan": "dragon",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "truthseeker",
+			"military": "1",
+			"name": "Truthseeker",
+			"name_canonical": "truthseeker",
+			"pack_cards": [
+				{
+					"flavor": "\"I recognized the ink that had been used, as one whose meesage could be hidden by clever alchemy.\"",
+					"illustrator": "Quintin Gleim",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "73",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character enters play, choose a deck - look at the top 3 cards of that deck and put them back in any order.",
+			"text_canonical": "reaction: after this character enters play, choose a deck - look at the top 3 cards of that deck and put them back in any order.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -19204,6 +19415,33 @@
 				"technique"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"clan": "scorpion",
+			"cost": 2,
+			"deck_limit": 3,
+			"id": "unspoken-etiquette",
+			"influence_cost": 1,
+			"name": "Unspoken Etiquette",
+			"name_canonical": "unspoken etiquette",
+			"pack_cards": [
+				{
+					"flavor": "No one had informed the Hida visitors that gifts were expected for such an informal visit, but that didn't make their empty hands any less disgraceful.",
+					"illustrator": "Hai Hoang",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "86",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-political] conflict - dishonor each participating non-<em>Courtier</em> character.",
+			"text_canonical": "action: during a [conflict-political] conflict - dishonor each participating non-courtier character.",
+			"traits": [],
+			"type": "event",
 			"unicity": false
 		},
 		{
@@ -21030,6 +21268,6 @@
 			"unicity": false
 		}
 	],
-	"size": 687,
+	"size": 695,
 	"success": true
 }

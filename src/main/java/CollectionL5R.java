@@ -66,13 +66,14 @@ public class CollectionL5R {
                         card -> {
                             Type type = new TypeToken<List<JsonPackCards>>() {
                             }.getType();
-                            List<JsonPackCards> packCards =
-                                    gson.fromJson(card.getPack_cards(), type);
+                            List<JsonPackCards> packCards = gson.fromJson(card.getPack_cards(),
+                                    type);
                             return packCards.size() == 0
                                     || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString());
+                                    || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString())
+                                    || "\"the-children-of-heaven\"".equals(packCards.get(0).getPack().get("id").toString());
                         }
                 ).forEach(card -> this.allCards.remove(card));
         System.out.println("Total number of cards " + this.allCards.size());
