@@ -69,7 +69,6 @@ public class CollectionL5R {
                             List<JsonPackCards> packCards =
                                     gson.fromJson(card.getPack_cards(), type);
                             return packCards.size() == 0
-                                    || "\"masters-of-the-court\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
