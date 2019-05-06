@@ -1,8 +1,11 @@
 import cards.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.NoArgsConstructor;
 import restrictions.RestrictedCards;
 import restrictions.RestrictedRoles;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,7 +36,10 @@ public class StartGame {
     private Boolean allowRestrictedCards;
     private Boolean allowRestrictedRoles;
 
+    private Gson gson;
+
     public void start() throws CloneNotSupportedException {
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.player1 = new Deck("UNO");
         this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
@@ -47,6 +53,26 @@ public class StartGame {
         this.collectionL5R.initializeRoleCardList();
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
+        exportPlayers();
+    }
+
+    private void exportPlayers() {
+        StringBuilder srcPlayer1 = new StringBuilder(this.player1.getNamePlayer());
+        StringBuilder srcPlayer2 = new StringBuilder(this.player2.getNamePlayer());
+        srcPlayer1.append("_player1.json");
+        srcPlayer2.append("_player2.json");
+        try {
+            FileWriter fileWriter = new FileWriter(srcPlayer1.toString());
+            String player1Json = this.gson.toJson(this.player1);
+            fileWriter.write(player1Json);
+            fileWriter.flush();
+            fileWriter = new FileWriter(srcPlayer2.toString());
+            String player2Json = this.gson.toJson(this.player2);
+            fileWriter.write(player2Json);
+            fileWriter.flush();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void playerTurn() throws CloneNotSupportedException {
@@ -63,32 +89,6 @@ public class StartGame {
         selectProvinces(player1, player2);
         selectDynastyDeck(player1, player2);
         selectConflictDeck(player1, player2);
-
-
-        System.out.println("Resumen de los jugadores: ");
-        System.out.println("===========================");
-
-        System.out.println(player1.getNamePlayer() + "\n\tClan: " + player1.getClan() + "\n\tRol: " + player1.getRoleCard() +
-                "\n\tSplash: " + player1.getSplash() + "Stronghold: " + player1.getStronghold());
-        System.out.println("Provinces");
-        for (ProvinceCard card : player1.getProvinces())
-            System.out.println(card.toString());
-        System.out.println("Número de cartas en el mazo de Dinastía: " + player1.getNumberDynastyCards());
-        System.out.println("Número de cartas en el mazo de Conflicto: " + player1.getNumberConflictCards());
-        System.out.println("Personajes de conflicto: " + player1.getNumberCharacters());
-        System.out.println("Influencia restante: " + player1.getInfluence());
-
-        System.out.println("===========================");
-
-        System.out.println(player2.getNamePlayer() + "\n\tClan: " + player2.getClan() + "\n\tRol: " + player2.getRoleCard() +
-                "\n\tSplash: " + player2.getSplash() + "Stronghold: " + player2.getStronghold());
-        System.out.println("Provinces");
-        for (ProvinceCard card : player2.getProvinces())
-            System.out.println(card.toString());
-        System.out.println("Número de cartas en el mazo de Dinastía: " + player2.getNumberDynastyCards());
-        System.out.println("Número de cartas en el mazo de Conflicto: " + player2.getNumberConflictCards());
-        System.out.println("Personajes de conflicto: " + player2.getNumberCharacters());
-        System.out.println("Influencia restante: " + player2.getInfluence());
     }
 
     private void allowRestrictedRules() {
@@ -129,7 +129,7 @@ public class StartGame {
                 }
             }
             if (flagPlayer2) {
-                selectConflictCard(player1);
+                selectConflictCard(player2);
                 if (player2.getNumberConflictCards() >= MIN_CONFLICT_CARDS
                         && player2.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
                     System.out.println("Jugador " + player2.getNamePlayer() + " " +
@@ -610,7 +610,7 @@ public class StartGame {
             RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption - 1]);
             player.setRoleCard(roleCardSelected);
             if (roleCardSelected.getName().contains("Support")) {
-                player.setSplash(roleCardSelected.getClan());
+                player.setSplash(roleCardSelected.getRoleClan());
                 player.setInfluence(player.getInfluence() + 8);
             } else {
                 player.setRole(roleCardSelected.getRole());

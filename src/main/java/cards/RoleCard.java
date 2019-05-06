@@ -11,14 +11,14 @@ public class RoleCard extends Card {
 
     private String role;
     private String element;
-    private String clan;
+    private String roleClan;
 
     @Override
     public String toString() {
         return "[Name: "+super.getName()+
                 ", Role: "+this.role+
                 ", Element: "+this.element+
-                ", Clan: "+this.clan+
+                ", Clan: "+this.roleClan+
                 ", ID: "+super.getId()+"]";
     }
 }
