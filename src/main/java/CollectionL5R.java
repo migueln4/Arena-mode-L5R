@@ -4,18 +4,21 @@ import com.google.gson.reflect.TypeToken;
 import interfaces.ThreeParametersLambda;
 import lombok.Data;
 
-import java.io.FileReader;
+import java.io.*;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.File;
 import java.util.function.Function;
 
 @Data
 public class CollectionL5R {
 
     //https://api.fiveringsdb.com/cards GET
+
+    private String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
 
     private List<ConflictCard> conflictCardList;
     private List<DynastyCard> dynastyCardList;
@@ -33,11 +36,9 @@ public class CollectionL5R {
     private JsonObject jsonObject;
     private JsonArray records;
 
-    private Type type;
     private List<JsonCard> allCards;
 
-    @SuppressWarnings("unchecked")
-    public void readFile() {
+    public CollectionL5R() {
         this.conflictCardList = new ArrayList<>();
         this.dynastyCardList = new ArrayList<>();
         this.provinceCardList = new ArrayList<>();
@@ -45,12 +46,49 @@ public class CollectionL5R {
         this.strongholdCardList = new ArrayList<>();
         this.parser = new JsonParser();
         this.gson = new Gson();
+        readURL();
+    }
+
+    private void readURL(){
+        try {
+            URL url = new URL(FIVERINGSDB);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            if(connection.getResponseCode() != 200)
+                readFile();
+            System.out.println("Connection: OK");
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+            readFile(content);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readFile(StringBuilder content) {
+        this.obj = parser.parse(content.toString());
+        this.jsonObject = (JsonObject) obj;
+        this.records = jsonObject.getAsJsonArray("records");
+        Type type = new TypeToken<List<JsonCard>>() {
+        }.getType();
+        this.allCards = gson.fromJson(records, type);
+    }
+
+    @SuppressWarnings("unchecked")
+    public void readFile() {
+        System.out.println("Connection OFF --> reading file...");
         this.file = getCardFileReader.apply("todascartas.json");
         try {
             this.obj = parser.parse(new FileReader(file));
             this.jsonObject = (JsonObject) obj;
             this.records = jsonObject.getAsJsonArray("records");
-            this.type = new TypeToken<List<JsonCard>>() {
+            Type type = new TypeToken<List<JsonCard>>() {
             }.getType();
             this.allCards = gson.fromJson(records, type);
         } catch (Exception e) {
