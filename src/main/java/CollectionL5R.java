@@ -45,6 +45,7 @@ public class CollectionL5R {
         this.parser = new JsonParser();
         this.gson = new Gson();
         readURL();
+        deleteExceptions();
     }
 
     private void readURL(){

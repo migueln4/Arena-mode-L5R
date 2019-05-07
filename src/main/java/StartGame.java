@@ -45,8 +45,6 @@ public class StartGame {
         this.collectionL5R = new CollectionL5R();
         this.restrictedCards = new RestrictedCards();
         this.restrictedRoles = new RestrictedRoles();
-        //this.collectionL5R.readFile();
-        this.collectionL5R.deleteExceptions();
         this.collectionL5R.initializeConflictCardList();
         this.collectionL5R.initializeDynastyCardList();
         this.collectionL5R.initializeProvinceCardList();
