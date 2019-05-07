@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CollectionL5R.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CollectionL5R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/StartGame.class" afterDir="false" />
-    </list>
+    <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien." />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+            <state relative-caret-position="188">
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="74" column="23" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="23" />
+            <state relative-caret-position="86">
+              <caret line="84" column="65" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2357#2387#0" expanded="true" />
@@ -303,12 +290,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.07815275" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.5239787" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.54174066" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.26820603" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.4973357" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50121456" side_tool="true" weight="0.70515096" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.4689165" />
@@ -546,8 +533,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+        <state relative-caret-position="188">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -556,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="74" column="23" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="23" />
+        <state relative-caret-position="86">
+          <caret line="84" column="65" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2357#2387#0" expanded="true" />

@@ -16,9 +16,7 @@ import java.util.function.Function;
 @Data
 public class CollectionL5R {
 
-    //https://api.fiveringsdb.com/cards GET
-
-    private String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
+    private final String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
 
     private List<ConflictCard> conflictCardList;
     private List<DynastyCard> dynastyCardList;
