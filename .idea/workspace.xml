@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien.">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CollectionL5R.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CollectionL5R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/DynastyCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/RoleCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/RoleCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cards/StrongholdCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cards/StrongholdCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Desarrollo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CollectionL5R.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CollectionL5R.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Deck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Desarrollo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Arena-mode-L5R.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/StartGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards/ConflictCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards/ConflictCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards/DynastyCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards/DynastyCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards/ProvinceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards/ProvinceCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards/RoleCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards/RoleCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cards/StrongholdCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cards/StrongholdCard.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,11 +20,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13546">
-              <caret line="724" column="5" lean-forward="true" selection-start-line="724" selection-start-column="5" selection-end-line="724" selection-end-column="5" />
+            <state relative-caret-position="67">
+              <caret line="242" column="40" selection-start-line="242" selection-start-column="40" selection-end-line="242" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#34292#34293#0" expanded="true" />
+                <element signature="e#34457#34458#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,7 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>copyArray</find>
       <find>readfi</find>
       <find>collectionL5R</find>
       <find>setnamecan</find>
@@ -199,6 +173,7 @@
       <find>log ---</find>
       <find>voy a</find>
       <find>leerentero</find>
+      <find>assassination</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\miguel.garcia.munoz\IdeaProjects\Arena-mode-L5R\src\main\java</dir>
@@ -397,7 +372,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21538462" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.21538462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -406,12 +381,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979757" weight="0.53108346" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4979757" visible="true" weight="0.58792186" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.54174066" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.1758437" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.08703375" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5020243" side_tool="true" weight="0.74600357" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.4689165" />
@@ -673,11 +648,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13546">
-          <caret line="724" column="5" lean-forward="true" selection-start-line="724" selection-start-column="5" selection-end-line="724" selection-end-column="5" />
+        <state relative-caret-position="67">
+          <caret line="242" column="40" selection-start-line="242" selection-start-column="40" selection-end-line="242" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#34292#34293#0" expanded="true" />
+            <element signature="e#34457#34458#0" expanded="true" />
           </folding>
         </state>
       </provider>
