@@ -1,11 +1,18 @@
 import cards.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.NoArgsConstructor;
 import restrictions.RestrictedCards;
 import restrictions.RestrictedRoles;
 
+import java.io.BufferedReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +21,8 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class StartGame {
 
-    private static final Scanner LEER_CONSOLA = new Scanner(System.in);
+    private static final Scanner READ_CONSOLE = new Scanner(System.in);
+    private final String VALIDATE_URL = "https://api.fiveringsdb.com/deck-validation/standard";
 
     final String[] CLANS = {"lion", "scorpion", "phoenix", "crane", "crab", "unicorn", "dragon"};
     final String[] ELEMENTS = {"void", "air", "water", "fire", "earth"};
@@ -51,7 +59,59 @@ public class StartGame {
         this.collectionL5R.initializeRoleCardList();
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
+        validateDecks();
         exportPlayers();
+    }
+
+    private void validateDecks() {
+        Deck[] decks = new Deck[]{this.player1, this.player2};
+        for (Deck player : decks) {
+            String bodyplayer = createJsonToValidate(player);
+            System.out.println("El jugador " + player.getNamePlayer() + " tiene este mazo");
+            System.out.println(bodyplayer);
+            try {
+                URL url = new URL(VALIDATE_URL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestMethod("POST");
+
+                connection.setDoOutput(true);
+                OutputStream os = connection.getOutputStream();
+                os.write(bodyplayer.getBytes());
+                os.flush();
+                os.close();
+
+                System.out.println("Código de respuesta para el jugador " + player.getNamePlayer() + ": " + connection.getResponseCode());
+                System.out.println("Mensaje de respuesta para el jugador " + player.getNamePlayer() + ": " + connection.getResponseMessage());
+
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder content = new StringBuilder();
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+                in.close();
+                JsonParser parser = new JsonParser();
+                Object obj = parser.parse(content.toString());
+                JsonObject jsonObject = (JsonObject) obj;
+                System.out.println("LOG ---- Esto es lo que me llega --> " + jsonObject.get("status"));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String createJsonToValidate(Deck player) {
+        StringBuilder data = new StringBuilder("{\n");
+        data.append("\"").append(player.getStronghold().getIdFiveRingsDB()).append("\": ").append(1).append(",\n");
+        data.append("\"").append(player.getRoleCard().getIdFiveRingsDB()).append("\": ").append(1).append(",\n");
+        player.getProvinces().forEach(card -> data.append("\"").append(card.getIdFiveRingsDB()).append("\": ").append(1).append(",\n"));
+        player.getConflictCardDeck().forEach(card -> data.append("\"").append(card.getIdFiveRingsDB()).append("\": ").append(card.getQuantity()).append(",\n"));
+        player.getDynastyCardDeck().forEach(card -> data.append("\"").append(card.getIdFiveRingsDB()).append("\": ").append(card.getQuantity()).append(",\n"));
+        data.setLength(data.length() - 2);
+        data.append("\n}");
+        return data.toString();
     }
 
     private void exportPlayers() {
@@ -68,7 +128,7 @@ public class StartGame {
             String player2Json = this.gson.toJson(this.player2);
             fileWriter.write(player2Json);
             fileWriter.flush();
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -76,14 +136,9 @@ public class StartGame {
     private void playerTurn() throws CloneNotSupportedException {
         allowRestrictedRules();
         selectingClan();
-        selectingRole(player1);
-        selectingRole(player2);
-        if (player1.getSplash() == null)
-            selectSplash(player1);
-        if (player2.getSplash() == null)
-            selectSplash(player2);
-        selectStronghold(player1);
-        selectStronghold(player2);
+        selectingRole();
+        selectSplash();
+        selectStronghold();
         selectProvinces(player1, player2);
         selectDynastyDeck(player1, player2);
         selectConflictDeck(player1, player2);
@@ -92,7 +147,7 @@ public class StartGame {
     private void allowRestrictedRules() {
         System.out.println("¿Queréis jugar con los roles oficiales para cada clan?\n(1 = SÍ / 2 = " +
                 "NO)");
-        if(leerEntero() == 1) {
+        if (readInteger() == 1) {
             this.allowRestrictedRoles = Boolean.TRUE;
         } else {
             this.allowRestrictedRoles = Boolean.FALSE;
@@ -100,10 +155,9 @@ public class StartGame {
 
         System.out.println("¿Queréis jugar con las reglas de cartas restringidas?\n(1 = SÍ / 2 = " +
                 "NO)");
-        if(leerEntero() == 1) {
+        if (readInteger() == 1) {
             this.allowRestrictedCards = Boolean.TRUE;
-        }
-        else {
+        } else {
             this.allowRestrictedCards = Boolean.FALSE;
         }
     }
@@ -119,7 +173,7 @@ public class StartGame {
                     System.out.println("Jugador " + player1.getNamePlayer() + " " +
                             "has llegado al mínimo del mazo de Conflicto. Tienes " + player1.getNumberConflictCards() +
                             " cartas. \n\t¿Quieres dejar de añadir cartas?\n\t(1 = Sí / 2 = No)");
-                    if (leerEntero() == 1) {
+                    if (readInteger() == 1) {
                         flagPlayer1 = false;
                     }
                 } else {
@@ -133,7 +187,7 @@ public class StartGame {
                     System.out.println("Jugador " + player2.getNamePlayer() + " " +
                             "has llegado al mínimo del mazo de Conflicto. Tienes " + player2.getNumberConflictCards() +
                             " cartas. \n\t¿Quieres dejar de añadir cartas?\n\t(1 = Sí / 2 = No)");
-                    if (leerEntero() == 1) {
+                    if (readInteger() == 1) {
                         flagPlayer2 = false;
                     }
                 } else {
@@ -154,8 +208,8 @@ public class StartGame {
         for (int i = 0; i < cardsAvailables.size(); i++) {
             System.out.println((i + 1) + ")" + cardsAvailables.get(i));
         }
-        int option = leerEntero();
-        ConflictCard cardSelected = cardsAvailables.get(option - 1);
+        int option = readInteger();
+        ConflictCard cardSelected = (ConflictCard) cardsAvailables.get(option - 1).clone();
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
@@ -172,12 +226,12 @@ public class StartGame {
                     && oneMoreSplashCard(player, cardSelected, i); i++) {
                 System.out.print(i + ", ");
             }
-            addQuantity = leerEntero();
+            addQuantity = readInteger();
         }
         ConflictCard cardToAdd = (ConflictCard) cardSelected.clone();
         player.getConflictCardDeck().add(cardToAdd);
         player.setNumberConflictCards(player.getNumberConflictCards() + addQuantity);
-        if(isRestrictedCard(cardSelected,"Conflict"))
+        if (isRestrictedCard(cardSelected, "Conflict"))
             player.setContainsRestrictedCards(Boolean.TRUE);
         if (cardToAdd.getCharacter())
             player.setNumberCharacters(player.getNumberCharacters() + addQuantity);
@@ -188,7 +242,7 @@ public class StartGame {
         if (quantity < 1) {
             this.collectionL5R.getConflictCardList().remove(cardSelected);
         } else {
-            this.collectionL5R.getConflictCardList().get(index).setQuantity(Integer.valueOf(quantity));
+            this.collectionL5R.getConflictCardList().get(index).setQuantity(quantity);
         }
     }
 
@@ -220,18 +274,20 @@ public class StartGame {
 
     private void makeConflictOptions(List<ConflictCard> cardsAvailables, Deck player) {
         List<ConflictCard> selection = this.collectionL5R.getConflictCardList().stream()
-                .filter(card -> !conflictCardIsPresent(player, card)
-                        && characterConditions(player, card)
-                        && isAllowedCard(player,card,"Conflict")
-                        && (card.getClan().equals("neutral")
-                        || card.getClan().equals(player.getClan())
-                        || splashConditions(player, card))
-                        && (card.getRoleLimit() == null
-                        || card.getRoleLimit().equals("null")
-                        || card.getRoleLimit().equals(player.getRoleCard().getRole()))
-                        && (card.getElementLimit() == null
-                        || card.getElementLimit().equals("null")
-                        || card.getElementLimit().equals(player.getElement())))
+                .filter(card ->
+                        !conflictCardIsPresent(player, card)
+                                && characterConditions(player, card)
+                                && isAllowedCard(player, card, "Conflict")
+                                && (card.getClan().equals("neutral")
+                                || card.getClan().equals(player.getClan())
+                                || splashConditions(player, card))
+                                && (card.getRoleLimit() == null
+                                || card.getRoleLimit().equals("null")
+                                || card.getRoleLimit().equals(player.getRoleCard().getRole()))
+                                && (card.getElementLimit() == null
+                                || card.getElementLimit().equals("null")
+                                || card.getElementLimit().equals(player.getElement()))
+                )
                 .collect(Collectors.toList());
         int rndArray[] = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
@@ -239,6 +295,15 @@ public class StartGame {
             cardsAvailables.add(selection.get(rndArray[rnd]));
             rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
+    }
+
+    private boolean conflictCardIsPresent(Deck player, ConflictCard card) {
+        for (ConflictCard conflictCard : player.getConflictCardDeck()) {
+            if (card.getIdFiveRingsDB().equals(conflictCard.getIdFiveRingsDB())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean splashConditions(Deck player, ConflictCard card) {
@@ -268,15 +333,6 @@ public class StartGame {
         }
     }
 
-    private boolean conflictCardIsPresent(Deck player, ConflictCard card) {
-        for (ConflictCard conflictCard : player.getConflictCardDeck()) {
-            if (card.equals(conflictCard)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private void selectDynastyDeck(Deck player1, Deck player2) throws CloneNotSupportedException {
         boolean flagPlayer1 = player1.getNumberDynastyCards() < MIN_CONFLICT_CARDS;
         boolean flagPlayer2 =
@@ -289,7 +345,7 @@ public class StartGame {
                     System.out.println("Jugador " + player1.getNamePlayer() + " " +
                             "has llegado al mínimo del mazo (tienes " + player1.getNumberDynastyCards() + "). " +
                             "¿Quieres terminar de añadir cartas?\n\t(1 = Sí / 2 = No)");
-                    if (leerEntero() == 1) {
+                    if (readInteger() == 1) {
                         flagPlayer1 = false;
                     }
                 } else {
@@ -305,7 +361,7 @@ public class StartGame {
                             "has llegado al mínimo del mazo (tienes " + player2.getNumberDynastyCards() + " ). " +
                             "¿Quieres " +
                             "terminar de añadir cartas?\n\t(1 = Sí / 2 = No)");
-                    if (leerEntero() == 1) {
+                    if (readInteger() == 1) {
                         flagPlayer2 = false;
                     }
                 } else {
@@ -317,15 +373,15 @@ public class StartGame {
     }
 
     private void selectDynastyCard(Deck player) throws CloneNotSupportedException {
-        System.out.println("Jugador " + player.getNamePlayer() + " elige tu carta" +
-                " número " + (player.getNumberDynastyCards() + 1) + "\n(tienes " + player.getNumberDynastyCards() + " cartas en tu mazo de Dinastía)");
+        System.out.println("Jugador " + player.getNamePlayer() + " elige tu carta número " + (player.getNumberDynastyCards() + 1) +
+                "\n(tienes " + player.getNumberDynastyCards() + " cartas en tu mazo de Dinastía)");
         List<DynastyCard> cardsAvailables = new ArrayList<>();
         makeDynastyOptions(cardsAvailables, player);
         for (int i = 0; i < cardsAvailables.size(); i++) {
             System.out.println((i + 1) + ") " + cardsAvailables.get(i));
         }
-        int option = leerEntero();
-        DynastyCard cardSelected = cardsAvailables.get(option - 1);
+        int option = readInteger();
+        DynastyCard cardSelected = (DynastyCard) cardsAvailables.get(option - 1).clone();
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
@@ -338,13 +394,13 @@ public class StartGame {
                     && i <= cardSelected.getDeckLimit()
                     && i <= MAX_CARD_COPIES; i++)
                 System.out.print(i + ", ");
-            addQuantity = leerEntero();
+            addQuantity = readInteger();
         }
         DynastyCard cardToAdd = (DynastyCard) cardSelected.clone();
         cardToAdd.setQuantity(addQuantity);
         player.getDynastyCardDeck().add(cardToAdd);
         player.setNumberDynastyCards(player.getNumberDynastyCards() + addQuantity);
-        if(isRestrictedCard(cardSelected,"Dynasty"))
+        if (isRestrictedCard(cardSelected, "Dynasty"))
             player.setContainsRestrictedCards(Boolean.TRUE);
         int quantity = cardSelected.getQuantity() - addQuantity;
         int index = this.collectionL5R.getDynastyCardList().indexOf(cardSelected);
@@ -359,7 +415,7 @@ public class StartGame {
         List<DynastyCard> selection =
                 this.collectionL5R.getDynastyCardList().stream()
                         .filter(card -> !dynastyCardIsPresent(player, card)
-                                && isAllowedCard(player,card,"Dynasty")
+                                && isAllowedCard(player, card, "Dynasty")
                                 && (card.getClan().equals("neutral")
                                 || card.getClan().equals(player.getClan()))
                                 && (card.getRoleLimit() == null
@@ -379,14 +435,16 @@ public class StartGame {
 
     private boolean dynastyCardIsPresent(Deck player, DynastyCard dynastyCard) {
         for (DynastyCard card : player.getDynastyCardDeck()) {
-            if (card.equals(dynastyCard)) {
+            if (card.getIdFiveRingsDB().equals(dynastyCard.getIdFiveRingsDB())) {
+                System.out.println("LOG --- Entra en verdadero comparando:");
+                System.out.println(card.getIdFiveRingsDB() + " vs. " + dynastyCard.getIdFiveRingsDB());
                 return true;
             }
         }
         return false;
     }
 
-    private void selectProvinces(Deck player1, Deck player2) {
+    private void selectProvinces(Deck player1, Deck player2) throws CloneNotSupportedException {
         while (player1.getProvinces().size() < MAX_PROVINCE_CARDS && player2.getProvinces().size() < MAX_PROVINCE_CARDS) {
             if (player1.getProvinces().size() < MAX_PROVINCE_CARDS) {
                 playerSelectingProvince(player1);
@@ -397,7 +455,7 @@ public class StartGame {
         }
     }
 
-    private void playerSelectingProvince(Deck player) {
+    private void playerSelectingProvince(Deck player) throws CloneNotSupportedException {
         System.out.println("Jugador " + player.getNamePlayer() + " elige tu provincia número " + (player.getProvinces().size() + 1));
         List<String> elementsAvailables = new ArrayList<>();
         List<ProvinceCard> provincesAvailables = new ArrayList<>();
@@ -406,14 +464,14 @@ public class StartGame {
                 elementsAvailables.add(ELEMENTS[i]);
             }
         }
-        makeProvinceOptions(elementsAvailables, provincesAvailables,player);
+        makeProvinceOptions(elementsAvailables, provincesAvailables, player);
         for (int i = 0; i < provincesAvailables.size(); i++) {
             System.out.println((i + 1) + ") " + provincesAvailables.get(i));
         }
-        int option = leerEntero();
-        ProvinceCard selectedCard = provincesAvailables.get(option - 1);
+        int option = readInteger();
+        ProvinceCard selectedCard = (ProvinceCard) provincesAvailables.get(option - 1).clone();
         player.getProvinces().add(selectedCard);
-        if(isRestrictedCard(selectedCard,"Province"))
+        if (isRestrictedCard(selectedCard, "Province"))
             player.setContainsRestrictedCards(Boolean.TRUE);
         for (int i = 0; i < player.getLimitProvince().length; i++) {
             if (ELEMENTS[i].equals(selectedCard.getElement())) {
@@ -421,8 +479,7 @@ public class StartGame {
             }
         }
         int quantity = selectedCard.getQuantity() - 1;
-        int index =
-                this.collectionL5R.getProvinceCardList().indexOf(selectedCard);
+        int index = this.collectionL5R.getProvinceCardList().indexOf(selectedCard);
         if (quantity < 1) {
             this.collectionL5R.getProvinceCardList().remove(selectedCard);
         } else {
@@ -431,7 +488,7 @@ public class StartGame {
     }
 
     private boolean isRestrictedCard(Card card, String type) {
-        if(this.allowRestrictedCards) {
+        if (this.allowRestrictedCards) {
             return false;
         } else {
             for (String restrictedNameCard : this.restrictedCards.getRestrictedLists().get(type)) {
@@ -448,7 +505,7 @@ public class StartGame {
                 this.collectionL5R.getProvinceCardList().stream()
                         .filter(card -> elementsAvailables.contains(card.getElement())
                                 && !pronvinceIsPresent(player, card)
-                                && isAllowedCard(player,card,"Province")
+                                && isAllowedCard(player, card, "Province")
                                 && ((card.getClan() == null)
                                 || card.getClan().equals(player.getClan())
                                 || card.getClan().equals("neutral"))
@@ -468,7 +525,7 @@ public class StartGame {
     }
 
     private boolean isAllowedCard(Deck player, Card card, String type) {
-        if(this.allowRestrictedCards) {
+        if (this.allowRestrictedCards) {
             for (String restrictedCardName : this.restrictedCards.getRestrictedLists().get(type)) {
                 if (player.getContainsRestrictedCards() && restrictedCardName.equals(card.getName())) {
                     return false;
@@ -480,52 +537,63 @@ public class StartGame {
 
     private boolean pronvinceIsPresent(Deck player, ProvinceCard province) {
         for (ProvinceCard card : player.getProvinces()) {
-            if (card.equals(province)) {
+            if (card.getIdFiveRingsDB().equals(province.getIdFiveRingsDB())) {
                 return true;
             }
         }
         return false;
     }
 
-    private void selectStronghold(Deck player) {
-        List<StrongholdCard> strongholdValidList = new ArrayList<>();
-        this.collectionL5R.getStrongholdCardList().stream()
-                .filter(card -> player.getClan().equals(card.getClan()))
-                .forEach(card -> strongholdValidList.add(card));
-        System.out.println("Jugador " + player.getNamePlayer() + " elige un Stronghold para tu clan " + player.getClan());
-        for (int i = 0; i < strongholdValidList.size(); i++) {
-            System.out.println((i + 1) + ") " + strongholdValidList.get(i));
+    private void selectStronghold() throws CloneNotSupportedException {
+        List<Deck> players = new ArrayList<>();
+        players.add(this.player1);
+        players.add(this.player2);
+        for(Deck player : players) {
+            List<StrongholdCard> strongholdValidList = new ArrayList<>();
+            this.collectionL5R.getStrongholdCardList().stream()
+                    .filter(card -> player.getClan().equals(card.getClan()))
+                    .forEach(card -> strongholdValidList.add(card));
+            System.out.println("Jugador " + player.getNamePlayer() + " elige un Stronghold para tu clan " + player.getClan());
+            for (int i = 0; i < strongholdValidList.size(); i++)
+                System.out.println((i + 1) + ") " + strongholdValidList.get(i));
+            int option = readInteger();
+            StrongholdCard selectedCard = (StrongholdCard) strongholdValidList.get(option - 1).clone();
+            player.setStronghold(selectedCard);
+            player.setInfluence(player.getInfluence() + selectedCard.getInfluence());
+            int indexCard = this.collectionL5R.getStrongholdCardList().indexOf(selectedCard);
+            int quantity = this.collectionL5R.getStrongholdCardList().get(indexCard).getQuantity();
+            this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
+            if (quantity == 0)
+                this.collectionL5R.getStrongholdCardList().remove(indexCard);
         }
-        int option = leerEntero();
-        StrongholdCard selectedCard = strongholdValidList.get(option - 1);
-        player.setStronghold(selectedCard);
-        player.setInfluence(player.getInfluence() + selectedCard.getInfluence());
-        int indexCard = this.collectionL5R.getStrongholdCardList().indexOf(selectedCard);
-        int quantity = this.collectionL5R.getStrongholdCardList().get(indexCard).getQuantity();
-        this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
-        if (quantity == 0)
-            this.collectionL5R.getStrongholdCardList().remove(selectedCard);
     }
 
-    private void selectSplash(Deck player) {
-        String mainClan = player.getClan();
-        int mainClanIndex = -1;
-        for (int i = 0; i < CLANS.length; i++) {
-            if (CLANS[i].equals(mainClan))
-                mainClanIndex = i;
+    private void selectSplash() {
+        List<Deck> players = new ArrayList<>();
+        players.add(this.player1);
+        players.add(this.player2);
+        for(Deck player : players) {
+            if(player.getSplash() == null) {
+                String mainClan = player.getClan();
+                int mainClanIndex = -1;
+                for (int i = 0; i < CLANS.length; i++) {
+                    if (CLANS[i].equals(mainClan))
+                        mainClanIndex = i;
+                }
+                int[] arrayClans = createArrayNumbers(CLANS.length, mainClanIndex);
+                int[] arrayOptions = new int[NUMBER_OPTIONS];
+                for (int i = 0; i < NUMBER_OPTIONS; i++) {
+                    int rnd = (int) (Math.random() * (arrayClans.length - 1 - i));
+                    arrayOptions[i] = arrayClans[rnd];
+                    arrayClans[rnd] = arrayClans.length - 1 - i;
+                }
+                System.out.println("Jugador " + player.getNamePlayer() + " elige cuál es tu clan secundario");
+                for (int i = 0; i < NUMBER_OPTIONS; i++)
+                    System.out.println((i + 1) + ") " + CLANS[arrayOptions[i]]);
+                int option = readInteger();
+                player.setSplash(CLANS[arrayOptions[option - 1]]);
+            }
         }
-        int[] arrayClans = createArrayNumbers(CLANS.length, mainClanIndex);
-        int[] arrayOptions = new int[NUMBER_OPTIONS];
-        for (int i = 0; i < NUMBER_OPTIONS; i++) {
-            int rnd = (int) (Math.random() * (arrayClans.length - 1 - i));
-            arrayOptions[i] = arrayClans[rnd];
-            arrayClans[rnd] = arrayClans.length - 1 - i;
-        }
-        System.out.println("Jugador " + player.getNamePlayer() + " elige cuál es tu clan secundario");
-        for (int i = 0; i < NUMBER_OPTIONS; i++)
-            System.out.println((i + 1) + ") " + CLANS[arrayOptions[i]]);
-        int option = leerEntero();
-        player.setSplash(CLANS[arrayOptions[option - 1]]);
     }
 
     private int[] createArrayNumbers(int size, int exclude) {
@@ -551,7 +619,7 @@ public class StartGame {
         ArrayList<String> selectingClan = randomClan();
         for (int i = 0; i < selectingClan.size(); i++)
             System.out.println("\t" + (i + 1) + ". " + selectingClan.get(i));
-        int clanNumber = leerEntero();
+        int clanNumber = readInteger();
         return selectingClan.get(clanNumber - 1);
     }
 
@@ -573,62 +641,67 @@ public class StartGame {
         this.collectionL5R.getRoleCardList().stream()
                 .filter(card -> this.restrictedRoles.getRestrictedRolesLists().get(player.getClan()).contains(card.getName()))
                 .forEach(card -> options.add(card));
-        System.out.println("Jugador "+player.getNamePlayer()+" selecciona una carta: ");
-        for(int i=0;i<options.size();i++) {
-            System.out.println((i+1)+") "+options.get(i).toString());
+        System.out.println("Jugador " + player.getNamePlayer() + " selecciona una carta: ");
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println((i + 1) + ") " + options.get(i).toString());
         }
-        RoleCard cardSelected = options.get(leerEntero()-1);
+        RoleCard cardSelected = options.get(readInteger() - 1);
         player.setRoleCard(cardSelected);
         player.setRole(cardSelected.getRole());
         player.setElement(cardSelected.getElement());
     }
 
-    private void selectingRole(Deck player) {
-        if(allowRestrictedRoles) {
-            selectRestrictedRole(player);
-        } else {
-            int indexMainClan = checkMainClan(player);
-            int[] arrayNumbers;
-            if (indexMainClan > -1)
-                arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 2, indexMainClan);
-            else
-                arrayNumbers = createArrayNumbers(this.collectionL5R.getRoleCardList().size() - 1);
-            int[] arrayOptions = new int[NUMBER_OPTIONS];
-            for (int i = 0; i < NUMBER_OPTIONS; i++) {
-                int rnd = (int) (Math.random() * (arrayNumbers.length - 1 - i));
-                arrayOptions[i] = arrayNumbers[rnd];
-                int aux = arrayNumbers[arrayNumbers.length - 1 - i];
-                arrayNumbers[rnd] = aux;
-            }
-            System.out.println("Jugador " + player.getNamePlayer() + " selecciona una carta de rol.");
-            for (int i = 0; i < arrayOptions.length; i++) {
-                System.out.println((i + 1) + ") " + this.collectionL5R.getRoleCardList().get(arrayOptions[i]));
-            }
-            int roleOption = leerEntero();
-            RoleCard roleCardSelected = this.collectionL5R.getRoleCardList().get(arrayOptions[roleOption - 1]);
-            player.setRoleCard(roleCardSelected);
-            if (roleCardSelected.getName().contains("Support")) {
-                player.setSplash(roleCardSelected.getRoleClan());
-                player.setInfluence(player.getInfluence() + 8);
+    private void selectingRole() throws CloneNotSupportedException {
+        List<Deck> players = new ArrayList<>();
+        players.add(this.player1);
+        players.add(this.player2);
+        for (Deck player : players) {
+            if (allowRestrictedRoles) {
+                selectRestrictedRole(player);
             } else {
+                List<RoleCard> cardsAvailables = new ArrayList<>();
+                makeRoleCardOptions(cardsAvailables, player);
+                for (int i = 0; i < cardsAvailables.size(); i++) {
+                    System.out.println((i + 1) + ") " + cardsAvailables.get(i));
+                }
+                int option = readInteger();
+                RoleCard roleCardSelected = cardsAvailables.get(option-1);
+                player.setRoleCard(roleCardSelected);
                 player.setRole(roleCardSelected.getRole());
-                player.setElement(roleCardSelected.getElement());
-                if (roleCardSelected.getRole().equals("keeper"))
-                    player.setInfluence(player.getInfluence() + 3);
-                else if (roleCardSelected.getRole().equals("seeker")) {
-                    for (int i = 0; i < ELEMENTS.length; i++) {
-                        if (roleCardSelected.getElement().equals(ELEMENTS[i])) {
-                            player.getLimitProvince()[i] =
-                                    player.getLimitProvince()[i] + 1;
+                if (roleCardSelected.getName().toLowerCase().contains("support")) {
+                    player.setSplash(roleCardSelected.getClan());
+                    player.setInfluence(player.getInfluence() + 8);
+                } else {
+                    player.setElement(roleCardSelected.getElement());
+                    if (roleCardSelected.getRole().toLowerCase().equals("keeper"))
+                        player.setInfluence(player.getInfluence() + 3);
+                    else if (roleCardSelected.getRole().toLowerCase().equals("seeker")) {
+                        for (int i = 0; i < ELEMENTS.length; i++) {
+                            if (roleCardSelected.getElement().equals(ELEMENTS[i])) {
+                                player.getLimitProvince()[i] = player.getLimitProvince()[i] + 1;
+                            }
                         }
                     }
                 }
+                int cardSelected = this.collectionL5R.getRoleCardList().indexOf(roleCardSelected);
+                int quantityCard = this.collectionL5R.getRoleCardList().get(cardSelected).getQuantity();
+                this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
+                if (quantityCard == 0)
+                    this.collectionL5R.getRoleCardList().remove(cardSelected);
             }
-            int cardSelected = this.collectionL5R.getRoleCardList().indexOf(roleCardSelected);
-            int quantityCard = this.collectionL5R.getRoleCardList().get(cardSelected).getQuantity();
-            this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
-            if (quantityCard == 0)
-                this.collectionL5R.getRoleCardList().remove(roleCardSelected);
+        }
+    }
+
+    private void makeRoleCardOptions(List<RoleCard> rolesAvailables, Deck player) {
+        List<RoleCard> selection =
+                this.collectionL5R.getRoleCardList().stream()
+                        .filter(card -> !card.getClan().equals(player.getClan()))
+                        .collect(Collectors.toList());
+        int rndArray[] = createArrayNumbers(selection.size());
+        for (int i = 0; i < NUMBER_OPTIONS; i++) {
+            int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
+            rolesAvailables.add(selection.get(rndArray[rnd]));
+            rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
     }
 
@@ -639,15 +712,6 @@ public class StartGame {
         return result;
     }
 
-    private int checkMainClan(Deck player) {
-        for (RoleCard card : this.collectionL5R.getRoleCardList()) {
-            if (player.getClan().equals(card.getClan())) {
-                return this.collectionL5R.getRoleCardList().indexOf(card);
-            }
-        }
-        return -1;
-    }
-
     private String[] copyArray(String[] array) {
         String[] result = new String[array.length];
         for (int i = 0; i < array.length; i++) {
@@ -656,8 +720,8 @@ public class StartGame {
         return result;
     }
 
-    private int leerEntero() {
-        return LEER_CONSOLA.nextInt();
+    private int readInteger() {
+        return READ_CONSOLE.nextInt();
     }
 
 

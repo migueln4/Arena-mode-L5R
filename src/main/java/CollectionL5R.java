@@ -229,6 +229,7 @@ public class CollectionL5R {
 
         setNameCard(packCards, newCard);
 
+        newCard.setIdFiveRingsDB(jsonCard.getId());
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
@@ -249,6 +250,7 @@ public class CollectionL5R {
 
         setNameCard(packCards, newCard);
 
+        newCard.setIdFiveRingsDB(jsonCard.getId());
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
@@ -270,7 +272,7 @@ public class CollectionL5R {
 
         setNameCard(packCards, newCard);
 
-
+        newCard.setIdFiveRingsDB(jsonCard.getId());
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
@@ -289,6 +291,7 @@ public class CollectionL5R {
 
         setNameCard(packCards, newCard);
 
+        newCard.setIdFiveRingsDB(jsonCard.getId());
 
         String name = jsonCard.getName();
         newCard.setName(name);
@@ -300,8 +303,8 @@ public class CollectionL5R {
             newCard.setRole("support");
         } else {
             newCard.setRole(traits.get(0).toString().substring(1, traits.get(0).toString().length() - 1));
-            newCard.setElement(traits.get(1).toString().substring(1,
-                    traits.get(1).toString().length() - 1));
+            newCard.setElement(traits.get(1).toString().substring(1,traits.get(1).toString().length() - 1));
+            newCard.setClan("neutral");
         }
 
         return newCard;
@@ -343,6 +346,7 @@ public class CollectionL5R {
 
         setNameCard(packCards, newCard);
 
+        newCard.setIdFiveRingsDB(jsonCard.getId());
         newCard.setDeckLimit(jsonCard.getDeck_limit());
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
@@ -363,9 +367,6 @@ public class CollectionL5R {
         return newCard;
     };
 
-    /**
-     * Obtiene un archivo con un nombre específico.
-     */
     private Function<String, File> getCardFileReader = filename -> {
         ClassLoader cl = getClass().getClassLoader();
         File file = new File(cl.getResource(filename).getFile());

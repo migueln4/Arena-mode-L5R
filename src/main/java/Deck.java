@@ -15,18 +15,17 @@ public class Deck {
 
     private String clan;
     private String splash;
-    private RoleCard roleCard;
     private String role;
     private String element;
     private Integer influence;
     private Integer numberCharacters;
 
+    private RoleCard roleCard;
     private StrongholdCard stronghold;
-
     private List<ProvinceCard> provinces;
-
     private List<ConflictCard> conflictCardDeck;
     private List<DynastyCard> dynastyCardDeck;
+
     private Integer numberConflictCards;
     private Integer numberDynastyCards;
 

@@ -16,4 +16,6 @@ public class Card {
     private String roleLimit; //keeper, seeker, NULL
     private String elementLimit; //air, void, fire, earth, water, NULL
     private Integer quantity;
+    private String idFiveRingsDB;
+
 }

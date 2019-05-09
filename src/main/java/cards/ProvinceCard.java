@@ -2,20 +2,21 @@ package cards;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProvinceCard extends Card {
+public class ProvinceCard extends Card implements Cloneable {
 
     private String element;
 
     @Override
-    public boolean equals(Object o) {
-        if(!(o instanceof ProvinceCard)) return false;
-        ProvinceCard other = (ProvinceCard) o;
-        return (this.getId().equals(other.getId()));
+    public Object clone() throws
+            CloneNotSupportedException
+    {
+        return super.clone();
     }
 
     @Override
@@ -24,7 +25,17 @@ public class ProvinceCard extends Card {
                 ", Clan: "+super.getClan()+
                 ", Element: "+this.element+
                 ", Restrictions: "+super.getElementLimit()+"/"+super.getRoleLimit()+
-                ", ID: "+super.getId()+"]";
+                ", ID: "+super.getId()+"] ---> "+this.getQuantity()+" copies.";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this)
+            return true;
+        else if(!(o instanceof ProvinceCard))
+            return false;
+        ProvinceCard card = (ProvinceCard) o;
+        return card.getIdFiveRingsDB().equals(this.getIdFiveRingsDB());
     }
 
 }

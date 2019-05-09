@@ -2,6 +2,7 @@ package cards;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -10,13 +11,6 @@ import lombok.NoArgsConstructor;
 public class DynastyCard extends Card implements Cloneable {
 
     private String element;
-
-    @Override
-    public boolean equals(Object o) {
-        if(!(o instanceof DynastyCard)) return false;
-        DynastyCard other = (DynastyCard) o;
-        return (this.getId().equals(other.getId()));
-    }
 
     @Override
     public Object clone() throws
@@ -34,4 +28,13 @@ public class DynastyCard extends Card implements Cloneable {
                 "---> "+super.getQuantity()+" copies";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if(o == this)
+            return true;
+        else if(!(o instanceof DynastyCard))
+            return false;
+        DynastyCard card = (DynastyCard) o;
+        return card.getIdFiveRingsDB().equals(this.getIdFiveRingsDB());
+    }
 }

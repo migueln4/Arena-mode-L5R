@@ -2,6 +2,7 @@ package cards;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -13,28 +14,30 @@ public class ConflictCard extends Card implements Cloneable {
     private Integer influence;
 
     @Override
-    public boolean equals(Object o) {
-        if(!(o instanceof ConflictCard)) return false;
-        ConflictCard other = (ConflictCard) o;
-        return (this.getId().equals(other.getId()));
-    }
-
-    @Override
     public Object clone() throws
-            CloneNotSupportedException
-    {
+            CloneNotSupportedException {
         return super.clone();
     }
 
     @Override
     public String toString() {
-        return "[Name: "+super.getName()+
-                ", Clan: "+super.getClan()+
-                ", ID: "+super.getId()+
-                ", Limit: "+super.getDeckLimit()+
-                ", Character: "+this.character+
-                ", Influence: "+this.influence+"]"+
-                "---> "+super.getQuantity()+" copies";
+        return "[Name: " + super.getName() +
+                ", Clan: " + super.getClan() +
+                ", ID: " + super.getId() +
+                ", Limit: " + super.getDeckLimit() +
+                ", Character: " + this.character +
+                ", Influence: " + this.influence + "]" +
+                "---> " + super.getQuantity() + " copies";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this)
+            return true;
+        else if(!(o instanceof ConflictCard))
+            return false;
+        ConflictCard card = (ConflictCard) o;
+        return card.getIdFiveRingsDB().equals(this.getIdFiveRingsDB());
     }
 
 }
