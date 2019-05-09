@@ -19,8 +19,6 @@ public class Validation {
         Deck[] decks = new Deck[]{player1,player2};
         for (Deck player : decks) {
             String bodyplayer = createJsonToValidate(player);
-            System.out.println("El jugador " + player.getNamePlayer() + " tiene este mazo");
-            System.out.println(bodyplayer);
             try {
                 URL url = new URL(VALIDATE_URL);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -33,8 +31,7 @@ public class Validation {
                 os.flush();
                 os.close();
 
-                System.out.println("Código de respuesta para el jugador " + player.getNamePlayer() + ": " + connection.getResponseCode());
-                System.out.println("Mensaje de respuesta para el jugador " + player.getNamePlayer() + ": " + connection.getResponseMessage());
+                System.out.println("Connection: " + player.getNamePlayer() + ": " + connection.getResponseCode());
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String inputLine;

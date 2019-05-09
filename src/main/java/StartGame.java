@@ -53,7 +53,7 @@ public class StartGame {
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
         this.validate = new Validation();
-        this.validate.validateDecks(player1,player2);
+        this.validate.validateDecks(player1, player2);
         exportPlayers();
     }
 
@@ -88,16 +88,14 @@ public class StartGame {
     }
 
     private void allowRestrictedRules() {
-        System.out.println("¿Queréis jugar con los roles oficiales para cada clan?\n(1 = SÍ / 2 = " +
-                "NO)");
+        System.out.println("Do you want to play with official Roles?\n(1 = YES / 2 = NO)");
         if (readInteger() == 1) {
             this.allowRestrictedRoles = Boolean.TRUE;
         } else {
             this.allowRestrictedRoles = Boolean.FALSE;
         }
 
-        System.out.println("¿Queréis jugar con las reglas de cartas restringidas?\n(1 = SÍ / 2 = " +
-                "NO)");
+        System.out.println("Do you want to play with restricted card rules?\n(1 = YES / 2 = NO)");
         if (readInteger() == 1) {
             this.allowRestrictedCards = Boolean.TRUE;
         } else {
@@ -113,9 +111,8 @@ public class StartGame {
                 selectConflictCard(this.player1);
                 if (this.player1.getNumberConflictCards() >= MIN_CONFLICT_CARDS
                         && this.player1.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Jugador " + this.player1.getNamePlayer() + " " +
-                            "has llegado al mínimo del mazo de Conflicto. Tienes " + player1.getNumberConflictCards() +
-                            " cartas. \n\t¿Quieres dejar de añadir cartas?\n\t(1 = Sí / 2 = No)");
+                    System.out.println("Player " + this.player1.getNamePlayer() + ", your Dynasty deck has enough cards. You have "
+                            + player1.getNumberConflictCards() + " cards. \n\tDo you continue adding cards?\n\t(1 = YES / 2 = NO)");
                     if (readInteger() == 1) {
                         flagPlayer1 = false;
                     }
@@ -127,9 +124,8 @@ public class StartGame {
                 selectConflictCard(this.player2);
                 if (this.player2.getNumberConflictCards() >= MIN_CONFLICT_CARDS
                         && this.player2.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Jugador " + this.player2.getNamePlayer() + " " +
-                            "has llegado al mínimo del mazo de Conflicto. Tienes " + this.player2.getNumberConflictCards() +
-                            " cartas. \n\t¿Quieres dejar de añadir cartas?\n\t(1 = Sí / 2 = No)");
+                    System.out.println("Player " + this.player2.getNamePlayer() + ", your Conflict deck has enough cards. You have "
+                            + this.player2.getNumberConflictCards() + " cards. \n\tDo you want to finish?\n\t(1 = YES / 2 = NO)");
                     if (readInteger() == 1) {
                         flagPlayer2 = false;
                     }
@@ -141,11 +137,9 @@ public class StartGame {
     }
 
     private void selectConflictCard(Deck player) throws CloneNotSupportedException {
-        System.out.println("Jugador " + player.getNamePlayer() + " elige tu carta" +
-                " número " + (player.getNumberConflictCards() + 1) + "\n (tienes " +
-                player.getNumberConflictCards() + " cartas en tu mazo de Conflicto, " +
-                player.getNumberCharacters() + " de ellas, personajes.\n(influencia restante: " +
-                player.getInfluence() + " puntos)");
+        System.out.println("Player " + player.getNamePlayer() + ", choose your card number " + (player.getNumberConflictCards() + 1) +
+                "\n (You have " + player.getNumberConflictCards() + " cards in your Conflict deck, " + player.getNumberCharacters() +
+                " of them are characters.\n(influence remaining: " + player.getInfluence() + " points)");
         List<ConflictCard> cardsAvailables = new ArrayList<>();
         makeConflictOptions(cardsAvailables, player);
         for (int i = 0; i < cardsAvailables.size(); i++) {
@@ -153,15 +147,13 @@ public class StartGame {
         }
         int option = readInteger();
         ConflictCard cardSelected = (ConflictCard) cardsAvailables.get(option - 1).clone();
-        System.out.println("LOG --- Se va a añadir la carta "+cardSelected.toString());
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
                 && player.getNumberConflictCards() + 1 < MAX_CONFLICT_CARDS
                 && oneMoreCharacter(player, cardSelected, 1)
                 && oneMoreSplashCard(player, cardSelected, 1)) {
-            System.out.println("Tienes " + player.getNumberConflictCards() + " cartas en tu mazo " +
-                    "de Conflicto. ¿Cuántas copias quieres de esta carta?");
+            System.out.println("You have " + player.getNumberConflictCards() + " cards in your Conflict deck. How many copies do you want of this card?");
             for (int i = 1; i <= cardSelected.getQuantity()
                     && MAX_CONFLICT_CARDS >= player.getNumberConflictCards() + i
                     && i <= MAX_CARD_COPIES
@@ -172,7 +164,6 @@ public class StartGame {
             }
             addQuantity = readInteger();
         }
-        System.out.println("LOG --- Se van a añadir "+addQuantity+" copias.");
         ConflictCard cardToAdd = (ConflictCard) cardSelected.clone();
         cardToAdd.setQuantity(addQuantity);
         player.getConflictCardDeck().add(cardToAdd);
@@ -185,11 +176,10 @@ public class StartGame {
             player.setInfluence(player.getInfluence() - (cardToAdd.getInfluence() * addQuantity));
         int quantity = cardSelected.getQuantity() - addQuantity;
         int index = this.collectionL5R.getConflictCardList().indexOf(cardSelected);
-        if (quantity < 1) {
+        if (quantity < 1)
             this.collectionL5R.getConflictCardList().remove(cardSelected);
-        } else {
+        else
             this.collectionL5R.getConflictCardList().get(index).setQuantity(quantity);
-        }
     }
 
     private boolean oneMoreSplashCard(Deck player, ConflictCard card, int i) {
@@ -287,9 +277,8 @@ public class StartGame {
                 selectDynastyCard(this.player1);
                 if (this.player1.getNumberDynastyCards() >= MIN_CONFLICT_CARDS
                         && this.player1.getNumberDynastyCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Jugador " + player1.getNamePlayer() + " " +
-                            "has llegado al mínimo del mazo (tienes " + player1.getNumberDynastyCards() + "). " +
-                            "¿Quieres terminar de añadir cartas?\n\t(1 = Sí / 2 = No)");
+                    System.out.println("Player " + this.player1.getNamePlayer() + ", you have enough cards in your Dynasty deck (you have "+
+                            this.player1.getNumberDynastyCards() + " cards). \n\tDo you want to finish?\n\t(1 = YES / 2 = NO)");
                     if (readInteger() == 1) {
                         flagPlayer1 = false;
                     }
@@ -302,10 +291,8 @@ public class StartGame {
                 selectDynastyCard(this.player2);
                 if (this.player2.getNumberDynastyCards() >= MIN_CONFLICT_CARDS
                         && this.player2.getNumberDynastyCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Jugador " + player2.getNamePlayer() + " " +
-                            "has llegado al mínimo del mazo (tienes " + player2.getNumberDynastyCards() + " ). " +
-                            "¿Quieres " +
-                            "terminar de añadir cartas?\n\t(1 = Sí / 2 = No)");
+                    System.out.println("Player " + this.player2.getNamePlayer() + ", you have enough cards in your Dynasty deck (you have "+
+                            this.player2.getNumberDynastyCards() + " cards). \n\tDo you want to finish?\n\t(1 = YES / 2 = NO)");
                     if (readInteger() == 1) {
                         flagPlayer2 = false;
                     }
@@ -318,8 +305,8 @@ public class StartGame {
     }
 
     private void selectDynastyCard(Deck player) throws CloneNotSupportedException {
-        System.out.println("Jugador " + player.getNamePlayer() + " elige tu carta número " + (player.getNumberDynastyCards() + 1) +
-                "\n(tienes " + player.getNumberDynastyCards() + " cartas en tu mazo de Dinastía)");
+        System.out.println("Player " + player.getNamePlayer() + ", choose your card number " + (player.getNumberDynastyCards() + 1) +
+                "\n(you have " + player.getNumberDynastyCards() + " cards in your Dynasty deck)");
         List<DynastyCard> cardsAvailables = new ArrayList<>();
         makeDynastyOptions(cardsAvailables, player);
         for (int i = 0; i < cardsAvailables.size(); i++)
@@ -330,9 +317,7 @@ public class StartGame {
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
                 && player.getNumberDynastyCards() + 1 < MAX_CONFLICT_CARDS) {
-            System.out.println("Tienes " + player.getNumberDynastyCards() +
-                    " cartas en tu mazo de Dinastía. ¿Cuántas copias quieres " +
-                    "de esta carta?");
+            System.out.println("You have " + player.getNumberDynastyCards() + " cards in your Dynasy deck. How many copies do you want of this card?");
             for (int i = 1; i <= cardSelected.getQuantity()
                     && MAX_CONFLICT_CARDS >= player.getNumberDynastyCards() + i
                     && i <= cardSelected.getDeckLimit()
@@ -390,7 +375,7 @@ public class StartGame {
         List<Deck> players = new ArrayList<>();
         players.add(this.player1);
         players.add(this.player2);
-        for(Deck player : players) {
+        for (Deck player : players) {
             while (player1.getProvinces().size() < MAX_PROVINCE_CARDS && player2.getProvinces().size() < MAX_PROVINCE_CARDS) {
                 if (player1.getProvinces().size() < MAX_PROVINCE_CARDS) {
                     playerSelectingProvince(player1);
@@ -403,7 +388,7 @@ public class StartGame {
     }
 
     private void playerSelectingProvince(Deck player) throws CloneNotSupportedException {
-        System.out.println("Jugador " + player.getNamePlayer() + " elige tu provincia número " + (player.getProvinces().size() + 1));
+        System.out.println("Player " + player.getNamePlayer() + ", choose your Province number " + (player.getProvinces().size() + 1));
         List<String> elementsAvailables = new ArrayList<>();
         List<ProvinceCard> provincesAvailables = new ArrayList<>();
         for (int i = 0; i < ELEMENTS.length; i++) {
@@ -495,12 +480,12 @@ public class StartGame {
         List<Deck> players = new ArrayList<>();
         players.add(this.player1);
         players.add(this.player2);
-        for(Deck player : players) {
+        for (Deck player : players) {
             List<StrongholdCard> strongholdValidList = new ArrayList<>();
             this.collectionL5R.getStrongholdCardList().stream()
                     .filter(card -> player.getClan().equals(card.getClan()))
                     .forEach(card -> strongholdValidList.add(card));
-            System.out.println("Jugador " + player.getNamePlayer() + " elige un Stronghold para tu clan " + player.getClan());
+            System.out.println("Player " + player.getNamePlayer() + ", choose your Stronghold " + player.getClan());
             for (int i = 0; i < strongholdValidList.size(); i++)
                 System.out.println((i + 1) + ") " + strongholdValidList.get(i));
             int option = readInteger();
@@ -519,8 +504,8 @@ public class StartGame {
         List<Deck> players = new ArrayList<>();
         players.add(this.player1);
         players.add(this.player2);
-        for(Deck player : players) {
-            if(player.getSplash() == null) {
+        for (Deck player : players) {
+            if (player.getSplash() == null) {
                 String mainClan = player.getClan();
                 int mainClanIndex = -1;
                 for (int i = 0; i < CLANS.length; i++) {
@@ -534,7 +519,7 @@ public class StartGame {
                     arrayOptions[i] = arrayClans[rnd];
                     arrayClans[rnd] = arrayClans.length - 1 - i;
                 }
-                System.out.println("Jugador " + player.getNamePlayer() + " elige cuál es tu clan secundario");
+                System.out.println("Player " + player.getNamePlayer() + ", choose your splash clan");
                 for (int i = 0; i < NUMBER_OPTIONS; i++)
                     System.out.println((i + 1) + ") " + CLANS[arrayOptions[i]]);
                 int option = readInteger();
@@ -562,7 +547,7 @@ public class StartGame {
     }
 
     private String selectClan(int n) {
-        System.out.println("Jugador " + n + ", selecciona el clan que quieras");
+        System.out.println("Player " + n + ", choose a clan");
         ArrayList<String> selectingClan = randomClan();
         for (int i = 0; i < selectingClan.size(); i++)
             System.out.println("\t" + (i + 1) + ". " + selectingClan.get(i));
@@ -588,7 +573,7 @@ public class StartGame {
         this.collectionL5R.getRoleCardList().stream()
                 .filter(card -> this.restrictedRoles.getRestrictedRolesLists().get(player.getClan()).contains(card.getName()))
                 .forEach(card -> options.add(card));
-        System.out.println("Jugador " + player.getNamePlayer() + " selecciona una carta: ");
+        System.out.println("Player " + player.getNamePlayer() + ", choose a card: ");
         for (int i = 0; i < options.size(); i++) {
             System.out.println((i + 1) + ") " + options.get(i).toString());
         }
@@ -612,7 +597,7 @@ public class StartGame {
                     System.out.println((i + 1) + ") " + cardsAvailables.get(i));
                 }
                 int option = readInteger();
-                RoleCard roleCardSelected = cardsAvailables.get(option-1);
+                RoleCard roleCardSelected = cardsAvailables.get(option - 1);
                 player.setRoleCard(roleCardSelected);
                 player.setRole(roleCardSelected.getRole());
                 if (roleCardSelected.getName().toLowerCase().contains("support")) {
