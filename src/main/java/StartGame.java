@@ -1,18 +1,11 @@
 import cards.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import lombok.NoArgsConstructor;
 import restrictions.RestrictedCards;
 import restrictions.RestrictedRoles;
 
-import java.io.BufferedReader;
 import java.io.FileWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +15,6 @@ import java.util.stream.Collectors;
 public class StartGame {
 
     private static final Scanner READ_CONSOLE = new Scanner(System.in);
-    private final String VALIDATE_URL = "https://api.fiveringsdb.com/deck-validation/standard";
 
     final String[] CLANS = {"lion", "scorpion", "phoenix", "crane", "crab", "unicorn", "dragon"};
     final String[] ELEMENTS = {"void", "air", "water", "fire", "earth"};
@@ -45,6 +37,7 @@ public class StartGame {
     private Boolean allowRestrictedRoles;
 
     private Gson gson;
+    private Validation validate;
 
     public void start() throws CloneNotSupportedException {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
@@ -59,59 +52,9 @@ public class StartGame {
         this.collectionL5R.initializeRoleCardList();
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
-        validateDecks();
+        this.validate = new Validation();
+        this.validate.validateDecks(player1,player2);
         exportPlayers();
-    }
-
-    private void validateDecks() {
-        Deck[] decks = new Deck[]{this.player1, this.player2};
-        for (Deck player : decks) {
-            String bodyplayer = createJsonToValidate(player);
-            System.out.println("El jugador " + player.getNamePlayer() + " tiene este mazo");
-            System.out.println(bodyplayer);
-            try {
-                URL url = new URL(VALIDATE_URL);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestMethod("POST");
-
-                connection.setDoOutput(true);
-                OutputStream os = connection.getOutputStream();
-                os.write(bodyplayer.getBytes());
-                os.flush();
-                os.close();
-
-                System.out.println("Código de respuesta para el jugador " + player.getNamePlayer() + ": " + connection.getResponseCode());
-                System.out.println("Mensaje de respuesta para el jugador " + player.getNamePlayer() + ": " + connection.getResponseMessage());
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuilder content = new StringBuilder();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
-                JsonParser parser = new JsonParser();
-                Object obj = parser.parse(content.toString());
-                JsonObject jsonObject = (JsonObject) obj;
-                System.out.println("LOG ---- Esto es lo que me llega --> " + jsonObject.get("status"));
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private String createJsonToValidate(Deck player) {
-        StringBuilder data = new StringBuilder("{\n");
-        data.append("\"").append(player.getStronghold().getIdFiveRingsDB()).append("\": ").append(1).append(",\n");
-        data.append("\"").append(player.getRoleCard().getIdFiveRingsDB()).append("\": ").append(1).append(",\n");
-        player.getProvinces().forEach(card -> data.append("\"").append(card.getIdFiveRingsDB()).append("\": ").append(1).append(",\n"));
-        player.getConflictCardDeck().forEach(card -> data.append("\"").append(card.getIdFiveRingsDB()).append("\": ").append(card.getQuantity()).append(",\n"));
-        player.getDynastyCardDeck().forEach(card -> data.append("\"").append(card.getIdFiveRingsDB()).append("\": ").append(card.getQuantity()).append(",\n"));
-        data.setLength(data.length() - 2);
-        data.append("\n}");
-        return data.toString();
     }
 
     private void exportPlayers() {
