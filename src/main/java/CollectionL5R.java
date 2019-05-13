@@ -56,8 +56,7 @@ public class CollectionL5R {
             if(connection.getResponseCode() != 200)
                 readFile();
             System.out.println("Connection: OK");
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
             StringBuilder content = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
@@ -148,6 +147,7 @@ public class CollectionL5R {
         allCards.stream().filter(card -> card.getType().equals("stronghold")).
                 forEach(card -> strongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
         System.out.println("Stronghold Card List: OK (" + this.strongholdCardList.size() + " cards)");
+        System.out.println(this.strongholdCardList);
     }
 
     private Function<String, String> getPackName = str -> {
@@ -184,15 +184,10 @@ public class CollectionL5R {
     };
 
     private ThreeParametersLambda<String, String, String> getCardName = (name, number) -> {
-        StringBuilder strb = new StringBuilder("[");
-        strb.append(name);
-        strb.append(" (");
+        StringBuilder strb = new StringBuilder();
         strb.append(getPackName.apply(name));
-        strb.append(")");
         strb.append(" - #");
         strb.append(number);
-        strb.append("]");
-
         return strb.toString();
     };
 
@@ -219,8 +214,7 @@ public class CollectionL5R {
         else
             newCard.setQuantity(packCards.get(pos).getQuantity());
 
-        newCard.setId(getCardName.apply(nameCard,
-                packCards.get(pos).getPosition()));
+        newCard.setId(getCardName.apply(nameCard,packCards.get(pos).getPosition()));
     }
 
     private Function<JsonCard, DynastyCard> jsonCardToDynastyCard = jsonCard -> {

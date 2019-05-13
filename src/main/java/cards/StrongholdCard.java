@@ -18,13 +18,20 @@ public class StrongholdCard extends Card implements Cloneable {
         return super.clone();
     }
 
-
+/*
     @Override
     public String toString() {
         return "[Name: "+super.getName()+
                 ", Clan: "+super.getClan()+
                 ", Influence: +"+this.influence+
                 ", ID: "+super.getId()+"] ---> "+this.getQuantity()+" copies";
+    }
+
+ */
+
+    @Override
+    public String toString() {
+        return "[ID: "+super.getId()+"]\n";
     }
 
     @Override
