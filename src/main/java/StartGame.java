@@ -1,11 +1,8 @@
 import cards.*;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.NoArgsConstructor;
 import restrictions.RestrictedCards;
 import restrictions.RestrictedRoles;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -36,11 +33,10 @@ public class StartGame {
     private Boolean allowRestrictedCards;
     private Boolean allowRestrictedRoles;
 
-    private Gson gson;
     private Validation validate;
+    private Export export;
 
     public void start() throws CloneNotSupportedException {
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.player1 = new Deck("UNO");
         this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
@@ -53,27 +49,9 @@ public class StartGame {
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
         this.validate = new Validation();
-        this.validate.validateDecks(player1, player2);
-        exportPlayers();
-    }
-
-    private void exportPlayers() {
-        StringBuilder srcPlayer1 = new StringBuilder(this.player1.getNamePlayer());
-        StringBuilder srcPlayer2 = new StringBuilder(this.player2.getNamePlayer());
-        srcPlayer1.append("_player1.json");
-        srcPlayer2.append("_player2.json");
-        try {
-            FileWriter fileWriter = new FileWriter(srcPlayer1.toString());
-            String player1Json = this.gson.toJson(this.player1);
-            fileWriter.write(player1Json);
-            fileWriter.flush();
-            fileWriter = new FileWriter(srcPlayer2.toString());
-            String player2Json = this.gson.toJson(this.player2);
-            fileWriter.write(player2Json);
-            fileWriter.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.validate.validateDecks(this.player1,this.player2);
+        this.export = new Export();
+        this.export.exportPlayers(this.player1,this.player2);
     }
 
     private void playerTurn() throws CloneNotSupportedException {

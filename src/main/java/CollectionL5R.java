@@ -73,6 +73,8 @@ public class CollectionL5R {
     public void readFile(StringBuilder content) {
         this.obj = parser.parse(content.toString());
         this.jsonObject = (JsonObject) obj;
+        if(!this.jsonObject.getAsJsonPrimitive("success").getAsBoolean())
+            readFile();
         this.records = jsonObject.getAsJsonArray("records");
         Type type = new TypeToken<List<JsonCard>>() {
         }.getType();
@@ -81,7 +83,7 @@ public class CollectionL5R {
 
     @SuppressWarnings("unchecked")
     public void readFile() {
-        System.out.println("Connection OFF --> reading file...");
+        System.out.println("FAIL Connection --> reading file...");
         this.file = getCardFileReader.apply("todascartas.json");
         try {
             this.obj = parser.parse(new FileReader(file));
