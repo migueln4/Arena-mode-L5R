@@ -30,7 +30,32 @@ public class Export {
             this.fw.flush();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            summary(player1,player2);
         }
     }
 
+    private void summary(Deck player1, Deck player2) {
+        StringBuilder strb = new StringBuilder("{\n\t\"decks\": [\n\t\t{\n");
+        try {
+            this.fw = new FileWriter("summary.json");
+            strb.append(doSummaryPlayer(player1)).append("\n\t\t},\n{\n");
+            strb.append(doSummaryPlayer(player2)).append("\n\t\t}\n]\n}");
+            this.fw.write(strb.toString());
+            this.fw.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String doSummaryPlayer(Deck player) {
+        StringBuilder strb = new StringBuilder("\t\t\t");
+        strb.append("\""+player.getStronghold().getId()+"\": "+player.getStronghold().getQuantity()+",\n");
+        strb.append("\t\t\t\""+player.getRoleCard().getId()+"\": "+player.getRoleCard().getQuantity()+",\n");
+        player.getProvinces().forEach(card -> strb.append("\t\t\t\""+card.getId()).append("\": ").append(card.getQuantity()).append(",\n"));
+        player.getDynastyCardDeck().forEach(card -> strb.append("\t\t\t\""+card.getId()).append("\": ").append(card.getQuantity()).append(",\n"));
+        player.getConflictCardDeck().forEach(card -> strb.append("\t\t\t\""+card.getId()).append("\": ").append(card.getQuantity()).append(",\n"));
+        strb.setLength(strb.length() - 2);
+        return strb.toString();
+    }
 }

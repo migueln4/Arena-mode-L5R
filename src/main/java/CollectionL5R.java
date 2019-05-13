@@ -128,7 +128,6 @@ public class CollectionL5R {
         allCards.stream().filter(card -> card.getSide().equals("dynasty")).
                 forEach(card -> dynastyCardList.add(jsonCardToDynastyCard.apply(card)));
         System.out.println("Dynasty Card List: OK (" + this.dynastyCardList.size() + " cards)");
-
     }
 
     public void initializeProvinceCardList() {
@@ -147,7 +146,6 @@ public class CollectionL5R {
         allCards.stream().filter(card -> card.getType().equals("stronghold")).
                 forEach(card -> strongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
         System.out.println("Stronghold Card List: OK (" + this.strongholdCardList.size() + " cards)");
-        System.out.println(this.strongholdCardList);
     }
 
     private Function<String, String> getPackName = str -> {
