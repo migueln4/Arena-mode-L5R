@@ -49,9 +49,9 @@ public class StartGame {
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
         this.validate = new Validation();
-        this.validate.validateDecks(this.player1,this.player2);
+        this.validate.validateDecks(this.player1, this.player2);
         this.export = new Export();
-        this.export.exportPlayers(this.player1,this.player2);
+        this.export.exportPlayers(this.player1, this.player2);
     }
 
     private void playerTurn() throws CloneNotSupportedException {
@@ -67,14 +67,14 @@ public class StartGame {
 
     private void allowRestrictedRules() {
         System.out.println("Do you want to play with official Roles?\n(1 = YES / 2 = NO)");
-        if (readInteger(1,2) == 1) {
+        if (readInteger(1, 2) == 1) {
             this.allowRestrictedRoles = Boolean.TRUE;
         } else {
             this.allowRestrictedRoles = Boolean.FALSE;
         }
 
         System.out.println("Do you want to play with restricted card rules?\n(1 = YES / 2 = NO)");
-        if (readInteger(1,2) == 1) {
+        if (readInteger(1, 2) == 1) {
             this.allowRestrictedCards = Boolean.TRUE;
         } else {
             this.allowRestrictedCards = Boolean.FALSE;
@@ -91,7 +91,7 @@ public class StartGame {
                         && this.player1.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
                     System.out.println("Player " + this.player1.getNamePlayer() + ", your Dynasty deck has enough cards. You have "
                             + player1.getNumberConflictCards() + " cards. \n\tDo you continue adding cards?\n\t(1 = YES / 2 = NO)");
-                    if (readInteger(1,2) == 1) {
+                    if (readInteger(1, 2) == 1) {
                         flagPlayer1 = false;
                     }
                 } else {
@@ -104,7 +104,7 @@ public class StartGame {
                         && this.player2.getNumberConflictCards() < MAX_CONFLICT_CARDS) {
                     System.out.println("Player " + this.player2.getNamePlayer() + ", your Conflict deck has enough cards. You have "
                             + this.player2.getNumberConflictCards() + " cards. \n\tDo you want to finish?\n\t(1 = YES / 2 = NO)");
-                    if (readInteger(1,2) == 1) {
+                    if (readInteger(1, 2) == 1) {
                         flagPlayer2 = false;
                     }
                 } else {
@@ -123,9 +123,9 @@ public class StartGame {
         int option = 0;
         for (int i = 0; i < cardsAvailables.size(); i++) {
             System.out.println((i + 1) + ")" + cardsAvailables.get(i));
-            option = i+1;
+            option = i + 1;
         }
-        option = readInteger(1,option);
+        option = readInteger(1, option);
         ConflictCard cardSelected = (ConflictCard) cardsAvailables.get(option - 1).clone();
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
@@ -143,7 +143,7 @@ public class StartGame {
                 System.out.print(i + ", ");
                 addQuantity = i;
             }
-            addQuantity = readInteger(1,addQuantity);
+            addQuantity = readInteger(1, addQuantity);
         }
         ConflictCard cardToAdd = (ConflictCard) cardSelected.clone();
         cardToAdd.setQuantity(addQuantity);
@@ -258,9 +258,9 @@ public class StartGame {
                 selectDynastyCard(this.player1);
                 if (this.player1.getNumberDynastyCards() >= MIN_CONFLICT_CARDS
                         && this.player1.getNumberDynastyCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Player " + this.player1.getNamePlayer() + ", you have enough cards in your Dynasty deck (you have "+
+                    System.out.println("Player " + this.player1.getNamePlayer() + ", you have enough cards in your Dynasty deck (you have " +
                             this.player1.getNumberDynastyCards() + " cards). \n\tDo you want to finish?\n\t(1 = YES / 2 = NO)");
-                    if (readInteger(1,2) == 1) {
+                    if (readInteger(1, 2) == 1) {
                         flagPlayer1 = false;
                     }
                 } else {
@@ -272,9 +272,9 @@ public class StartGame {
                 selectDynastyCard(this.player2);
                 if (this.player2.getNumberDynastyCards() >= MIN_CONFLICT_CARDS
                         && this.player2.getNumberDynastyCards() < MAX_CONFLICT_CARDS) {
-                    System.out.println("Player " + this.player2.getNamePlayer() + ", you have enough cards in your Dynasty deck (you have "+
+                    System.out.println("Player " + this.player2.getNamePlayer() + ", you have enough cards in your Dynasty deck (you have " +
                             this.player2.getNumberDynastyCards() + " cards). \n\tDo you want to finish?\n\t(1 = YES / 2 = NO)");
-                    if (readInteger(1,2) == 1) {
+                    if (readInteger(1, 2) == 1) {
                         flagPlayer2 = false;
                     }
                 } else {
@@ -293,9 +293,9 @@ public class StartGame {
         int option = 0;
         for (int i = 0; i < cardsAvailables.size(); i++) {
             System.out.println((i + 1) + ") " + cardsAvailables.get(i));
-            option = i+1;
+            option = i + 1;
         }
-        option = readInteger(1,option);
+        option = readInteger(1, option);
         DynastyCard cardSelected = (DynastyCard) cardsAvailables.get(option - 1).clone();
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
@@ -309,7 +309,7 @@ public class StartGame {
                 System.out.print(i + ", ");
                 addQuantity = i;
             }
-            addQuantity = readInteger(1,addQuantity);
+            addQuantity = readInteger(1, addQuantity);
         }
         DynastyCard cardToAdd = (DynastyCard) cardSelected.clone();
         cardToAdd.setQuantity(addQuantity);
@@ -358,17 +358,12 @@ public class StartGame {
     }
 
     private void selectProvinces() throws CloneNotSupportedException {
-        List<Deck> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
-        for (Deck player : players) {
-            while (player1.getProvinces().size() < MAX_PROVINCE_CARDS && player2.getProvinces().size() < MAX_PROVINCE_CARDS) {
-                if (player1.getProvinces().size() < MAX_PROVINCE_CARDS) {
-                    playerSelectingProvince(player1);
-                }
-                if (player2.getProvinces().size() < MAX_PROVINCE_CARDS) {
-                    playerSelectingProvince(player2);
-                }
+        while (player1.getProvinces().size() < MAX_PROVINCE_CARDS && player2.getProvinces().size() < MAX_PROVINCE_CARDS) {
+            if (player1.getProvinces().size() < MAX_PROVINCE_CARDS) {
+                playerSelectingProvince(player1);
+            }
+            if (player2.getProvinces().size() < MAX_PROVINCE_CARDS) {
+                playerSelectingProvince(player2);
             }
         }
     }
@@ -386,10 +381,11 @@ public class StartGame {
         int option = 0;
         for (int i = 0; i < provincesAvailables.size(); i++) {
             System.out.println((i + 1) + ") " + provincesAvailables.get(i));
-            option = 1+i;
+            option = 1 + i;
         }
-        option = readInteger(1,option);
+        option = readInteger(1, option);
         ProvinceCard selectedCard = (ProvinceCard) provincesAvailables.get(option - 1).clone();
+        selectedCard.setQuantity(1);
         player.getProvinces().add(selectedCard);
         if (isRestrictedCard(selectedCard, "Province"))
             player.setContainsRestrictedCards(Boolean.TRUE);
@@ -477,12 +473,13 @@ public class StartGame {
             int option = 0;
             for (int i = 0; i < strongholdValidList.size(); i++) {
                 System.out.println((i + 1) + ") " + strongholdValidList.get(i));
-                option = i+1;
+                option = i + 1;
             }
-            option = readInteger(1,option);
+            option = readInteger(1, option);
             StrongholdCard selectedCard = (StrongholdCard) strongholdValidList.get(option - 1).clone();
             player.setStronghold(selectedCard);
             player.setInfluence(player.getInfluence() + selectedCard.getInfluence());
+            player.getStronghold().setQuantity(1);
             int indexCard = this.collectionL5R.getStrongholdCardList().indexOf(selectedCard);
             int quantity = this.collectionL5R.getStrongholdCardList().get(indexCard).getQuantity();
             this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
@@ -514,9 +511,9 @@ public class StartGame {
                 int option = 0;
                 for (int i = 0; i < NUMBER_OPTIONS; i++) {
                     System.out.println((i + 1) + ") " + CLANS[arrayOptions[i]]);
-                    option = i+1;
+                    option = i + 1;
                 }
-                option = readInteger(1,option);
+                option = readInteger(1, option);
                 player.setSplash(CLANS[arrayOptions[option - 1]]);
             }
         }
@@ -545,7 +542,7 @@ public class StartGame {
         ArrayList<String> selectingClan = randomClan();
         for (int i = 0; i < selectingClan.size(); i++)
             System.out.println("\t" + (i + 1) + ". " + selectingClan.get(i));
-        int clanNumber = readInteger(1,NUMBER_OPTIONS);
+        int clanNumber = readInteger(1, NUMBER_OPTIONS);
         return selectingClan.get(clanNumber - 1);
     }
 
@@ -571,7 +568,7 @@ public class StartGame {
         for (int i = 0; i < options.size(); i++) {
             System.out.println((i + 1) + ") " + options.get(i).toString());
         }
-        RoleCard cardSelected = options.get(readInteger(1,options.size()) - 1);
+        RoleCard cardSelected = options.get(readInteger(1, options.size()) - 1);
         player.setRoleCard(cardSelected);
         player.setRole(cardSelected.getRole());
         player.setElement(cardSelected.getElement());
@@ -590,12 +587,13 @@ public class StartGame {
                 int option = 0;
                 for (int i = 0; i < cardsAvailables.size(); i++) {
                     System.out.println((i + 1) + ") " + cardsAvailables.get(i));
-                    option = i+1;
+                    option = i + 1;
                 }
-                option = readInteger(1,option);
-                RoleCard roleCardSelected = cardsAvailables.get(option - 1);
+                option = readInteger(1, option);
+                RoleCard roleCardSelected = (RoleCard) cardsAvailables.get(option - 1).clone();
                 player.setRoleCard(roleCardSelected);
                 player.setRole(roleCardSelected.getRole());
+                player.getRoleCard().setQuantity(1);
                 if (roleCardSelected.getName().toLowerCase().contains("support")) {
                     player.setSplash(roleCardSelected.getClan());
                     player.setInfluence(player.getInfluence() + 8);
@@ -650,8 +648,8 @@ public class StartGame {
 
     private int readInteger(int min, int max) {
         int n = READ_CONSOLE.nextInt();
-        while(n < min || n > max) {
-            System.out.println("You must to choose a number between "+min+" and "+max+".");
+        while (n < min || n > max) {
+            System.out.println("You must to choose a number between " + min + " and " + max + ".");
             n = READ_CONSOLE.nextInt();
         }
         return n;
