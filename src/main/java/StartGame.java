@@ -5,6 +5,7 @@ import restrictions.RestrictedRoles;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -13,15 +14,15 @@ public class StartGame {
 
     private static final Scanner READ_CONSOLE = new Scanner(System.in);
 
-    final String[] CLANS = {"lion", "scorpion", "phoenix", "crane", "crab", "unicorn", "dragon"};
-    final String[] ELEMENTS = {"void", "air", "water", "fire", "earth"};
-    final int NUMBER_OPTIONS = 3;
+    private final String[] CLANS = {"lion", "scorpion", "phoenix", "crane", "crab", "unicorn", "dragon"};
+    private final String[] ELEMENTS = {"void", "air", "water", "fire", "earth"};
+    private final int NUMBER_OPTIONS = 3;
 
-    final Integer MAX_CONFLICT_CARDS = 45;
-    final Integer MIN_CONFLICT_CARDS = 40;
-    final Integer MAX_CONFLICT_CHARACTERS = 10;
-    final Integer MAX_PROVINCE_CARDS = 5;
-    final Integer MAX_CARD_COPIES = 3;
+    private final Integer MAX_CONFLICT_CARDS = 45;
+    private final Integer MIN_CONFLICT_CARDS = 40;
+    private final Integer MAX_CONFLICT_CHARACTERS = 10;
+    private final Integer MAX_PROVINCE_CARDS = 5;
+    private final Integer MAX_CARD_COPIES = 3;
 
     private Deck player1;
     private Deck player2;
@@ -32,9 +33,6 @@ public class StartGame {
 
     private Boolean allowRestrictedCards;
     private Boolean allowRestrictedRoles;
-
-    private Validation validate;
-    private Export export;
 
     public void start() throws CloneNotSupportedException {
         this.player1 = new Deck("UNO");
@@ -48,10 +46,10 @@ public class StartGame {
         this.collectionL5R.initializeRoleCardList();
         this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
-        this.validate = new Validation();
-        this.validate.validateDecks(this.player1, this.player2);
-        this.export = new Export();
-        this.export.exportPlayers(this.player1, this.player2);
+        Validation validate = new Validation();
+        validate.validateDecks(this.player1, this.player2);
+        Export export = new Export();
+        export.exportPlayers(this.player1, this.player2);
     }
 
     private void playerTurn() throws CloneNotSupportedException {
@@ -169,23 +167,14 @@ public class StartGame {
                 || card.getClan().equals(player.getClan())) {
             return true;
         } else {
-            if (card.getInfluence() * i <= player.getInfluence()) {
-                return true;
-            } else {
-                return false;
-            }
+            return card.getInfluence() * i <= player.getInfluence();
         }
     }
 
     private boolean oneMoreCharacter(Deck player, ConflictCard card, int i) {
-        if (!card.getCharacter()) {
-            return true;
-        } else {
-            if (player.getNumberCharacters() + i < MAX_CONFLICT_CHARACTERS) {
-                return true;
-            } else {
-                return false;
-            }
+        if (!card.getCharacter()) return true;
+        else {
+            return player.getNumberCharacters() + i < MAX_CONFLICT_CHARACTERS;
         }
     }
 
@@ -194,8 +183,7 @@ public class StartGame {
                 .filter(card ->
                         !conflictCardIsPresent(player, card)
                                 && characterConditions(player, card)
-                                && isAllowedCard(player, card, "Conflict")
-                                && (card.getClan().equals("neutral")
+                                && isAllowedCard(player, card, "Conflict") && (card.getClan().equals("neutral")
                                 || card.getClan().equals(player.getClan())
                                 || splashConditions(player, card))
                                 && (card.getRoleLimit() == null
@@ -224,30 +212,20 @@ public class StartGame {
     }
 
     private boolean splashConditions(Deck player, ConflictCard card) {
-        if (player.getSplash() == null
-                || player.getSplash().equals("null")
-                || !card.getClan().equals(player.getSplash())
-                || card.getInfluence() == null
-                || card.getInfluence().equals("null")
-                || card.getInfluence() < 1
-                || player.getInfluence() < 1
-                || card.getInfluence() > player.getInfluence()) {
-            return false;
-        } else {
-            return true;
-        }
+        return player.getSplash() != null
+                && !player.getSplash().equals("null")
+                && card.getClan().equals(player.getSplash())
+                && card.getInfluence() != null
+                && !card.getInfluence().equals("null")
+                && card.getInfluence() >= 1
+                && player.getInfluence() >= 1
+                && card.getInfluence() <= player.getInfluence();
     }
 
     private boolean characterConditions(Deck player, ConflictCard card) {
         if (!card.getCharacter()) {
             return true;
-        } else {
-            if (player.getNumberCharacters() == MAX_CONFLICT_CHARACTERS) {
-                return false;
-            } else {
-                return true;
-            }
-        }
+        } else return !Objects.equals(player.getNumberCharacters(), MAX_CONFLICT_CHARACTERS);
     }
 
     private void selectDynastyDeck() throws CloneNotSupportedException {
@@ -399,7 +377,7 @@ public class StartGame {
         if (quantity < 1) {
             this.collectionL5R.getProvinceCardList().remove(selectedCard);
         } else {
-            this.collectionL5R.getProvinceCardList().get(index).setQuantity(Integer.valueOf(quantity));
+            this.collectionL5R.getProvinceCardList().get(index).setQuantity(quantity);
         }
     }
 
@@ -465,10 +443,10 @@ public class StartGame {
         players.add(this.player1);
         players.add(this.player2);
         for (Deck player : players) {
-            List<StrongholdCard> strongholdValidList = new ArrayList<>();
+            ArrayList<StrongholdCard> strongholdValidList = new ArrayList<>();
             this.collectionL5R.getStrongholdCardList().stream()
                     .filter(card -> player.getClan().equals(card.getClan()))
-                    .forEach(card -> strongholdValidList.add(card));
+                    .forEach(strongholdValidList::add);
             System.out.println("Player " + player.getNamePlayer() + ", choose your Stronghold " + player.getClan());
             int option = 0;
             for (int i = 0; i < strongholdValidList.size(); i++) {
@@ -548,7 +526,8 @@ public class StartGame {
 
     private ArrayList<String> randomClan() {
         ArrayList<String> selectingClan = new ArrayList<>();
-        String[] clansRemaining = copyArray(CLANS);
+        String[] clansRemaining = new String[this.CLANS.length];
+        System.arraycopy(this.CLANS, 0, clansRemaining, 0, this.CLANS.length);
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (clansRemaining.length - 1 - i));
             selectingClan.add(clansRemaining[rnd]);
@@ -560,10 +539,8 @@ public class StartGame {
     }
 
     private void selectRestrictedRole(Deck player) {
-        List<RoleCard> options = new ArrayList<>(this.restrictedRoles.getRolesPerClan());
-        this.collectionL5R.getRoleCardList().stream()
-                .filter(card -> this.restrictedRoles.getRestrictedRolesLists().get(player.getClan()).contains(card.getName()))
-                .forEach(card -> options.add(card));
+        List<RoleCard> options = this.collectionL5R.getRoleCardList().stream()
+                .filter(card -> this.restrictedRoles.getRestrictedRolesLists().get(player.getClan()).contains(card.getName())).collect(Collectors.toCollection(ArrayList::new));
         System.out.println("Player " + player.getNamePlayer() + ", choose a card: ");
         for (int i = 0; i < options.size(); i++) {
             System.out.println((i + 1) + ") " + options.get(i).toString());
@@ -635,14 +612,6 @@ public class StartGame {
         int[] result = new int[size];
         for (int i = 0; i < size; i++)
             result[i] = i;
-        return result;
-    }
-
-    private String[] copyArray(String[] array) {
-        String[] result = new String[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i];
-        }
         return result;
     }
 

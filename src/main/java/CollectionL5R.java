@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 @Data
@@ -80,8 +81,7 @@ public class CollectionL5R {
         this.allCards = gson.fromJson(records, type);
     }
 
-    @SuppressWarnings("unchecked")
-    public void readFile() {
+    private void readFile() {
         System.out.println("FAIL Connection --> reading file...");
         this.file = getCardFileReader.apply("todascartas.json");
         try {
@@ -99,7 +99,7 @@ public class CollectionL5R {
     public void deleteExceptions() {
         List<JsonCard> newList = new ArrayList<>(this.allCards);
         newList.stream().
-                filter(obj -> obj != null)
+                filter(Objects::nonNull)
                 .filter(
                         card -> {
                             Type type = new TypeToken<List<JsonPackCards>>() {
@@ -195,14 +195,12 @@ public class CollectionL5R {
         for (JsonPackCards jsonPackCards : packCards) {
             pos++;
             String namePack = jsonPackCards.getPack().get("id").toString();
-            if ("\"gen-con-2017\"".equals(namePack)
-                    || "\"2018-season-one-stronghold-kit\"".equals(namePack)
-                    || "\"battle-for-the-stronghold-kit\"".equals(namePack)) {
-                continue;
-            } else {
-                nameCard = namePack;
-                break;
-            }
+            if (!"\"gen-con-2017\"".equals(namePack)
+                    && !"\"2018-season-one-stronghold-kit\"".equals(namePack)
+                    && !"\"battle-for-the-stronghold-kit\"".equals(namePack)) {
+                        nameCard = namePack;
+                        break;
+                    }
         }
 
         nameCard = nameCard.substring(1, nameCard.length() - 1);
@@ -363,8 +361,7 @@ public class CollectionL5R {
 
     private Function<String, File> getCardFileReader = filename -> {
         ClassLoader cl = getClass().getClassLoader();
-        File file = new File(cl.getResource(filename).getFile());
-        return file;
+        return new File(cl.getResource(filename).getFile());
     };
 
 }

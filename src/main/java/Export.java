@@ -50,7 +50,7 @@ public class Export {
 
     private String doSummaryPlayer(Deck player) {
         StringBuilder strb = new StringBuilder("\t\t\t");
-        strb.append("\""+player.getStronghold().getId()+"\": "+player.getStronghold().getQuantity()+",\n");
+        strb.append("\"").append(player.getStronghold().getId()).append("\": ").append(player.getStronghold().getQuantity()).append(",\n");
         strb.append("\t\t\t\""+player.getRoleCard().getId()+"\": "+player.getRoleCard().getQuantity()+",\n");
         player.getProvinces().forEach(card -> strb.append("\t\t\t\""+card.getId()).append("\": ").append(card.getQuantity()).append(",\n"));
         player.getDynastyCardDeck().forEach(card -> strb.append("\t\t\t\""+card.getId()).append("\": ").append(card.getQuantity()).append(",\n"));
