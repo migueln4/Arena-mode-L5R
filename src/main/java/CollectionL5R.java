@@ -343,6 +343,13 @@ public class CollectionL5R {
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
 
+        JsonArray allowedClans = jsonCard.getAllowed_clans();
+        List<String> allowedClansList = new ArrayList<>();
+        if(allowedClans != null)
+            allowedClans.forEach(clan -> allowedClansList.add(clan.getAsString()));
+
+        newCard.setAllowed_clans(allowedClansList);
+
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
 

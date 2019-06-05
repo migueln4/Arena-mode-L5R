@@ -183,15 +183,15 @@ public class StartGame {
                 .filter(card ->
                         !conflictCardIsPresent(player, card)
                                 && characterConditions(player, card)
-                                && isAllowedCard(player, card, "Conflict") && (card.getClan().equals("neutral")
-                                || card.getClan().equals(player.getClan())
-                                || splashConditions(player, card))
+                                && isAllowedCard(player, card, "Conflict")
+                                && (card.getClan().equals(player.getClan())
+                                    || splashConditions(player, card))
                                 && (card.getRoleLimit() == null
-                                || card.getRoleLimit().equals("null")
-                                || card.getRoleLimit().equals(player.getRoleCard().getRole()))
+                                    || card.getRoleLimit().equals("null")
+                                    || card.getRoleLimit().equals(player.getRoleCard().getRole()))
                                 && (card.getElementLimit() == null
-                                || card.getElementLimit().equals("null")
-                                || card.getElementLimit().equals(player.getElement()))
+                                    || card.getElementLimit().equals("null")
+                                    || card.getElementLimit().equals(player.getElement()))
                 )
                 .collect(Collectors.toList());
         int rndArray[] = createArrayNumbers(selection.size());
@@ -200,6 +200,16 @@ public class StartGame {
             cardsAvailables.add(selection.get(rndArray[rnd]));
             rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
+    }
+
+    private boolean isAllowedClan(Deck player, List<String> allowedClans) {
+        for(String clan : allowedClans)
+            if(clan.equals(player.getClan()))
+                return true;
+            else if (player.getSplash() != null)
+                if(clan.equals(player.getSplash()))
+                    return true;
+        return false;
     }
 
     private boolean conflictCardIsPresent(Deck player, ConflictCard card) {
@@ -211,6 +221,8 @@ public class StartGame {
         return false;
     }
 
+    //TODO: hay contemplar que la carta sea neutral y que se permita estar en el clan y que, si tiene splash,
+    // cumpla con las condiciones, añadiendo lo de que se le permita estar en el clan.
     private boolean splashConditions(Deck player, ConflictCard card) {
         return player.getSplash() != null
                 && !player.getSplash().equals("null")
