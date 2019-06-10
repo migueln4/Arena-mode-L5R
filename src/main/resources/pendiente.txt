@@ -1,0 +1,6 @@
+- Crear un modo salvaje sin ningún tipo de restricción.
+- Archivo con constantes aparte.
+- Rehacer la selección de provincias por elemento teniendo en cuenta que ya hay provincias multielemento.
+- Convertir las listas de cartas en mapas.
+- Cambiar nombre del archivo .json local.
+- Poner un tiempo de espera para la llamada a la API de FiveRingsDB antes de que se traiga todas las cartas.

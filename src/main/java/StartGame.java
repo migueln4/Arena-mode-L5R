@@ -185,7 +185,7 @@ public class StartGame {
                                 && characterConditions(player, card)
                                 && isAllowedCard(player, card, "Conflict")
                                 && (card.getClan().equals(player.getClan())
-                                    || splashConditions(player, card))
+                                    || isAllowedClan(player, card))
                                 && (card.getRoleLimit() == null
                                     || card.getRoleLimit().equals("null")
                                     || card.getRoleLimit().equals(player.getRoleCard().getRole()))
@@ -202,13 +202,18 @@ public class StartGame {
         }
     }
 
-    private boolean isAllowedClan(Deck player, List<String> allowedClans) {
+    private boolean isAllowedClan(Deck player, ConflictCard card) {
+        if(card.getClan().equals("neutral")) {
+            return isAllowedClan(player.getClan(),card.getAllowed_clans());
+        } else {
+            return splashConditions(player,card);
+        }
+    }
+
+    private boolean isAllowedClan(String clanToEvaluate, List<String> allowedClans) {
         for(String clan : allowedClans)
-            if(clan.equals(player.getClan()))
+            if(clan.equals(clanToEvaluate))
                 return true;
-            else if (player.getSplash() != null)
-                if(clan.equals(player.getSplash()))
-                    return true;
         return false;
     }
 
@@ -221,11 +226,10 @@ public class StartGame {
         return false;
     }
 
-    //TODO: hay contemplar que la carta sea neutral y que se permita estar en el clan y que, si tiene splash,
-    // cumpla con las condiciones, añadiendo lo de que se le permita estar en el clan.
     private boolean splashConditions(Deck player, ConflictCard card) {
         return player.getSplash() != null
                 && !player.getSplash().equals("null")
+                && isAllowedClan(player.getClan(),card.getAllowed_clans())
                 && card.getClan().equals(player.getSplash())
                 && card.getInfluence() != null
                 && !card.getInfluence().equals("null")

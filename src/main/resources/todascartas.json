@@ -947,8 +947,8 @@
 			],
 			"political": "2",
 			"side": "dynasty",
-			"text": "<b>Action:</b> If you have 6 or fewer honor – look at the top 2 caards of your conflict deck. Put 1 of those cards into your hand and the other on the bottom of your conflict deck.",
-			"text_canonical": "action: if you have 6 or fewer honor - look at the top 2 caards of your conflict deck. put 1 of those cards into your hand and the other on the bottom of your conflict deck.",
+			"text": "<b>Action:</b> If you have 6 or fewer honor – look at the top 2 cards of your conflict deck. Put 1 of those cards into your hand and the other on the bottom of your conflict deck.",
+			"text_canonical": "action: if you have 6 or fewer honor - look at the top 2 cards of your conflict deck. put 1 of those cards into your hand and the other on the bottom of your conflict deck.",
 			"traits": [
 				"courtier",
 				"shinobi"
@@ -1454,6 +1454,42 @@
 			"traits": [
 				"bushi",
 				"mantis-clan"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
+			"cost": 5,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "army-of-the-rising-wave",
+			"is_restricted": false,
+			"military": "6",
+			"name": "Army of the Rising Wave",
+			"name_canonical": "army of the rising wave",
+			"pack_cards": [
+				{
+					"flavor": "\"Stripped by the wave, the wasteland becomes a battlefield.\" - Togashi Yokuni",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "96",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character enters play - place 1 fate on each unclaimed ring.",
+			"text_canonical": "reaction: after this character enters play - place 1 fate on each unclaimed ring.",
+			"traits": [
+				"bushi",
+				"army"
 			],
 			"type": "character",
 			"unicity": false
@@ -3295,6 +3331,45 @@
 				"unicorn"
 			],
 			"clan": "scorpion",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "by-any-means",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "By Any Means",
+			"name_canonical": "by any means",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Conceptopolis",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "108",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a conflict, if your honor bid is higher than you opponent's, choose a participating <em>Bushi</em> character you control and a participating character your opponent controls - until the end of the conflict, set your character's base [conflict-military] skill to the current [conflict-military] skill of your opponent's character.",
+			"text_canonical": "action: during a conflict, if your honor bid is higher than you opponent's, choose a participating bushi character you control and a participating character your opponent controls - until the end of the conflict, set your character's base [conflict-military] skill to the current [conflict-military] skill of your opponent's character.",
+			"traits": [
+				"tactic"
+			],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "scorpion",
 			"cost": 1,
 			"deck_limit": 3,
 			"id": "calling-in-favors",
@@ -4766,6 +4841,43 @@
 			"side": "conflict",
 			"text": "<b>Action:</b> During a conflict, choose a participating character you control. Your opponent selects one – that character gets +2[conflict-military] and +2[conflict-political] until the end of the conflict, or your opponent gives you 1 honor.",
 			"text_canonical": "action: during a conflict, choose a participating character you control. your opponent selects one - that character gets +2[conflict-military] and +2[conflict-political] until the end of the conflict, or your opponent gives you 1 honor.",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "dragon",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "deduction",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"name": "Deduction",
+			"name_canonical": "deduction",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Lin Hsiang",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "105",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-political] conflict, return a ring from your claimed ring pool to the unclaimed ring pool. Choose a participating character with printed cost 3 or lower - bow that character.",
+			"text_canonical": "action: during a [conflict-political] conflict, return a ring from your claimed ring pool to the unclaimed ring pool. choose a participating character with printed cost 3 or lower - bow that character.",
 			"traits": [],
 			"type": "event",
 			"unicity": false
@@ -7190,6 +7302,42 @@
 			"text_canonical": "play only if you are less honorable than an opponent.\naction: during a conflict - put a shinobi character into play from your hand or provinces in the conflict. that character enters play dishonored.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 0,
+			"id": "frontline-engineer",
+			"is_restricted": false,
+			"military": "4",
+			"name": "Frontline Engineer",
+			"name_canonical": "frontline engineer",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Stanislav Dikolenko",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "92",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "This character gets +1 glory for each holding in play.\n<b>Action:</b> During a conflict in which this character is defending - search the top 5 cards of your dynasty deck for a holding and put it into play in the attacked province, discarding each other card in that province. Shuffle.",
+			"text_canonical": "this character gets +1 glory for each holding in play.\naction: during a conflict in which this character is defending - search the top 5 cards of your dynasty deck for a holding and put it into play in the attacked province, discarding each other card in that province. shuffle.",
+			"traits": [
+				"bushi",
+				"engineer"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -16576,6 +16724,45 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "outflank",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Outflank",
+			"name_canonical": "outflank",
+			"pack_cards": [
+				{
+					"flavor": "\"Do not follow the roads you foe lays out for you. Blaze your own.\" - from the tactics of Shinjo Khulan Khan",
+					"illustrator": "Calvin Chua",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "110",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Reaction:</b> After an opponent's province is revealed during a conflict, choose a non-unique character - that character cannot be declared as a defender in this conflict. (Max 1 per conflict.)",
+			"text_canonical": "reaction: after an opponent's province is revealed during a conflict, choose a non-unique character - that character cannot be declared as a defender in this conflict. (max 1 per conflict.)",
+			"traits": [
+				"tactic"
+			],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"unicorn"
 			],
 			"clan": "unicorn",
@@ -20450,6 +20637,41 @@
 		},
 		{
 			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
+			"deck_limit": 1,
+			"fate": 7,
+			"honor": 10,
+			"id": "shiro-kitsuki",
+			"influence_pool": 11,
+			"is_restricted": false,
+			"name": "Shiro Kitsuki",
+			"name_canonical": "shiro kitsuki",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Nele Diel",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "89",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength_bonus": "+2",
+			"text": "<b>Reaction:</b> After a conflict is declared, name a card - after each time your opponent plays that card during this conflict, choose an unclaimed ring and claim it as a [conflict-political] ring, gaining all fate from it. (Unlimited.)",
+			"text_canonical": "reaction: after a conflict is declared, name a card - after each time your opponent plays that card during this conflict, choose an unclaimed ring and claim it as a [conflict-political] ring, gaining all fate from it. (unlimited.)",
+			"traits": [
+				"castle"
+			],
+			"type": "stronghold",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
 				"crab"
 			],
 			"clan": "crab",
@@ -22285,6 +22507,38 @@
 			"text_canonical": "action: during a conflict, choose a character that has lost a duel during this conflict - bow that character. you may spend 1 fate to dishonor that character.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"deck_limit": 3,
+			"id": "strategic-weakpoint",
+			"is_restricted": false,
+			"name": "Strategic Weakpoint",
+			"name_canonical": "strategic weakpoint",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Calvin Chua",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "93",
+					"quantity": 3
+				}
+			],
+			"side": "dynasty",
+			"strength_bonus": "+0",
+			"text": "<b>Interrupt:</b> When the holding's province would be broken, your opponent choose an attacking character - discard that character.",
+			"text_canonical": "interrupt: when the holding's province would be broken, your opponent choose an attacking character - discard that character.",
+			"traits": [
+				"trap"
+			],
+			"type": "holding",
 			"unicity": false
 		},
 		{
@@ -26058,6 +26312,43 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "crab",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "withstand-the-darkness",
+			"influence_cost": 1,
+			"is_restricted": false,
+			"name": "Withstand the Darkness",
+			"name_canonical": "withstand the darkness",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Andreja Ugrai",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "103",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Reaction:</b> After an opponent plays an event that chooses a [clan-crab] character you control as a target - place 1 fate on that character. (Max 1 per phase.)",
+			"text_canonical": "reaction: after an opponent plays an event that chooses a [clan-crab] character you control as a target - place 1 fate on that character. (max 1 per phase.)",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "lion",
 			"cost": 1,
 			"deck_limit": 3,
@@ -26656,6 +26947,6 @@
 			"unicity": false
 		}
 	],
-	"size": 709,
+	"size": 717,
 	"success": true
 }
