@@ -86,7 +86,7 @@ public class CollectionL5R {
 
     private void readFile() {
         System.out.println("FAIL Connection --> reading file...");
-        this.file = getCardFileReader.apply("todascartas.json");
+        this.file = getCardFileReader.apply("allcards.json");
         try {
             this.obj = parser.parse(new FileReader(file));
             this.jsonObject = (JsonObject) obj;

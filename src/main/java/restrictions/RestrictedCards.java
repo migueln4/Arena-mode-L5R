@@ -1,5 +1,6 @@
 package restrictions;
 
+import constants.Constants;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -42,9 +43,9 @@ public class RestrictedCards {
 
         restrictedProvinceCards.add("Feast or Famine");
 
-        this.restrictedLists.put("Conflict",restrictedConflictCards);
-        this.restrictedLists.put("Dynasty",restrictedDynastyCards);
-        this.restrictedLists.put("Province",restrictedProvinceCards);
+        this.restrictedLists.put(Constants.CONFLICT,restrictedConflictCards);
+        this.restrictedLists.put(Constants.DYNASTY,restrictedDynastyCards);
+        this.restrictedLists.put(Constants.PROVINCE,restrictedProvinceCards);
     }
 
 }
