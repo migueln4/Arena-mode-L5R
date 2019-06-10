@@ -413,18 +413,20 @@ public class StartGame {
     private void makeProvinceOptions(List<String> elementsAvailables, List<ProvinceCard> provincesAvailables, Deck player) {
         List<ProvinceCard> selection =
                 this.collectionL5R.getProvinceCardList().stream()
-                        .filter(card -> elementsAvailables.contains(card.getElement())
+                        .filter(card ->
+                                (elementsAvailables.contains(card.getElement())
+                                    || card.getElement().equals("all"))
                                 && !pronvinceIsPresent(player, card)
                                 && isAllowedCard(player, card, "Province")
                                 && ((card.getClan() == null)
-                                || card.getClan().equals(player.getClan())
-                                || card.getClan().equals("neutral"))
+                                    || card.getClan().equals(player.getClan())
+                                    || card.getClan().equals("neutral"))
                                 && ((card.getRoleLimit() == null)
-                                || card.getRoleLimit().equals(player.getRoleCard().getRole())
-                                || card.getRoleLimit().equals("null"))
+                                    || card.getRoleLimit().equals(player.getRoleCard().getRole())
+                                    || card.getRoleLimit().equals("null"))
                                 && ((card.getElementLimit() == null)
-                                || card.getElementLimit().equals(player.getRoleCard().getElement())
-                                || card.getElementLimit().equals("null")))
+                                    || card.getElementLimit().equals(player.getRoleCard().getElement())
+                                    || card.getElementLimit().equals("null")))
                         .collect(Collectors.toList());
         int rndArray[] = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {

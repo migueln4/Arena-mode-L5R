@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/pendiente.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/todascartas.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todascartas.json" afterDir="false" />
-    </list>
+    <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien." />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +18,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="413">
+              <caret line="113" column="123" selection-start-line="113" selection-start-column="123" selection-end-line="113" selection-end-column="123" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="385" column="43" lean-forward="true" selection-start-line="385" selection-start-column="43" selection-end-line="385" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,10 +40,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/restrictions/RestrictedCards.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="215" column="28" selection-start-line="215" selection-start-column="28" selection-end-line="215" selection-end-column="28" />
+            <state relative-caret-position="-140">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -182,9 +189,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cards/ProvinceCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/ConflictCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/cards/JsonCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CollectionL5R.java" />
         <option value="$PROJECT_DIR$/src/main/resources/pendiente.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/todascartas.json" />
+        <option value="$PROJECT_DIR$/src/main/java/CollectionL5R.java" />
         <option value="$PROJECT_DIR$/src/main/java/StartGame.java" />
       </list>
     </option>
@@ -359,7 +366,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24295302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -373,7 +380,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3186969" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.27620396" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5020243" side_tool="true" weight="0.74600357" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.42917848" />
@@ -387,7 +394,7 @@
       <window_info anchor="right" id="Maven" order="7" weight="0.32955465" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24295302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -401,7 +408,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3186969" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.27620396" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5020243" side_tool="true" weight="0.74600357" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.42917848" />
@@ -525,16 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/restrictions/RestrictedCards.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/restrictions/RestrictedRoles.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1000">
@@ -625,6 +622,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/todascartas.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="26951" column="1" selection-start-line="26951" selection-start-column="1" selection-end-line="26951" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/pendiente.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -634,25 +638,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CollectionL5R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="413">
+          <caret line="113" column="123" selection-start-line="113" selection-start-column="123" selection-end-line="113" selection-end-column="123" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/todascartas.json">
+    <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="26951" column="1" selection-start-line="26951" selection-start-column="1" selection-end-line="26951" selection-end-column="1" />
+        <state relative-caret-position="209">
+          <caret line="385" column="43" lean-forward="true" selection-start-line="385" selection-start-column="43" selection-end-line="385" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/StartGame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/restrictions/RestrictedCards.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="215" column="28" selection-start-line="215" selection-start-column="28" selection-end-line="215" selection-end-column="28" />
+        <state relative-caret-position="-140">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
