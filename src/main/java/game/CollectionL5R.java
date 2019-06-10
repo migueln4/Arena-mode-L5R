@@ -1,6 +1,9 @@
+package game;
+
 import cards.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import constants.Constants;
 import interfaces.ThreeParametersLambda;
 import lombok.Data;
 
@@ -120,31 +123,31 @@ public class CollectionL5R {
     }
 
     public void initializeConflictCardList() {
-        allCards.stream().filter(card -> card.getSide().equals("conflict")).
+        allCards.stream().filter(card -> card.getSide().equalsIgnoreCase(Constants.CONFLICT)).
                 forEach(card -> conflictCardList.add(jsonCardToConflictCard.apply(card)));
         System.out.println("Conflict Card List: OK (" + this.conflictCardList.size() + " cards)");
     }
 
     public void initializeDynastyCardList() {
-        allCards.stream().filter(card -> card.getSide().equals("dynasty")).
+        allCards.stream().filter(card -> card.getSide().equalsIgnoreCase(Constants.DYNASTY)).
                 forEach(card -> dynastyCardList.add(jsonCardToDynastyCard.apply(card)));
         System.out.println("Dynasty Card List: OK (" + this.dynastyCardList.size() + " cards)");
     }
 
     public void initializeProvinceCardList() {
-        allCards.stream().filter(card -> card.getType().equals("province")).
+        allCards.stream().filter(card -> card.getType().equalsIgnoreCase(Constants.PROVINCE)).
                 forEach(card -> provinceCardList.add(jsonCardToProvinceCard.apply(card)));
         System.out.println("Province Card List: OK (" + this.provinceCardList.size() + " cards)");
     }
 
     public void initializeRoleCardList() {
-        allCards.stream().filter(card -> card.getSide().equals("role")).
+        allCards.stream().filter(card -> card.getSide().equalsIgnoreCase(Constants.ROLE)).
                 forEach(card -> roleCardList.add(jsonCardToRoleCard.apply(card)));
         System.out.println("Role Card List: OK (" + this.roleCardList.size() + " cards)");
     }
 
     public void initializeStrongholdCardList() {
-        allCards.stream().filter(card -> card.getType().equals("stronghold")).
+        allCards.stream().filter(card -> card.getType().equalsIgnoreCase(Constants.STRONGHOLD)).
                 forEach(card -> strongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
         System.out.println("Stronghold Card List: OK (" + this.strongholdCardList.size() + " cards)");
     }
@@ -293,11 +296,11 @@ public class CollectionL5R {
 
         if (name.contains("Support")) {
             newCard.setClan(traits.get(0).toString().substring(1, traits.get(0).toString().length() - 1));
-            newCard.setRole("support");
+            newCard.setRole(Constants.SUPPORT);
         } else {
             newCard.setRole(traits.get(0).toString().substring(1, traits.get(0).toString().length() - 1));
             newCard.setElement(traits.get(1).toString().substring(1,traits.get(1).toString().length() - 1));
-            newCard.setClan("neutral");
+            newCard.setClan(Constants.NEUTRAL);
         }
 
         return newCard;
@@ -305,26 +308,26 @@ public class CollectionL5R {
 
     private void elementAndRoleRestrictions(Card newCard, String role) {
         switch (role) {
-            case "keeper":
-                newCard.setRoleLimit("keeper");
+            case Constants.KEEPER:
+                newCard.setRoleLimit(Constants.KEEPER);
                 break;
-            case "seeker":
-                newCard.setRoleLimit("seeker");
+            case Constants.SEEKER:
+                newCard.setRoleLimit(Constants.SEEKER);
                 break;
-            case "air":
-                newCard.setElementLimit("air");
+            case Constants.AIR:
+                newCard.setElementLimit(Constants.AIR);
                 break;
-            case "water":
-                newCard.setElementLimit("water");
+            case Constants.WATER:
+                newCard.setElementLimit(Constants.WATER);
                 break;
-            case "fire":
-                newCard.setElementLimit("fire");
+            case Constants.FIRE:
+                newCard.setElementLimit(Constants.FIRE);
                 break;
-            case "void":
-                newCard.setElementLimit("void");
+            case Constants.VOID:
+                newCard.setElementLimit(Constants.VOID);
                 break;
-            case "earth":
-                newCard.setElementLimit("earth");
+            case Constants.EARTH:
+                newCard.setElementLimit(Constants.EARTH);
                 break;
             default:
                 break;

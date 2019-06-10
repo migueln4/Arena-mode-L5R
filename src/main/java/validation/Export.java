@@ -1,3 +1,6 @@
+package validation;
+
+import cards.Deck;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Data;
@@ -14,7 +17,7 @@ public class Export {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    void exportPlayers(Deck player1, Deck player2) {
+    public void exportPlayers(Deck player1, Deck player2) {
         StringBuilder srcPlayer1 = new StringBuilder(player1.getNamePlayer());
         StringBuilder srcPlayer2 = new StringBuilder(player2.getNamePlayer());
         srcPlayer1.append("_player1.json");

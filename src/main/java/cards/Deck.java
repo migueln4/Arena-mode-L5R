@@ -1,3 +1,5 @@
+package cards;
+
 import cards.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,3 +1,6 @@
+package validation;
+
+import cards.Deck;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.Data;
@@ -15,7 +18,7 @@ public class Validation {
 
     private final String VALIDATE_URL = "https://api.fiveringsdb.com/deck-validation/standard";
 
-    void validateDecks(Deck player1, Deck player2) {
+    public void validateDecks(Deck player1, Deck player2) {
         Deck[] decks = new Deck[]{player1,player2};
         for (Deck player : decks) {
             String bodyplayer = createJsonToValidate(player);
