@@ -29,6 +29,7 @@ public class ConflictCard extends Card implements Cloneable {
                 ", Limit: " + super.getDeckLimit() +
                 ", Character: " + this.character +
                 ", Influence: " + this.influence +
+                ", Restricted: " + this.getIsRestricted() +
                 ", Allowed Clans: "+this.allowed_clans.toString()+"]" +
                 "---> " + super.getQuantity() + " copies";
     }

@@ -39,5 +39,6 @@ public class Constants {
     public static final String DYNASTY = "Dynasty";
     public static final String PROVINCE = "Province";
     public static final String STRONGHOLD = "Stronghold";
+    public static final String CHARACTER = "character";
 
 }

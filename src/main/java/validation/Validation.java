@@ -19,7 +19,7 @@ public class Validation {
     private final String VALIDATE_URL = "https://api.fiveringsdb.com/deck-validation/standard";
 
     public void validateDecks(Deck player1, Deck player2) {
-        Deck[] decks = new Deck[]{player1,player2};
+        Deck[] decks = new Deck[]{player1, player2};
         for (Deck player : decks) {
             String bodyplayer = createJsonToValidate(player);
             try {
@@ -46,7 +46,7 @@ public class Validation {
                 JsonParser parser = new JsonParser();
                 Object obj = parser.parse(content.toString());
                 JsonObject jsonObject = (JsonObject) obj;
-                System.out.println("Validating "+player.getNamePlayer()+"'s deck...\n\t-> "+validationCode(jsonObject.get("status").getAsInt()));
+                System.out.println("Validating " + player.getNamePlayer() + "'s deck...\n\t-> " + validationCode(jsonObject.get("status").getAsInt()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -66,7 +66,7 @@ public class Validation {
     }
 
     private String validationCode(int code) {
-        switch(code) {
+        switch (code) {
             case 0:
                 return "Deck is valid";
             case 1:

@@ -1,6 +1,5 @@
 package cards;
 
-import cards.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,7 +40,7 @@ public class Deck {
         this.numberDynastyCards = 0;
         this.namePlayer = namePlayer;
         this.influence = 0;
-        this.limitProvince = new Integer[]{1,1,1,1,1};
+        this.limitProvince = new Integer[]{1, 1, 1, 1, 1};
         this.provinces = new ArrayList<>();
         this.conflictCardDeck = new ArrayList<>();
         this.dynastyCardDeck = new ArrayList<>();

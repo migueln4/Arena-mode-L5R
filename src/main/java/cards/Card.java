@@ -17,5 +17,6 @@ public class Card {
     private String elementLimit; //air, void, fire, earth, water, NULL
     private Integer quantity;
     private String idFiveRingsDB;
+    private Boolean isRestricted;
 
 }

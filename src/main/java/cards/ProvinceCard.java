@@ -13,25 +13,25 @@ public class ProvinceCard extends Card implements Cloneable {
 
     @Override
     public Object clone() throws
-            CloneNotSupportedException
-    {
+            CloneNotSupportedException {
         return super.clone();
     }
 
     @Override
     public String toString() {
-        return "[Name: "+super.getName()+
-                ", Clan: "+super.getClan()+
-                ", Element: "+this.element+
-                ", Restrictions: "+super.getElementLimit()+"/"+super.getRoleLimit()+
-                ", ID: "+super.getId()+"] ---> "+this.getQuantity()+" copies.";
+        return "[Name: " + super.getName() +
+                ", Clan: " + super.getClan() +
+                ", Element: " + this.element +
+                ", Restrictions: " + super.getElementLimit() + "/" + super.getRoleLimit() +
+                ", Restricted: " + this.getIsRestricted() +
+                ", ID: " + super.getId() + "] ---> " + this.getQuantity() + " copies.";
     }
 
     @Override
     public boolean equals(Object o) {
-        if(o == this)
+        if (o == this)
             return true;
-        else if(!(o instanceof ProvinceCard))
+        else if (!(o instanceof ProvinceCard))
             return false;
         ProvinceCard card = (ProvinceCard) o;
         return card.getIdFiveRingsDB().equals(this.getIdFiveRingsDB());

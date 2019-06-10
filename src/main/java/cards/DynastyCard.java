@@ -13,25 +13,25 @@ public class DynastyCard extends Card implements Cloneable {
 
     @Override
     public Object clone() throws
-            CloneNotSupportedException
-    {
+            CloneNotSupportedException {
         return super.clone();
     }
 
     @Override
     public String toString() {
-        return "[Name: "+super.getName()+
-                ", Clan: "+super.getClan()+
-                ", ID: "+super.getId()+
-                ", Limit: "+super.getDeckLimit()+"]"+
-                "---> "+super.getQuantity()+" copies";
+        return "[Name: " + super.getName() +
+                ", Clan: " + super.getClan() +
+                ", ID: " + super.getId() +
+                ", Limit: " + super.getDeckLimit() + "]" +
+                ", Restricted: " + this.getIsRestricted() +
+                "---> " + super.getQuantity() + " copies";
     }
 
     @Override
     public boolean equals(Object o) {
-        if(o == this)
+        if (o == this)
             return true;
-        else if(!(o instanceof DynastyCard))
+        else if (!(o instanceof DynastyCard))
             return false;
         DynastyCard card = (DynastyCard) o;
         return card.getIdFiveRingsDB().equals(this.getIdFiveRingsDB());

@@ -3,7 +3,6 @@ package game;
 import cards.*;
 import constants.Constants;
 import lombok.NoArgsConstructor;
-import restrictions.RestrictedCards;
 import restrictions.RestrictedRoles;
 import validation.Export;
 import validation.Validation;
@@ -33,7 +32,6 @@ public class StartGame {
     private Deck player2;
 
     private CollectionL5R collectionL5R;
-    private RestrictedCards restrictedCards;
     private RestrictedRoles restrictedRoles;
 
     private Boolean allowRestrictedCards;
@@ -43,7 +41,6 @@ public class StartGame {
         this.player1 = new Deck("UNO");
         this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
-        this.restrictedCards = new RestrictedCards();
         this.restrictedRoles = new RestrictedRoles();
         this.collectionL5R.initializeConflictCardList();
         this.collectionL5R.initializeDynastyCardList();
@@ -152,7 +149,7 @@ public class StartGame {
         cardToAdd.setQuantity(addQuantity);
         player.getConflictCardDeck().add(cardToAdd);
         player.setNumberConflictCards(player.getNumberConflictCards() + addQuantity);
-        if (isRestrictedCard(cardSelected, Constants.CONFLICT))
+        if (isRestrictedCard(cardSelected))
             player.setContainsRestrictedCards(Boolean.TRUE);
         if (cardToAdd.getCharacter())
             player.setNumberCharacters(player.getNumberCharacters() + addQuantity);
@@ -188,18 +185,18 @@ public class StartGame {
                 .filter(card ->
                         !conflictCardIsPresent(player, card)
                                 && characterConditions(player, card)
-                                && isAllowedCard(player, card, Constants.CONFLICT)
+                                && isAllowedCard(player, card)
                                 && (card.getClan().equals(player.getClan())
-                                    || isAllowedClan(player, card))
+                                || isAllowedClan(player, card))
                                 && (card.getRoleLimit() == null
-                                    || card.getRoleLimit().equals("null")
-                                    || card.getRoleLimit().equals(player.getRoleCard().getRole()))
+                                || card.getRoleLimit().equals("null")
+                                || card.getRoleLimit().equals(player.getRoleCard().getRole()))
                                 && (card.getElementLimit() == null
-                                    || card.getElementLimit().equals("null")
-                                    || card.getElementLimit().equals(player.getElement()))
+                                || card.getElementLimit().equals("null")
+                                || card.getElementLimit().equals(player.getElement()))
                 )
                 .collect(Collectors.toList());
-        int rndArray[] = createArrayNumbers(selection.size());
+        int[] rndArray = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             cardsAvailables.add(selection.get(rndArray[rnd]));
@@ -208,16 +205,16 @@ public class StartGame {
     }
 
     private boolean isAllowedClan(Deck player, ConflictCard card) {
-        if(card.getClan().equals(Constants.NEUTRAL)) {
-            return isAllowedClan(player.getClan(),card.getAllowed_clans());
+        if (card.getClan().equals(Constants.NEUTRAL)) {
+            return isAllowedClan(player.getClan(), card.getAllowed_clans());
         } else {
-            return splashConditions(player,card);
+            return splashConditions(player, card);
         }
     }
 
     private boolean isAllowedClan(String clanToEvaluate, List<String> allowedClans) {
-        for(String clan : allowedClans)
-            if(clan.equals(clanToEvaluate))
+        for (String clan : allowedClans)
+            if (clan.equals(clanToEvaluate))
                 return true;
         return false;
     }
@@ -234,7 +231,7 @@ public class StartGame {
     private boolean splashConditions(Deck player, ConflictCard card) {
         return player.getSplash() != null
                 && !player.getSplash().equals("null")
-                && isAllowedClan(player.getClan(),card.getAllowed_clans())
+                && isAllowedClan(player.getClan(), card.getAllowed_clans())
                 && card.getClan().equals(player.getSplash())
                 && card.getInfluence() != null
                 && !card.getInfluence().equals("null")
@@ -314,7 +311,7 @@ public class StartGame {
         cardToAdd.setQuantity(addQuantity);
         player.getDynastyCardDeck().add(cardToAdd);
         player.setNumberDynastyCards(player.getNumberDynastyCards() + addQuantity);
-        if (isRestrictedCard(cardSelected, Constants.DYNASTY))
+        if (isRestrictedCard(cardSelected))
             player.setContainsRestrictedCards(Boolean.TRUE);
         int quantity = cardSelected.getQuantity() - addQuantity;
         int index = this.collectionL5R.getDynastyCardList().indexOf(cardSelected);
@@ -329,7 +326,7 @@ public class StartGame {
         List<DynastyCard> selection =
                 this.collectionL5R.getDynastyCardList().stream()
                         .filter(card -> !dynastyCardIsPresent(player, card)
-                                && isAllowedCard(player, card, Constants.DYNASTY)
+                                && isAllowedCard(player, card)
                                 && (card.getClan().equals("neutral")
                                 || card.getClan().equals(player.getClan()))
                                 && (card.getRoleLimit() == null
@@ -339,7 +336,7 @@ public class StartGame {
                                 || card.getElementLimit().equals("null")
                                 || card.getElementLimit().equals(player.getElement())))
                         .collect(Collectors.toList());
-        int rndArray[] = createArrayNumbers(selection.size());
+        int[] rndArray = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             cardsAvailables.add(selection.get(rndArray[rnd]));
@@ -386,7 +383,7 @@ public class StartGame {
         ProvinceCard selectedCard = (ProvinceCard) provincesAvailables.get(option - 1).clone();
         selectedCard.setQuantity(1);
         player.getProvinces().add(selectedCard);
-        if (isRestrictedCard(selectedCard, Constants.PROVINCE))
+        if (isRestrictedCard(selectedCard))
             player.setContainsRestrictedCards(Boolean.TRUE);
         for (int i = 0; i < player.getLimitProvince().length; i++) {
             if (ELEMENTS[i].equals(selectedCard.getElement())) {
@@ -402,16 +399,11 @@ public class StartGame {
         }
     }
 
-    private boolean isRestrictedCard(Card card, String type) {
+    private boolean isRestrictedCard(Card card) {
         if (this.allowRestrictedCards) {
             return false;
         } else {
-            for (String restrictedNameCard : this.restrictedCards.getRestrictedLists().get(type)) {
-                if (restrictedNameCard.equals(card.getName())) {
-                    return true;
-                }
-            }
-            return false;
+            return card.getIsRestricted();
         }
     }
 
@@ -420,20 +412,20 @@ public class StartGame {
                 this.collectionL5R.getProvinceCardList().stream()
                         .filter(card ->
                                 (elementsAvailables.contains(card.getElement())
-                                    || card.getElement().equals(Constants.ALL_ELEMENTS))
-                                && !pronvinceIsPresent(player, card)
-                                && isAllowedCard(player, card, Constants.PROVINCE)
-                                && ((card.getClan() == null)
-                                    || card.getClan().equals(player.getClan())
-                                    || card.getClan().equals(Constants.NEUTRAL))
-                                && ((card.getRoleLimit() == null)
-                                    || card.getRoleLimit().equals(player.getRoleCard().getRole())
-                                    || card.getRoleLimit().equals("null"))
-                                && ((card.getElementLimit() == null)
-                                    || card.getElementLimit().equals(player.getRoleCard().getElement())
-                                    || card.getElementLimit().equals("null")))
+                                        || card.getElement().equals(Constants.ALL_ELEMENTS))
+                                        && !pronvinceIsPresent(player, card)
+                                        && isAllowedCard(player, card)
+                                        && ((card.getClan() == null)
+                                        || card.getClan().equals(player.getClan())
+                                        || card.getClan().equals(Constants.NEUTRAL))
+                                        && ((card.getRoleLimit() == null)
+                                        || card.getRoleLimit().equals(player.getRoleCard().getRole())
+                                        || card.getRoleLimit().equals("null"))
+                                        && ((card.getElementLimit() == null)
+                                        || card.getElementLimit().equals(player.getRoleCard().getElement())
+                                        || card.getElementLimit().equals("null")))
                         .collect(Collectors.toList());
-        int rndArray[] = createArrayNumbers(selection.size());
+        int[] rndArray = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             provincesAvailables.add(selection.get(rndArray[rnd]));
@@ -441,14 +433,9 @@ public class StartGame {
         }
     }
 
-    private boolean isAllowedCard(Deck player, Card card, String type) {
-        if (this.allowRestrictedCards) {
-            for (String restrictedCardName : this.restrictedCards.getRestrictedLists().get(type)) {
-                if (player.getContainsRestrictedCards() && restrictedCardName.equals(card.getName())) {
-                    return false;
-                }
-            }
-        }
+    private boolean isAllowedCard(Deck player, Card card) {
+        if (this.allowRestrictedCards)
+            return !player.getContainsRestrictedCards() || !card.getIsRestricted();
         return true;
     }
 
@@ -623,7 +610,7 @@ public class StartGame {
                 this.collectionL5R.getRoleCardList().stream()
                         .filter(card -> !card.getClan().equals(player.getClan()))
                         .collect(Collectors.toList());
-        int rndArray[] = createArrayNumbers(selection.size());
+        int[] rndArray = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             rolesAvailables.add(selection.get(rndArray[rnd]));
@@ -646,6 +633,4 @@ public class StartGame {
         }
         return n;
     }
-
-
 }

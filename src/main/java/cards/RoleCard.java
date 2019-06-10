@@ -15,25 +15,24 @@ public class RoleCard extends Card implements Cloneable {
 
     @Override
     public String toString() {
-        return "[Name: "+super.getName()+
-                ", Role: "+this.role+
-                ", Element: "+this.element+
-                ", Clan: "+this.roleClan+
-                ", ID: "+super.getId()+"]-->"+this.getQuantity()+" copies.";
+        return "[Name: " + super.getName() +
+                ", Role: " + this.role +
+                ", Element: " + this.element +
+                ", Clan: " + this.roleClan +
+                ", ID: " + super.getId() + "]-->" + this.getQuantity() + " copies.";
     }
 
     @Override
     public Object clone() throws
-            CloneNotSupportedException
-    {
+            CloneNotSupportedException {
         return super.clone();
     }
 
     @Override
     public boolean equals(Object o) {
-        if(o == this)
+        if (o == this)
             return true;
-        else if(!(o instanceof RoleCard))
+        else if (!(o instanceof RoleCard))
             return false;
         RoleCard card = (RoleCard) o;
         return card.getIdFiveRingsDB().equals(this.getIdFiveRingsDB());
