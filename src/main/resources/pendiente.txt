@@ -1,3 +1,2 @@
 - Crear un modo salvaje sin ningún tipo de restricción.
 - Convertir las listas de cartas en mapas.
-- Poner un tiempo de espera para la llamada a la API de FiveRingsDB antes de que se traiga todas las cartas.

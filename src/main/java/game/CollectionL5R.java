@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.function.Function;
 class CollectionL5R {
 
     private final String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
+    private final Integer TIMEOUT = 3000;
 
     private List<ConflictCard> conflictCardList;
     private List<DynastyCard> dynastyCardList;
@@ -213,7 +215,7 @@ class CollectionL5R {
         return new File(Objects.requireNonNull(cl.getResource(filename)).getFile());
     };
 
-    public CollectionL5R() {
+    CollectionL5R() {
         this.conflictCardList = new ArrayList<>();
         this.dynastyCardList = new ArrayList<>();
         this.provinceCardList = new ArrayList<>();
@@ -230,8 +232,14 @@ class CollectionL5R {
             URL url = new URL(FIVERINGSDB);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            if (connection.getResponseCode() != 200)
+            connection.setConnectTimeout(TIMEOUT);
+            connection.setReadTimeout(TIMEOUT);
+            try {
+                if (connection.getResponseCode() != 200)
+                    readFile();
+            } catch (SocketTimeoutException e) {
                 readFile();
+            }
             System.out.println("Connection: OK");
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
