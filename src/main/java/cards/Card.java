@@ -18,5 +18,6 @@ public class Card {
     private Integer quantity;
     private String idFiveRingsDB;
     private Boolean isRestricted;
-
+    private Boolean unicity;
+    private String name_extra;
 }

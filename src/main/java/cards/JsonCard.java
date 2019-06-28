@@ -32,4 +32,5 @@ public class JsonCard {
     private Integer influence_pool;
     private JsonArray allowed_clans;
     private Boolean is_restricted;
+    private String name_extra;
 }

@@ -83,6 +83,46 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "crane",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "a-new-name",
+			"influence_cost": 1,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "A New Name",
+			"name_canonical": "a new name",
+			"pack_cards": [
+				{
+					"flavor": "With your new name, you leave childhood behind and begin your service to your lord",
+					"illustrator": "",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "35",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+1",
+			"role_restriction": "void",
+			"side": "conflict",
+			"text": "<em>Void</em> role only.\nAttached character gains the <em>Bushi</em> and <em>Courtier</em> traits.",
+			"text_canonical": "void role only.\nattached character gains the bushi and courtier traits.",
+			"traits": [],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "neutral",
 			"cost": 0,
 			"deck_limit": 3,
@@ -95,7 +135,7 @@
 				{
 					"flavor": "\"The quality of a warrior's skill can be measured in a single stroke\" - Book of Sun Tao",
 					"illustrator": "David Horn",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_22.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -369,7 +409,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Carlos Palma Cruchaga",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_21.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -902,7 +942,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Pavel Kolomeyets",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_9.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -2883,7 +2923,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Jason Juta",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_17.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -4084,7 +4124,7 @@
 				{
 					"flavor": "",
 					"illustrator": "John Anthony De Giovanni",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_18.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -4139,6 +4179,37 @@
 				"item"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"deck_limit": 1,
+			"element": "void",
+			"id": "conflict-between-kin",
+			"is_restricted": false,
+			"name": "Conflict Between Kin",
+			"name_canonical": "conflict between kin",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Joyce Maureira",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "45",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength": "5",
+			"text": "During conflicts at this province, each participating character your opponent controls cannot be chosen as the target of an event and cannot have an attachment played on it if that card shares a clan affiliation with the character.",
+			"text_canonical": "during conflicts at this province, each participating character your opponent controls cannot be chosen as the target of an event and cannot have an attachment played on it if that card shares a clan affiliation with the character.",
+			"traits": [],
+			"type": "province",
 			"unicity": false
 		},
 		{
@@ -6083,7 +6154,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Leanna Crossan",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_7.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -6271,7 +6342,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Derek D. Edgell",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_20.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -6761,7 +6832,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Leanna Crossan",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_5.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -7155,6 +7226,47 @@
 				"meishodo"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "lion",
+			"cost": 2,
+			"deck_limit": 3,
+			"id": "forebearer-s-echoes",
+			"influence_cost": 1,
+			"is_restricted": false,
+			"name": "Forebearer's Echoes",
+			"name_canonical": "forebearer's echoes",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "39",
+					"quantity": 3
+				}
+			],
+			"role_restriction": "air",
+			"side": "conflict",
+			"text": "<b>Air</b> Role only.\n<b>Action:</b> During a [conflict-military] conflict, choose a character in your dynasty discard pile - put that character into play in the conflict. If that character is still in play at the end of the conflict, put it on the bottom of your dynasty deck.",
+			"text_canonical": "air role only.\naction: during a [conflict-military] conflict, choose a character in your dynasty discard pile - put that character into play in the conflict. if that character is still in play at the end of the conflict, put it on the bottom of your dynasty deck.",
+			"traits": [
+				"spell",
+				"air"
+			],
+			"type": "event",
 			"unicity": false
 		},
 		{
@@ -7578,11 +7690,11 @@
 				{
 					"flavor": "",
 					"illustrator": "Mocaran",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_3.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
-					"position": "2",
+					"position": "3",
 					"quantity": 1
 				}
 			],
@@ -7692,7 +7804,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Conceptopolis",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_14.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -7999,7 +8111,7 @@
 				{
 					"flavor": "\"Does an enlightened person fall under the law of cause and effect?\"",
 					"illustrator": "Robin Wouters",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_16.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -8357,7 +8469,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Leo Avero",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_13.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -9133,7 +9245,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Derek D. Edgell",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_4.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -9881,6 +9993,42 @@
 				"unicorn"
 			],
 			"clan": "unicorn",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "ide-ryoma",
+			"is_restricted": false,
+			"military": "0",
+			"name": "Ide Ryōma",
+			"name_canonical": "ide ryoma",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "79",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating, choose a [clan-unicorn] character and a non-[clan-unicorn] character controlled by the same player - bow one of those characters. Then, ready the other.",
+			"text_canonical": "action: during a conflict in which this character is participating, choose a [clan-unicorn] character and a non-[clan-unicorn] character controlled by the same player - bow one of those characters. then, ready the other.",
+			"traits": [
+				"courtier",
+				"cavalry"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
 			"cost": 4,
 			"deck_limit": 3,
 			"glory": 2,
@@ -10610,6 +10758,31 @@
 			"text_canonical": "reaction: after you win a conflict in which you control only a single participating character - that character does not bow as a result of the conflict's resolution.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 4,
+			"id": "inferno-guard-invoker",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Inferno Guard Invoker",
+			"name_canonical": "inferno guard invoker",
+			"pack_cards": [],
+			"political": "2",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a [conflict-military] conflict, choose a participating character you control - honor that character. If a province is broken during this conflict, sacrifice that character at the end of the conflict.",
+			"text_canonical": "action: during a [conflict-military] conflict, choose a participating character you control - honor that character. if a province is broken during this conflict, sacrifice that character at the end of the conflict.",
+			"traits": [
+				"shugenja",
+				"fire"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -11723,6 +11896,47 @@
 				"spell",
 				"void",
 				"curse"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "dragon",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "justicar-s-approach",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "Justicar's Approach",
+			"name_canonical": "justicar's approach",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "62",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+0",
+			"side": "conflict",
+			"text": "Attach to a <em>Courtier</em> character.\nAttached character gains: \"<b>Action:</b> During a conflict, initiate a [conflict-military] duel - resolve the duel. Dishonor the duel's loser. If that character is already dishonored, bow it. If it is already bowed and dishonored, discard it.\"",
+			"text_canonical": "attach to a courtier character.\nattached character gains: \"action: during a conflict, initiate a [conflict-military] duel - resolve the duel. dishonor the duel's loser. if that character is already dishonored, bow it. if it is already bowed and dishonored, discard it.\"",
+			"traits": [
+				"technique"
 			],
 			"type": "attachment",
 			"unicity": false
@@ -13207,6 +13421,42 @@
 		},
 		{
 			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "kitsuki-yuikimi",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Kitsuki Yuikimi",
+			"name_canonical": "kitsuki yuikimi",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "27",
+					"quantity": 1
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After you gain a fate from a ring during a conflict in which this character is participating - this character cannor be chosen as the target of your opponent's triggered abilities until the end of the conflict.",
+			"text_canonical": "reaction: after you gain a fate from a ring during a conflict in which this character is participating - this character cannor be chosen as the target of your opponent's triggered abilities until the end of the conflict.",
+			"traits": [
+				"bushi",
+				"champion"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -13890,7 +14140,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Lin Hsiang",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_8.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -15765,7 +16015,7 @@
 				{
 					"flavor": "\"Its pattern will never appear again.\" - Shinsei",
 					"illustrator": "B.D. Judkins",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_15.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -17108,6 +17358,38 @@
 		},
 		{
 			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
+			"deck_limit": 3,
+			"id": "petal-village-estate",
+			"is_restricted": false,
+			"name": "Petal Village Estate",
+			"name_canonical": "petal village estate",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Nele Diel",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "101",
+					"quantity": 3
+				}
+			],
+			"side": "dynasty",
+			"strength_bonus": "+0",
+			"text": "Each <em>Imperial</em> character you control gets +1[conflict-military] and +1[conflict-political].",
+			"text_canonical": "each imperial character you control gets +1[conflict-military] and +1[conflict-political].",
+			"traits": [
+				"imperial"
+			],
+			"type": "holding",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -17634,7 +17916,7 @@
 				{
 					"flavor": "\"One masters war by embracing peace.\" - Tao of Shinsei",
 					"illustrator": "Tony Foti",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_19.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -18705,11 +18987,11 @@
 				{
 					"flavor": "\"See where the latch was splintered - this was not the work of shinobi, as they would have us believe.\"",
 					"illustrator": "Joshua Cairos",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_2.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
-					"position": "3",
+					"position": "2",
 					"quantity": 1
 				}
 			],
@@ -19484,7 +19766,7 @@
 				{
 					"flavor": "\"Please allow me to finish your composition. Your words inspire me towards the battle chants of the Moto.\"",
 					"illustrator": "Joyce Maureira",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_6.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -19796,11 +20078,11 @@
 				{
 					"flavor": "\"I understand it was Seijuro-sama who was seen leaving the commander's battle tent when dawn broke.\"",
 					"illustrator": "Lin Hsiang",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_11.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
-					"position": "10",
+					"position": "11",
 					"quantity": 3
 				}
 			],
@@ -19916,7 +20198,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Lin Hsiang",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_10.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -20279,7 +20561,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Jorge Matar",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_12.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -21389,6 +21671,44 @@
 				"technique"
 			],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "neutral",
+			"deck_limit": 1,
+			"element": "water",
+			"id": "smuggler-s-cove",
+			"is_restricted": false,
+			"name": "Smuggler's Cove",
+			"name_canonical": "smuggler's cove",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "91",
+					"quantity": 1
+				}
+			],
+			"role_restriction": "seeker",
+			"side": "province",
+			"strength": "4",
+			"text": "<em>Seeker</em> role only.\n<b>Action:</b> During a conflict at this province, choose a character you control and select one - either move that character to the conflict or move it home.",
+			"text_canonical": "seeker role only.\naction: during a conflict at this province, choose a character you control and select one - either move that character to the conflict or move it home.",
+			"traits": [],
+			"type": "province",
 			"unicity": false
 		},
 		{
@@ -22575,6 +22895,42 @@
 			"text_canonical": "action: while you are the attacking player, choose a defending character with glory x or lower - move that character home. x is equal to the number of attacking characters.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 0,
+			"id": "student-of-anatomies",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Student of Anatomies",
+			"name_canonical": "student of anatomies",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "69",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "<b>Action:</b> Sacrifice a <i>(friendly)</i> character. Choose a character - until the end of the phase treat that character as if its printed text box were blank (except for <em>Traits</em>).",
+			"text_canonical": "action: sacrifice a (friendly) character. choose a character - until the end of the phase treat that character as if its printed text box were blank (except for traits).",
+			"traits": [
+				"shugenja",
+				"earth"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -24233,7 +24589,7 @@
 				{
 					"flavor": "",
 					"illustrator": "Chris Ostrowski",
-					"image_url": "",
+					"image_url": "http://lcg-cdn.fantasyflightgames.com/l5r/L5C19_1.jpg",
 					"pack": {
 						"id": "for-the-empire"
 					},
@@ -26731,7 +27087,7 @@
 					"pack": {
 						"id": "bonds-of-blood"
 					},
-					"position": "1",
+					"position": "30",
 					"quantity": 3
 				}
 			],
@@ -26947,6 +27303,6 @@
 			"unicity": false
 		}
 	],
-	"size": 717,
+	"size": 727,
 	"success": true
 }

@@ -1,3 +1,6 @@
 - Crear un modo salvaje sin ningún tipo de restricción.
 - Convertir las listas de cartas en mapas.
-- Poner un tiempo de espera para la llamada a la API de FiveRingsDB antes de que se traiga todas las cartas.
+- Añadir un gitignore.
+- Controlar las cartas únicas.
+- Hacer un generador automático de mazos.
+- Importar todas las opciones desde un archivo de configuración que se lea al arrancar la aplicación.

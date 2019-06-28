@@ -138,6 +138,7 @@ public class StartGame {
                     && MAX_CONFLICT_CARDS >= player.getNumberConflictCards() + i
                     && i <= MAX_CARD_COPIES
                     && i <= cardSelected.getDeckLimit()
+                    && maxConflictCardUnicity(i,player,cardSelected)
                     && oneMoreCharacter(player, cardSelected, i)
                     && oneMoreSplashCard(player, cardSelected, i); i++) {
                 System.out.print(i + ", ");
@@ -163,6 +164,24 @@ public class StartGame {
             this.collectionL5R.getConflictCardList().get(index).setQuantity(quantity);
     }
 
+    private boolean maxConflictCardUnicity(int quantity, Deck player, ConflictCard cardSelected) {
+        if(!cardSelected.getUnicity())
+            return true;
+        String idConflictCard = cardSelected.getIdFiveRingsDB();
+        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals("null")) {
+            idConflictCard = cardSelected.getIdFiveRingsDB().substring(0,idConflictCard.length()-2);
+        }
+        for(DynastyCard card : player.getDynastyCardDeck()) {
+            if(card.getUnicity() //la carta es única
+                    && card.getIdFiveRingsDB().startsWith(idConflictCard) //la carta tiene el mismo nombre que la que evalúo
+                    && card.getQuantity()+quantity >= card.getDeckLimit()
+                    && card.getQuantity()+quantity >= cardSelected.getDeckLimit()) { //hay tantas cartas como el máximo permitido
+                return false;
+            }
+        }
+        return true;
+    }
+
     private boolean oneMoreSplashCard(Deck player, ConflictCard card, int i) {
         if (card.getClan() == null
                 || card.getClan().equals(Constants.NEUTRAL)
@@ -185,6 +204,7 @@ public class StartGame {
                 .filter(card ->
                         !conflictCardIsPresent(player, card)
                                 && characterConditions(player, card)
+                                && !alreadyUnicityConflictCard(player,card)
                                 && isAllowedCard(player, card)
                                 && (card.getClan().equals(player.getClan())
                                 || isAllowedClan(player, card))
@@ -202,6 +222,25 @@ public class StartGame {
             cardsAvailables.add(selection.get(rndArray[rnd]));
             rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
+    }
+
+    private boolean alreadyUnicityConflictCard(Deck player,ConflictCard conflictCard) {
+        if(!conflictCard.getUnicity()) { //La carta a evaluar no es única, así que da igual.
+            return false;
+        }
+        String idConflictCard = conflictCard.getIdFiveRingsDB();
+        if(conflictCard.getName_extra() != null && !conflictCard.getName_extra().equals("null")) {
+            idConflictCard = conflictCard.getIdFiveRingsDB().substring(0,idConflictCard.length()-2);
+        }
+        for(DynastyCard card : player.getDynastyCardDeck()) {
+            if(card.getUnicity() //la carta es única
+                    && card.getIdFiveRingsDB().startsWith(idConflictCard) //la carta tiene el mismo nombre que la que evalúo
+                    && card.getQuantity() >= card.getDeckLimit()
+                    && card.getQuantity() >= conflictCard.getDeckLimit()) { //hay tantas cartas como el máximo permitido
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isAllowedClan(Deck player, ConflictCard card) {
@@ -297,10 +336,12 @@ public class StartGame {
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
                 && player.getNumberDynastyCards() + 1 < MAX_CONFLICT_CARDS) {
-            System.out.println("You have " + player.getNumberDynastyCards() + " cards in your Dynasy deck. How many copies do you want of this card?");
+            System.out.println("You have " + player.getNumberDynastyCards() + " cards in your Dynasty deck. How many copies do you want of this " +
+                    "card?");
             for (int i = 1; i <= cardSelected.getQuantity()
                     && MAX_CONFLICT_CARDS >= player.getNumberDynastyCards() + i
                     && i <= cardSelected.getDeckLimit()
+                    && maxDynastyCardUnicity(i,player,cardSelected)
                     && i <= MAX_CARD_COPIES; i++) {
                 System.out.print(i + ", ");
                 addQuantity = i;
@@ -322,10 +363,29 @@ public class StartGame {
         }
     }
 
+    private boolean maxDynastyCardUnicity(int quantity, Deck player, DynastyCard cardSelected) {
+        if(!cardSelected.getUnicity())
+            return true;
+        String idDynastyCard = cardSelected.getIdFiveRingsDB();
+        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals("null")) {
+            idDynastyCard = cardSelected.getIdFiveRingsDB().substring(0,idDynastyCard.length()-2);
+        }
+        for(DynastyCard card : player.getDynastyCardDeck()) {
+            if(card.getUnicity() //la carta es única
+                    && card.getIdFiveRingsDB().startsWith(idDynastyCard) //la carta tiene el mismo nombre que la que evalúo
+                    && card.getQuantity()+quantity >= card.getDeckLimit()
+                    && card.getQuantity()+quantity >= cardSelected.getDeckLimit()) { //hay tantas cartas como el máximo permitido
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void makeDynastyOptions(List<DynastyCard> cardsAvailables, Deck player) {
         List<DynastyCard> selection =
                 this.collectionL5R.getDynastyCardList().stream()
                         .filter(card -> !dynastyCardIsPresent(player, card)
+                                && !alreadyUnicityDynastyCard(player,card)
                                 && isAllowedCard(player, card)
                                 && (card.getClan().equals("neutral")
                                 || card.getClan().equals(player.getClan()))
@@ -342,6 +402,25 @@ public class StartGame {
             cardsAvailables.add(selection.get(rndArray[rnd]));
             rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
+    }
+
+    private boolean alreadyUnicityDynastyCard(Deck player,DynastyCard dynastyCard) {
+        if(!dynastyCard.getUnicity()) {
+            return false;
+        }
+        String idDynastyCard = dynastyCard.getIdFiveRingsDB();
+        if(dynastyCard.getName_extra() != null && !dynastyCard.getName_extra().equals("null")) {
+            idDynastyCard = dynastyCard.getIdFiveRingsDB().substring(0,idDynastyCard.length()-2);
+        }
+        for(DynastyCard card : player.getDynastyCardDeck()) {
+            if(card.getUnicity()
+                && card.getIdFiveRingsDB().startsWith(idDynastyCard)
+                && card.getQuantity() >= card.getDeckLimit()
+                && card.getQuantity() >= dynastyCard.getDeckLimit()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean dynastyCardIsPresent(Deck player, DynastyCard dynastyCard) {

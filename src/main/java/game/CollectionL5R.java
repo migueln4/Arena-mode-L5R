@@ -98,6 +98,9 @@ class CollectionL5R {
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
         newCard.setIsRestricted(jsonCard.getIs_restricted());
+        newCard.setUnicity(jsonCard.getUnicity());
+        newCard.setName_extra(jsonCard.getName_extra());
+
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
@@ -119,6 +122,9 @@ class CollectionL5R {
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
         newCard.setIsRestricted(jsonCard.getIs_restricted());
+        newCard.setUnicity(jsonCard.getUnicity());
+        newCard.setName_extra(jsonCard.getName_extra());
+
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
@@ -141,6 +147,9 @@ class CollectionL5R {
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
         newCard.setIsRestricted(jsonCard.getIs_restricted());
+        newCard.setUnicity(jsonCard.getUnicity());
+        newCard.setName_extra(jsonCard.getName_extra());
+
 
         newCard.setInfluence(jsonCard.getInfluence_pool());
 
@@ -160,6 +169,9 @@ class CollectionL5R {
         String name = jsonCard.getName();
         newCard.setName(name);
         newCard.setIsRestricted(jsonCard.getIs_restricted());
+        newCard.setUnicity(jsonCard.getUnicity());
+        newCard.setName_extra(jsonCard.getName_extra());
+
 
         JsonArray traits = jsonCard.getTraits();
 
@@ -187,6 +199,8 @@ class CollectionL5R {
         newCard.setName(jsonCard.getName());
         newCard.setClan(jsonCard.getClan());
         newCard.setIsRestricted(jsonCard.getIs_restricted());
+        newCard.setUnicity(jsonCard.getUnicity());
+        newCard.setName_extra(jsonCard.getName_extra());
 
         JsonArray allowedClans = jsonCard.getAllowed_clans();
         List<String> allowedClansList = new ArrayList<>();
