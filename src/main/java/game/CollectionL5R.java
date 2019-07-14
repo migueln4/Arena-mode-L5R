@@ -308,9 +308,9 @@ class CollectionL5R {
                                     || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"for-the-empire\"".equals(packCards.get(0).getPack().get("id").toString())
                                     || "\"the-children-of-heaven\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"a-champion-s-foresight\"".equals(packCards.get(0).getPack().get("id").toString());
+                                    || "\"a-champion-s-foresight\"".equals(packCards.get(0).getPack().get("id").toString())
+                                    || "\"shojou-s-duty\"".equals(packCards.get(0).getPack().get("id").toString());
                         }
                 ).forEach(card -> this.allCards.remove(card));
         System.out.println("Total number of cards " + this.allCards.size());

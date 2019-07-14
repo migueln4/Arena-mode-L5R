@@ -14,7 +14,6 @@ public class JsonCard {
     private Integer deck_limit;
     private Integer glory;
     private String id;
-    private Integer military;
     private String name;
     private String name_canonical;
     private JsonArray pack_cards;
