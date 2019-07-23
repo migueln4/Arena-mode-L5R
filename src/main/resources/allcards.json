@@ -1,5 +1,5 @@
 {
-	"rrg-version": "9",
+	"rrg-version": "10",
 	"records": [
 		{
 			"allowed_clans": [
@@ -95,7 +95,7 @@
 			"pack_cards": [
 				{
 					"flavor": "With your new name, you leave childhood behind and begin your service to your lord",
-					"illustrator": "",
+					"illustrator": "Drazenka Kimpel",
 					"image_url": "",
 					"pack": {
 						"id": "bonds-of-blood"
@@ -226,6 +226,42 @@
 				"condition"
 			],
 			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "acolyte-of-koyane",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Acolyte of Koyane",
+			"name_canonical": "acolyte of koyane",
+			"pack_cards": [
+				{
+					"flavor": "The fortune of accomplishment expects - and rewards - only excellence.",
+					"illustrator": "Lin Hsiang",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "55",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a [conflict-political] conflict, choose a participating character and select one - that character either gains or loses pride until the end of the conflict.",
+			"text_canonical": "action: during a [conflict-political] conflict, choose a participating character and select one - that character either gains or loses pride until the end of the conflict.",
+			"traits": [
+				"shugenja",
+				"air"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -739,6 +775,42 @@
 			"cost": 4,
 			"deck_limit": 3,
 			"glory": 2,
+			"id": "akodo-kaede",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Akodo Kaede",
+			"name_canonical": "akodo kaede",
+			"pack_cards": [
+				{
+					"flavor": "TO DO",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "28",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"side": "dynasty",
+			"text": "Immune to opponent's ring effects.\n<b>Interrupt:</b> When another character would leave play - remove 1 fate from this character instead.",
+			"text_canonical": "immune to opponent's ring effects.\ninterrupt: when another character would leave play - remove 1 fate from this character instead.",
+			"traits": [
+				"shugenja",
+				"void"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
 			"id": "akodo-kage",
 			"is_restricted": false,
 			"military": "2",
@@ -1034,6 +1106,49 @@
 				"void"
 			],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "scorpion",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "alluring-patron",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military": "1",
+			"name": "Alluring Patron",
+			"name_canonical": "alluring patron",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "42",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"role_restriction": "fire",
+			"side": "conflict",
+			"text": "<em>Fire</em> role only.\n<b>Action:</b> During a conflict in which this character is participating, choose a character your opponent controls in his or her home. Your opponent selects one - either move that character to the conflict, or dishonor it.",
+			"text_canonical": "fire role only.\naction: during a conflict in which this character is participating, choose a character your opponent controls in his or her home. your opponent selects one - either move that character to the conflict, or dishonor it.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -1823,6 +1938,41 @@
 			"cost": 2,
 			"deck_limit": 3,
 			"glory": 2,
+			"id": "asako-takahiro",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Asako Takahiro",
+			"name_canonical": "asako takahiro",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Lin Hsiang",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "99",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "Pride.\nDuring a conflict in which this character is participating, it gains +2[conflict-military] for each other participating dishonored character and +2[conflict-political] for each other participating honored character.",
+			"text_canonical": "pride.\nduring a conflict in which this character is participating, it gains +2[conflict-military] for each other participating dishonored character and +2[conflict-political] for each other participating honored character.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 2,
 			"id": "asako-tsuki",
 			"is_restricted": false,
 			"military": "1",
@@ -2536,6 +2686,43 @@
 				"scorpion"
 			],
 			"clan": "scorpion",
+			"cost": 5,
+			"deck_limit": 3,
+			"glory": 4,
+			"id": "bayushi-shoju-2",
+			"is_restricted": false,
+			"name": "Bayushi Shoju",
+			"name_canonical": "bayushi shoju",
+			"name_extra": "(2)",
+			"pack_cards": [
+				{
+					"flavor": "In one clear moment, Shoju understood his unspoken duty, though the touch of polished emerald would forever tarnish his soul.",
+					"illustrator": "Pius Pranoto",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "121",
+					"quantity": 3
+				}
+			],
+			"political": "7",
+			"side": "dynasty",
+			"text": "Your opponents cannot have the Imperial Favor.\n<b>Forced Reaction:</b> After the conflict phase begins - each player draws 2 cards and loses 1 honor.",
+			"text_canonical": "your opponents cannot have the imperial favor.\nforced reaction: after the conflict phase begins - each player draws 2 cards and loses 1 honor.",
+			"traits": [
+				"courtier",
+				"champion",
+				"imperial"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
 			"cost": 3,
 			"deck_limit": 3,
 			"glory": 2,
@@ -2748,6 +2935,41 @@
 			"side": "dynasty",
 			"text": "<b>Action:</b> Choose an opponent - you and that opponent each draw a card.",
 			"text_canonical": "action: choose an opponent - you and that opponent each draw a card.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "benevolent-ambassador",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Benevolent Ambassador",
+			"name_canonical": "benevolent ambassador",
+			"pack_cards": [
+				{
+					"flavor": "With compassion and patience, the Ide turn trade into friendship, and friendship into alliance.",
+					"illustrator": "Andreia Ugrai",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "31",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "Courtesy. <i>(When this character leaves play, gain 1 fate.)</i>\n<b>Reaction:</b> After this character wins a conflict - you and your opponent each gain 1 honor.",
+			"text_canonical": "courtesy. (when this character leaves play, gain 1 fate.)\nreaction: after this character wins a conflict - you and your opponent each gain 1 honor.",
 			"traits": [
 				"courtier"
 			],
@@ -3437,6 +3659,47 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "crab",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "callous-ashigaru",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+2",
+			"name": "Callous Ashigaru",
+			"name_canonical": "callous ashigaru",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Stanislav Dikolenko",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "61",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+1",
+			"side": "conflict",
+			"text": "Attach to a unique character. Restricted.\n<b>Reaction:</b> After you break a province during a [conflict-military] conflict in which attached character is attacking - discard each card from each of your opponent's provinces.",
+			"text_canonical": "attach to a unique character. restricted.\nreaction: after you break a province during a [conflict-military] conflict in which attached character is attacking - discard each card from each of your opponent's provinces.",
+			"traits": [
+				"follower"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crane"
 			],
 			"clan": "crane",
@@ -3505,6 +3768,48 @@
 			"text_canonical": "action: during a [conflict-political] conflict, lose 1 honor - change the conflict type to [conflict-military].",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "scorpion",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "castigated",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+0",
+			"name": "Castigated",
+			"name_canonical": "castigated",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Eli Ring",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "129",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+0",
+			"side": "conflict",
+			"text": "Play only during a [conflict-political] conflict, only on a participating character, and only if you control an <em>Imperial</em> character.\nIf attached character's [conflict-political] skill is 0, discard it. <i>(Do not discard if its skill is a dash.)</i>",
+			"text_canonical": "play only during a [conflict-political] conflict, only on a participating character, and only if you control an imperial character.\nif attached character's [conflict-political] skill is 0, discard it. (do not discard if its skill is a dash.)",
+			"traits": [
+				"condition",
+				"imperial"
+			],
+			"type": "attachment",
 			"unicity": false
 		},
 		{
@@ -3875,6 +4180,42 @@
 		},
 		{
 			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "chrysanthemum-steward",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Chrysanthemum Steward",
+			"name_canonical": "chrysanthemum steward",
+			"pack_cards": [
+				{
+					"flavor": "\"The Empire cannot survive if it does not have leadership.\"",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "120",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating, choose a card in your opponent's conflict discard pile - put that card on top of its owner's conflict deck.",
+			"text_canonical": "action: during a conflict in which this character is participating, choose a card in your opponent's conflict discard pile - put that card on top of its owner's conflict deck.",
+			"traits": [
+				"courtier",
+				"imperial"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"phoenix"
 			],
 			"clan": "phoenix",
@@ -4057,6 +4398,46 @@
 			"traits": [
 				"spell",
 				"water"
+			],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "phoenix",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "cloak-of-night",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Cloak of Night",
+			"name_canonical": "cloak of night",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "128",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "Play only if you control a <em>Shugenja</em> character.\n<b>Action:</b> During a conflict, choose a participating character - until the end of the conflict, that character gets +3 glory and cannot be chosen as the target of opponent's card abilities.",
+			"text_canonical": "play only if you control a shugenja character.\naction: during a conflict, choose a participating character - until the end of the conflict, that character gets +3 glory and cannot be chosen as the target of opponent's card abilities.",
+			"traits": [
+				"spell",
+				"air"
 			],
 			"type": "event",
 			"unicity": false
@@ -4369,6 +4750,41 @@
 		},
 		{
 			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "court-musician",
+			"is_restricted": false,
+			"military": "0",
+			"name": "Court Musician",
+			"name_canonical": "court musician",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "94",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating - during each player's next action opportunity in this conflict, decrease the cost to play cards by 1.",
+			"text_canonical": "action: during a conflict in which this character is participating - during each player's next action opportunity in this conflict, decrease the cost to play cards by 1.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"scorpion"
 			],
 			"clan": "scorpion",
@@ -4428,6 +4844,36 @@
 			"strength_bonus": "+1",
 			"text": "<b>Action:</b> If you have 6 or fewer honor, choose a dishonored character in you home area – discard that character's status token.",
 			"text_canonical": "action: if you have 6 or fewer honor, choose a dishonored character in you home area - discard that character's status token.",
+			"traits": [],
+			"type": "holding",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
+			"deck_limit": 3,
+			"id": "court-of-justice",
+			"is_restricted": false,
+			"name": "Court of Justice",
+			"name_canonical": "court of justice",
+			"pack_cards": [
+				{
+					"flavor": "\"You will find I am only interested in the truth.\" - Kitsuki Jusai",
+					"illustrator": "Nele Diel",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "52",
+					"quantity": 3
+				}
+			],
+			"side": "dynasty",
+			"strength_bonus": "+1",
+			"text": "<b>Reaction:</b> After you win a [conflict-political] conflict - look at 3 random cards in your opponent's hand.",
+			"text_canonical": "reaction: after you win a [conflict-political] conflict - look at 3 random cards in your opponent's hand.",
 			"traits": [],
 			"type": "holding",
 			"unicity": false
@@ -4587,6 +5033,49 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "unicorn",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "current-of-the-beryt",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "Current of the Beryt",
+			"name_canonical": "current of the beryt",
+			"pack_cards": [
+				{
+					"flavor": "TO DO",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "109",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+1",
+			"side": "conflict",
+			"text": "Attach to a <em>Shugenja</em> character you control.\n<b>Action:</b> During a conflict – take two actions.",
+			"text_canonical": "attach to a shugenja character you control.\naction: during a conflict - take two actions.",
+			"traits": [
+				"spell",
+				"water",
+				"meishodo"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "crane",
 			"cost": 0,
 			"deck_limit": 3,
@@ -4655,6 +5144,78 @@
 			],
 			"type": "attachment",
 			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "daidoji-harrier",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Daidoji Harrier",
+			"name_canonical": "daidoji harrier",
+			"pack_cards": [
+				{
+					"flavor": "\"Vitory will only be achieved through preparedness.\" - Daidoji Uji",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "113",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character wins a [conflict-military] conflict, your opponent chooses 2 cards in his or her hand - reveal those cards. You choose and discard one of them.",
+			"text_canonical": "reaction: after this character wins a [conflict-military] conflict, your opponent chooses 2 cards in his or her hand - reveal those cards. you choose and discard one of them.",
+			"traits": [
+				"bushi",
+				"shinobi"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "daidoji-kageyu",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Daidoji Kageyu",
+			"name_canonical": "daidoji kageyu",
+			"pack_cards": [
+				{
+					"flavor": "\"Many thanks for the invitation to your court. I hope to learn many of your ways while I am here.\"",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "95",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "Disguised <em>Courtier</em>.\n<b>Action:</b> During a [conflict-political] conflict in which this character is participating - draw 1 card for each card you opponent has played in this conflict.",
+			"text_canonical": "disguised courtier.\naction: during a [conflict-political] conflict in which this character is participating - draw 1 card for each card you opponent has played in this conflict.",
+			"traits": [
+				"courtier",
+				"shinobi"
+			],
+			"type": "character",
+			"unicity": true
 		},
 		{
 			"allowed_clans": [
@@ -5172,6 +5733,39 @@
 		},
 		{
 			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"deck_limit": 1,
+			"element": "fire",
+			"id": "dishonorable-assault",
+			"is_restricted": false,
+			"name": "Dishonorable Assault",
+			"name_canonical": "dishonorable assault",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "John Anthony Di Giovanni",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "23",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength": "4",
+			"text": "<b>Action:</b> During a conflict at this province, discard one or more cards from your hand. Choose an equal number of attacking characters - dishonor each of those characters.",
+			"text_canonical": "action: during a conflict at this province, discard one or more cards from your hand. choose an equal number of attacking characters - dishonor each of those characters.",
+			"traits": [
+				"battlefield"
+			],
+			"type": "province",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -5421,6 +6015,80 @@
 			"side": "dynasty",
 			"text": "<b>Reaction:</b> After you claim a ring during a [conflict-political] conflict in which this character is participating – resolve that ring's effect.",
 			"text_canonical": "reaction: after you claim a ring during a [conflict-political] conflict in which this character is participating - resolve that ring's effect.",
+			"traits": [
+				"bushi",
+				"champion"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 5,
+			"deck_limit": 3,
+			"glory": 3,
+			"id": "doji-hotaru-2",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Doji Hotaru",
+			"name_canonical": "doji hotaru",
+			"name_extra": "(2)",
+			"pack_cards": [
+				{
+					"flavor": "\"Do you believe the Emerald Magistrates lie, brother, or that they are simply incompetent?\"",
+					"illustrator": "Agri Karuniawan",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "49",
+					"quantity": 3
+				}
+			],
+			"political": "6",
+			"side": "dynasty",
+			"text": "If you control Doji Kuwanan, discard him.\n<b>Reaction:</b> After an opponent plays a card during a conflict in which this character is participating - gain 1 honor. (Unlimited.)",
+			"text_canonical": "if you control doji kuwanan, discard him.\nreaction: after an opponent plays a card during a conflict in which this character is participating - gain 1 honor. (unlimited.)",
+			"traits": [
+				"bushi",
+				"courtier",
+				"champion"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 5,
+			"deck_limit": 3,
+			"glory": 3,
+			"id": "doji-kuwanan",
+			"is_restricted": false,
+			"military": "5",
+			"name": "Doji Kuwanan",
+			"name_canonical": "doji kuwanan",
+			"pack_cards": [
+				{
+					"flavor": "\"I begin to suspect you don't even care about the truth.\"",
+					"illustrator": "Agri Karuniawan",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "50",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"side": "dynasty",
+			"text": "If you control Doji Hotaru, discard her.\n<b>Action:</b> During a [conflict-military] conflict in which this character is participating, choose a participating character with lower [conflict-military] skill than this character - bow that character.",
+			"text_canonical": "if you control doji hotaru, discard her.\naction: during a [conflict-military] conflict in which this character is participating, choose a participating character with lower [conflict-military] skill than this character - bow that character.",
 			"traits": [
 				"bushi",
 				"champion"
@@ -5805,6 +6473,37 @@
 		},
 		{
 			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
+			"deck_limit": 1,
+			"element": "earth",
+			"id": "effective-deception",
+			"is_restricted": false,
+			"name": "Effective Deception",
+			"name_canonical": "effective deception",
+			"pack_cards": [
+				{
+					"flavor": "If would only be a matter of time before Kuwanan came searching for his sister's seal. It was Sadako's duty that he find it.",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "46",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength": "4",
+			"text": "<b>Interrupt:</b> When the effects of a triggered ability would initiate during a conflict at this province - cancel those effects.",
+			"text_canonical": "interrupt: when the effects of a triggered ability would initiate during a conflict at this province - cancel those effects.",
+			"traits": [],
+			"type": "province",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -6142,6 +6841,47 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "phoenix",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "erudite-prestige",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+0",
+			"name": "Erudite Prestige",
+			"name_canonical": "erudite prestige",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Joyce Maureira",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "107",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+0",
+			"side": "conflict",
+			"text": "Attach to a <em>Courtier</em> character.\n<b>Reaction:</b> After you play a card during a conflict in which attached character is participating - attached character gets +1[conflict-political] until the end of the conflict. (Unlimited.)",
+			"text_canonical": "attach to a courtier character.\nreaction: after you play a card during a conflict in which attached character is participating - attached character gets +1[conflict-political] until the end of the conflict. (unlimited.)",
+			"traits": [
+				"condition"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crane"
 			],
 			"clan": "crane",
@@ -6355,6 +7095,47 @@
 			"text_canonical": "reaction: after an opponent wins a conflict, if he or she is more honorable than you, choose a participating character that opponent controls and a character in that opponent's home - switch those characters' locations.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "lion",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "fan-of-command",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "Fan of Command",
+			"name_canonical": "fan of command",
+			"pack_cards": [
+				{
+					"flavor": "\"In the chaos of war, the chain of command unites the valor of samurai.\" - Akodo's Leadership",
+					"illustrator": "Joyce Maureira",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "106",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+1",
+			"side": "conflict",
+			"text": "<b>Action:</b> During a conflict in which attached character is participating, choose a participating <em>Bushi</em> character - ready that character.",
+			"text_canonical": "action: during a conflict in which attached character is participating, choose a participating bushi character - ready that character.",
+			"traits": [
+				"item"
+			],
+			"type": "attachment",
 			"unicity": false
 		},
 		{
@@ -7381,6 +8162,37 @@
 		},
 		{
 			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"deck_limit": 1,
+			"element": "air",
+			"id": "fortified-assembly",
+			"is_restricted": false,
+			"name": "Fortified Assembly",
+			"name_canonical": "fortified assembly",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Leanna Crossan",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "67",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength": "3",
+			"text": "Cannot be a stronghold province. This province gets +2 strength for each honor token on it.\n<b>Reaction:</b> After an attack is declared against this province - place 1 honor token on it.",
+			"text_canonical": "cannot be a stronghold province. this province gets +2 strength for each honor token on it.\nreaction: after an attack is declared against this province - place 1 honor token on it.",
+			"traits": [],
+			"type": "province",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -7559,6 +8371,44 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "crab",
+			"cost": 2,
+			"deck_limit": 3,
+			"id": "fury-of-the-damned",
+			"influence_cost": 1,
+			"is_restricted": false,
+			"name": "Fury of the Damned",
+			"name_canonical": "fury of the damned",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Reiko Murakami",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "33",
+					"quantity": 3
+				}
+			],
+			"role_restriction": "fire",
+			"side": "conflict",
+			"text": "<em>Fire</em> role only.\n<b>Action:</b> During a conflict, choose any number of participating <em>Bushi</em> characters you control - double the base [conflict-military] skill of each of those characters until the end of the conflict. At the end of the conflict, sacrifice each of those characters.",
+			"text_canonical": "fire role only.\naction: during a conflict, choose any number of participating bushi characters you control - double the base [conflict-military] skill of each of those characters until the end of the conflict. at the end of the conflict, sacrifice each of those characters.",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"phoenix"
 			],
 			"clan": "phoenix",
@@ -7630,6 +8480,41 @@
 			"text_canonical": "action: if you control a [clan-unicorn] card, choose a non-[clan-unicorn] character - ready the chosen character.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "gallant-quartermaster",
+			"is_restricted": false,
+			"military": "0",
+			"name": "Gallant Quartermaster",
+			"name_canonical": "gallant quartermaster",
+			"pack_cards": [
+				{
+					"flavor": "\"Doom descends on our brothers and sisters on the Wall. I will not wait for help to come when my own stores could mean the difference between life or death.\"",
+					"illustrator": "Joyce Maureira",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "111",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "<b>Interrupt:</b> When this character is sacrificed - gain 2 fate.",
+			"text_canonical": "interrupt: when this character is sacrificed - gain 2 fate.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -7976,6 +8861,41 @@
 		},
 		{
 			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 0,
+			"id": "golden-plains-raider",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Golden Plains Raider",
+			"name_canonical": "golden plains raider",
+			"pack_cards": [
+				{
+					"flavor": "Better this town be left abandoned than run by despots.",
+					"illustrator": "Quintin Gleim",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "122",
+					"quantity": 3
+				}
+			],
+			"political": "0",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character wins a conflict as an attacker, choose a faceup card in a province controlled by your opponent - discard that card.",
+			"text_canonical": "reaction: after this character wins a conflict as an attacker, choose a faceup card in a province controlled by your opponent - discard that card.",
+			"traits": [
+				"bushi"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -8045,6 +8965,41 @@
 			"text_canonical": "limited. (no more than one limited card can be played by each player each round.)\naction: name a card. until the end of the phase, each opponent cannot play cards from his or her hand with that name.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "graceful-guardian",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Graceful Guardian",
+			"name_canonical": "graceful guardian",
+			"pack_cards": [
+				{
+					"flavor": "\"Victory without honor is no victory at all.\"",
+					"illustrator": "Asep Ariyanto",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "70",
+					"quantity": 3
+				}
+			],
+			"political": "0",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating - during each player's next action opportunity in this conflict, increase the cost to play cards by 1.",
+			"text_canonical": "action: during a conflict in which this character is participating - during each player's next action opportunity in this conflict, increase the cost to play cards by 1.",
+			"traits": [
+				"bushi"
+			],
+			"type": "character",
 			"unicity": false
 		},
 		{
@@ -8788,6 +9743,72 @@
 		},
 		{
 			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"deck_limit": 1,
+			"element": "air",
+			"id": "henshin-mysteries",
+			"is_restricted": false,
+			"name": "Henshin Mysteries",
+			"name_canonical": "henshin mysteries",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "90",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength": "5",
+			"text": "<b>Interrupt:</b> During a conflict at this province, if a player would claim the contest ring - return it to the unclaimed ring pool instead. <i>(If this province breaks, the ring is claimed as normal.)</i>.",
+			"text_canonical": "interrupt: during a conflict at this province, if a player would claim the contest ring - return it to the unclaimed ring pool instead. (if this province breaks, the ring is claimed as normal.).",
+			"traits": [],
+			"type": "province",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "hero-of-three-trees",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Hero of Three Trees",
+			"name_canonical": "hero of three trees",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Diego Gisbert Llorens",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "116",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating, if you have fewer cards in your hand than your opponent, select one - either gain 1 honor, or the attacked province gets -1 strength until the end of the conflict (to a minimum of 0).",
+			"text_canonical": "action: during a conflict in which this character is participating, if you have fewer cards in your hand than your opponent, select one - either gain 1 honor, or the attacked province gets -1 strength until the end of the conflict (to a minimum of 0).",
+			"traits": [
+				"bushi"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -8937,6 +9958,41 @@
 			"traits": [
 				"bushi",
 				"champion"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "hida-sugi",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Hida Sugi",
+			"name_canonical": "hida sugi",
+			"pack_cards": [
+				{
+					"flavor": "\"I knew there was much to Rokugan that we must defend. I never realized how much of it was beautiful.\"",
+					"illustrator": "Amélie Hutt",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "48",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character wins a conflict, choose a card in a dynasty discard pile - put that card on the bottom of its owner's dynasty deck.",
+			"text_canonical": "reaction: after this character wins a conflict, choose a card in a dynasty discard pile - put that card on the bottom of its owner's dynasty deck.",
+			"traits": [
+				"bushi"
 			],
 			"type": "character",
 			"unicity": true
@@ -9344,6 +10400,43 @@
 		},
 		{
 			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "hiruma-yoshino",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Hiruma Yoshino",
+			"name_canonical": "hiruma yoshino",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "26",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "Disguised <em>Bushi</em>.\n<b>Action:</b> During a [conflict-military] conflict in which this character is participating, choose a character card in the attacked province - that character contributes its printed [conflict-military] skill towards your side during the resolution of this conflict.",
+			"text_canonical": "disguised bushi.\naction: during a [conflict-military] conflict in which this character is participating, choose a character card in the attacked province - that character contributes its printed [conflict-military] skill towards your side during the resolution of this conflict.",
+			"traits": [
+				"bushi",
+				"daimyo",
+				"scout"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
 				"lion"
 			],
 			"clan": "lion",
@@ -9444,6 +10537,42 @@
 			],
 			"type": "holding",
 			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "hitsu-do-disciple",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Hitsu-do Disciple",
+			"name_canonical": "hitsu-do disciple",
+			"pack_cards": [
+				{
+					"flavor": "\"You expect me to fear some unarmed woman?\" - Hatsuichi the rōnin",
+					"illustrator": "Lukas Banas",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "114",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a [conflict-military] conflict in which this character is participating, if you have played 3 or more cards during this conflict, choose another participating character - dishonor that character.",
+			"text_canonical": "action: during a [conflict-military] conflict in which this character is participating, if you have played 3 or more cards during this conflict, choose another participating character - dishonor that character.",
+			"traits": [
+				"monk",
+				"tattooed"
+			],
+			"type": "character",
+			"unicity": false
 		},
 		{
 			"allowed_clans": [
@@ -10003,8 +11132,8 @@
 			"name_canonical": "ide ryoma",
 			"pack_cards": [
 				{
-					"flavor": "",
-					"illustrator": "",
+					"flavor": "\"Have you already become a Nehiri, Ryōma-san?\" - Utaku Yumino",
+					"illustrator": "Pius Pranoto",
 					"image_url": "",
 					"pack": {
 						"id": "the-children-of-heaven"
@@ -10272,6 +11401,42 @@
 			"text_canonical": "covert.\nreaction: after this character wins a [conflict-political] conflict, choose a character you control - honor that character. draw 1 card.",
 			"traits": [
 				"courtier"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 3,
+			"id": "ikoma-kiyono",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Ikoma Kiyono",
+			"name_canonical": "ikoma kiyono",
+			"pack_cards": [
+				{
+					"flavor": "\"It is as if she has told us each a unique tale, yet the words in the telling are all the same.\" - Miya Matsuo",
+					"illustrator": "Lin Hsiang",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "74",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "<b>Interrupt:</b> When a glory count would begin, if you are more honorable than your opponent - ready this character.",
+			"text_canonical": "interrupt: when a glory count would begin, if you are more honorable than your opponent - ready this character.",
+			"traits": [
+				"courtier",
+				"storyteller"
 			],
 			"type": "character",
 			"unicity": true
@@ -10734,6 +11899,45 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "lion",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "in-service-to-my-lord",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "In Service to My Lord",
+			"name_canonical": "in service to my lord",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Andreia Ugrai",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "127",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "This card can be played from your discard pile.\n<b>Action:</b> Bow a <i>(friendly)</i> non-unique character and choose a unique character - ready the chosen character. Put this card on the bottom of its owner's conflict deck.",
+			"text_canonical": "this card can be played from your discard pile.\naction: bow a (friendly) non-unique character and choose a unique character - ready the chosen character. put this card on the bottom of its owner's conflict deck.",
+			"traits": [
+				"tactic"
+			],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "dragon",
 			"cost": 1,
 			"deck_limit": 3,
@@ -10773,7 +11977,18 @@
 			"military": "3",
 			"name": "Inferno Guard Invoker",
 			"name_canonical": "inferno guard invoker",
-			"pack_cards": [],
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "119",
+					"quantity": 3
+				}
+			],
 			"political": "2",
 			"side": "dynasty",
 			"text": "<b>Action:</b> During a [conflict-military] conflict, choose a participating character you control - honor that character. If a province is broken during this conflict, sacrifice that character at the end of the conflict.",
@@ -11096,6 +12311,79 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "phoenix",
+			"cost": 3,
+			"deck_limit": 3,
+			"id": "invoke-the-divine",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Invoke the Divine",
+			"name_canonical": "invoke the divine",
+			"pack_cards": [
+				{
+					"flavor": "\"No longer will your disrespect go ignored, either by me or by the kami of this place.\"",
+					"illustrator": "Quentin Gleim",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "85",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> Play up to 3 <em>Spell</em> cards with printed total cost 5 or less from your hand without paying their costs. <i>(This includes costs other than fate costs.)</i>",
+			"text_canonical": "action: play up to 3 spell cards with printed total cost 5 or less from your hand without paying their costs. (this includes costs other than fate costs.)",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "iron-crane-legion",
+			"is_restricted": false,
+			"military": "X",
+			"name": "Iron Crane Legion",
+			"name_canonical": "iron crane legion",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Lukas Banas",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "71",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "No attachments except <em>Weapon</em>.\nDuring conflicts in which you are the attacking or defending player, X is equal to the number of cards in your opponent's hand. <i>(Otherwise, X is zero.)</i>",
+			"text_canonical": "no attachments except weapon.\nduring conflicts in which you are the attacking or defending player, x is equal to the number of cards in your opponent's hand. (otherwise, x is zero.)",
+			"traits": [
+				"bushi",
+				"army"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab"
 			],
 			"clan": "crab",
@@ -11156,6 +12444,42 @@
 			"traits": [
 				"shugenja",
 				"void"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "isawa-heiko",
+			"is_restricted": false,
+			"military": "0",
+			"name": "Isawa Heiko",
+			"name_canonical": "isawa heiko",
+			"pack_cards": [
+				{
+					"flavor": "\"How can you not find beauty in water's frozen crystal?\"",
+					"illustrator": "Lin Hsiang",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "56",
+					"quantity": 3
+				}
+			],
+			"political": "5",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After you play a <em>Water</em> card during a conflict, choose a participating character - swap the base [conflict-military] and [conflict-political] stats of that character.",
+			"text_canonical": "reaction: after you play a water card during a conflict, choose a participating character - swap the base [conflict-military] and [conflict-political] stats of that character.",
+			"traits": [
+				"shugenja",
+				"water"
 			],
 			"type": "character",
 			"unicity": true
@@ -11464,6 +12788,43 @@
 				"void"
 			],
 			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "crane",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "issue-a-challenge",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Issue a Challenge",
+			"name_canonical": "issue a challenge",
+			"pack_cards": [
+				{
+					"flavor": "\"If your skill with a blade is even half of what you have boasted, you will face me alone like a true samurai.\"",
+					"illustrator": "Carlos Palma Cruchaga",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "82",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Reaction:</b> After a <em>Bushi</em> character you control attacks alone - your opponent cannot declare more than 1 character as a defender in this conflict.",
+			"text_canonical": "reaction: after a bushi character you control attacks alone - your opponent cannot declare more than 1 character as a defender in this conflict.",
+			"traits": [],
+			"type": "event",
 			"unicity": false
 		},
 		{
@@ -11922,7 +13283,7 @@
 			"pack_cards": [
 				{
 					"flavor": "",
-					"illustrator": "",
+					"illustrator": "Felipe Gaona",
 					"image_url": "",
 					"pack": {
 						"id": "justice-for-satsume"
@@ -12411,6 +13772,45 @@
 			],
 			"type": "character",
 			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "crane",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "kakita-s-final-stance",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Kakita's Final Stance",
+			"name_canonical": "kakita's final stance",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Drew Baker",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "125",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-military] conflict, choose a participating character - until the end of the conflict, that character cannot be bowed by opponent's card effects. If it is involved in a duel during this conflict, it does not bow as a result of this conflict's resolution.",
+			"text_canonical": "action: during a [conflict-military] conflict, choose a participating character - until the end of the conflict, that character cannot be bowed by opponent's card effects. if it is involved in a duel during this conflict, it does not bow as a result of this conflict's resolution.",
+			"traits": [
+				"technique"
+			],
+			"type": "event",
+			"unicity": false
 		},
 		{
 			"allowed_clans": [
@@ -12950,6 +14350,42 @@
 		},
 		{
 			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "keeper-of-secret-names",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Keeper of Secret Names",
+			"name_canonical": "keeper of secret names",
+			"pack_cards": [
+				{
+					"flavor": "\"I promise to call upon you only at greatest need.\"",
+					"illustrator": "Le Vuong",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "102",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict, choose an unbroken province - resolve that province's action ability as if the conflict were at that province.",
+			"text_canonical": "action: during a conflict, choose an unbroken province - resolve that province's action ability as if the conflict were at that province.",
+			"traits": [
+				"shugenja",
+				"water"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -13435,25 +14871,62 @@
 			"pack_cards": [
 				{
 					"flavor": "",
-					"illustrator": "",
+					"illustrator": "Jorge Matar",
 					"image_url": "",
 					"pack": {
 						"id": "bonds-of-blood"
 					},
 					"position": "27",
-					"quantity": 1
+					"quantity": 3
 				}
 			],
 			"political": "3",
 			"side": "dynasty",
-			"text": "<b>Reaction:</b> After you gain a fate from a ring during a conflict in which this character is participating - this character cannor be chosen as the target of your opponent's triggered abilities until the end of the conflict.",
-			"text_canonical": "reaction: after you gain a fate from a ring during a conflict in which this character is participating - this character cannor be chosen as the target of your opponent's triggered abilities until the end of the conflict.",
+			"text": "<b>Reaction:</b> After you gain a fate from a ring during a conflict in which this character is participating - this character cannot be chosen as the target of your opponent's triggered abilities until the end of the conflict.",
+			"text_canonical": "reaction: after you gain a fate from a ring during a conflict in which this character is participating - this character cannot be chosen as the target of your opponent's triggered abilities until the end of the conflict.",
 			"traits": [
 				"bushi",
 				"champion"
 			],
 			"type": "character",
 			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "know-the-terrain",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"name": "Know the Terrain",
+			"name_canonical": "know the terrain",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Shen Fei",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "130",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Interrupt:</b> When an attack is declared against a non-stronghold facedown province you control, before revealing that province - switch it with another facedown non-stronghold province you control.",
+			"text_canonical": "interrupt: when an attack is declared against a non-stronghold facedown province you control, before revealing that province - switch it with another facedown non-stronghold province you control.",
+			"traits": [],
+			"type": "event",
+			"unicity": false
 		},
 		{
 			"allowed_clans": [
@@ -14053,6 +15526,38 @@
 		},
 		{
 			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
+			"deck_limit": 3,
+			"id": "licensed-quarter",
+			"is_restricted": false,
+			"name": "Licensed Quarter",
+			"name_canonical": "licensed quarter",
+			"pack_cards": [
+				{
+					"flavor": "With promises of fine wine, awaiting riches, and beautiful entertainment, Ryokō Owari Toshi can break even the most stouthearted of samurai.",
+					"illustrator": "Frej Agelh",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "78",
+					"quantity": 3
+				}
+			],
+			"side": "dynasty",
+			"strength_bonus": "+2",
+			"text": "<b>Reaction:</b> After you win a conflict - your opponent discards the top card of his or her conflict deck. (Unlimited.)",
+			"text_canonical": "reaction: after you win a conflict - your opponent discards the top card of his or her conflict deck. (unlimited.)",
+			"traits": [
+				"city"
+			],
+			"type": "holding",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"lion"
 			],
 			"clan": "lion",
@@ -14494,6 +15999,46 @@
 				"mantis-clan"
 			],
 			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "dragon",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "mantra-of-air",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Mantra of Air",
+			"name_canonical": "mantra of air",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Pavel Kolomeyets",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "126",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Reaction:</b> After an opponent declares a [element-air] conflict, choose a <em>Monk</em> character or a character with a <em>Monk</em> attachment – honor that character and draw 1 card.",
+			"text_canonical": "reaction: after an opponent declares a [element-air] conflict, choose a monk character or a character with a monk attachment - honor that character and draw 1 card.",
+			"traits": [
+				"kiho",
+				"air"
+			],
+			"type": "event",
 			"unicity": false
 		},
 		{
@@ -16218,6 +17763,42 @@
 				"unicorn"
 			],
 			"clan": "unicorn",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "moto-outrider",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Moto Outrider",
+			"name_canonical": "moto outrider",
+			"pack_cards": [
+				{
+					"flavor": "Lands won on horseback ought to be ruled from horseback.",
+					"illustrator": "Conceptopolis",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "123",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a [conflict-military] conflict in which this character is participating - ready this character.",
+			"text_canonical": "action: during a [conflict-military] conflict in which this character is participating - ready this character.",
+			"traits": [
+				"bushi",
+				"cavalry"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
 			"cost": 1,
 			"deck_limit": 3,
 			"glory": 1,
@@ -16407,6 +17988,47 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "unicorn",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "natural-negotiator",
+			"influence_cost": 1,
+			"is_restricted": false,
+			"military_bonus": "+0",
+			"name": "Natural Negotiator",
+			"name_canonical": "natural negotiator",
+			"pack_cards": [
+				{
+					"flavor": "\"Beware the Ide with empty hands.\" - Ujik proverb",
+					"illustrator": "Derek D. Edgell",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "87",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+0",
+			"side": "conflict",
+			"text": "Attach to a <em>Courtier</em> character you control.\n<b>Action:</b> During a conflict, give your opponent 1 honor - switch attached character's base [conflict-military] and [conflict-political] skills until the end of the conflict.",
+			"text_canonical": "attach to a courtier character you control.\naction: during a conflict, give your opponent 1 honor - switch attached character's base [conflict-military] and [conflict-political] skills until the end of the conflict.",
+			"traits": [
+				"technique"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "crab",
 			"cost": 1,
 			"deck_limit": 3,
@@ -16540,6 +18162,50 @@
 			"text_canonical": "reaction: after you attach a weapon attachment to this character - ready this character. (limit twice per round.)",
 			"traits": [
 				"bushi"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "dragon",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "niten-pupil",
+			"influence_cost": 1,
+			"is_restricted": false,
+			"military": "2",
+			"name": "Niten Pupil",
+			"name_canonical": "niten pupil",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Ruwen Liu",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "37",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"role_restriction": "water",
+			"side": "conflict",
+			"text": "<em>Water</em> role only.\n<b>Reaction:</b> After honor dials are revealed for a duel, if this character is involved in the duel - double this character's base [conflict-military] and [conflict-political] skills until the end of the phase.",
+			"text_canonical": "water role only.\nreaction: after honor dials are revealed for a duel, if this character is involved in the duel - double this character's base [conflict-military] and [conflict-political] skills until the end of the phase.",
+			"traits": [
+				"bushi",
+				"duelist"
 			],
 			"type": "character",
 			"unicity": false
@@ -17205,6 +18871,42 @@
 		},
 		{
 			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "palace-guard",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Palace Guard",
+			"name_canonical": "palace guard",
+			"pack_cards": [
+				{
+					"flavor": "\"Allow none save the servants to pass. And when they have passed, make note of their names.\" - Bayushi Kachiko",
+					"illustrator": "Marius Bota",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "100",
+					"quantity": 3
+				}
+			],
+			"political": "0",
+			"side": "dynasty",
+			"text": "This character cannot be declared as an attacker against a less honorable player than you.",
+			"text_canonical": "this character cannot be declared as an attacker against a less honorable player than you.",
+			"traits": [
+				"bushi",
+				"imperial"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crane"
 			],
 			"clan": "crane",
@@ -17358,6 +19060,41 @@
 		},
 		{
 			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "persuasive-counselor",
+			"is_restricted": false,
+			"military": "3",
+			"name": "Persuasive Counselor",
+			"name_canonical": "persuasive counselor",
+			"pack_cards": [
+				{
+					"flavor": "\"You must not take offense at my words. Did your Bayushi not name himself a villain?\"",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "117",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating - each event you play during this conflict cannot be canceled.",
+			"text_canonical": "action: during a conflict in which this character is participating - each event you play during this conflict cannot be canceled.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"scorpion"
 			],
 			"clan": "scorpion",
@@ -17368,7 +19105,7 @@
 			"name_canonical": "petal village estate",
 			"pack_cards": [
 				{
-					"flavor": "",
+					"flavor": "For imperial bureaucrats who cannot live in Otosan Uchi, a beautiful estate in one of the surrounding Petal Villages touts their noble station.",
 					"illustrator": "Nele Diel",
 					"image_url": "",
 					"pack": {
@@ -17933,6 +19670,41 @@
 		},
 		{
 			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "quarrelsome-youth",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Quarrelsome Youth",
+			"name_canonical": "quarrelsome youth",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Calvin Chua",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "97",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After this character loses a conflict as an attacker, if you have fewer cards in your hand than your opponent – your opponent discards 1 random card from his or her hand.",
+			"text_canonical": "reaction: after this character loses a conflict as an attacker, if you have fewer cards in your hand than your opponent - your opponent discards 1 random card from his or her hand.",
+			"traits": [
+				"bushi"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"phoenix"
 			],
 			"clan": "phoenix",
@@ -18222,6 +19994,43 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "lion",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "regal-bearing",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"name": "Regal Bearing",
+			"name_canonical": "regal bearing",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Joshua Cairos",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "84",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-political] conflict in which you control a participating <em>Courtier</em> character - set the bid on your honor dial to 1 and draw cards equal to th difference between your honor bid and that of your opponent. (Max 1 per conflict.)",
+			"text_canonical": "action: during a [conflict-political] conflict in which you control a participating courtier character - set the bid on your honor dial to 1 and draw cards equal to th difference between your honor bid and that of your opponent. (max 1 per conflict.)",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "crab",
 			"cost": 1,
 			"deck_limit": 3,
@@ -18401,6 +20210,41 @@
 		},
 		{
 			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "righteous-delegate",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Righteous Delegate",
+			"name_canonical": "righteous delegate",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Guillaume Ducos",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "75",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> While this character is participating in a conflict -  until the end of the conflict, each participating non-<em>Bushi</em> character gets +1[conflict-military] and +1[conflict-political] and each participating <em>Bushi</em> character gets -1[conflict-military] and -1[conflict-political].",
+			"text_canonical": "action: while this character is participating in a conflict -  until the end of the conflict, each participating non-bushi character gets +1[conflict-military] and +1[conflict-political] and each participating bushi character gets -1[conflict-military] and -1[conflict-political].",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab",
 				"crane",
 				"dragon",
@@ -18557,6 +20401,43 @@
 			"traits": [
 				"technique"
 			],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "crab",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "root-out-heresy",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"name": "Root Out Heresy",
+			"name_canonical": "root out heresy",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "124",
+					"quantity": 3
+				}
+			],
+			"side": "conflict",
+			"text": "<b>Action:</b> During a [conflict-political] conflict - discard a random card from your opponent's hand. Until the end of the conflict, reduce the strength of the attacked province by X, where X is the cost of the discarded card.",
+			"text_canonical": "action: during a [conflict-political] conflict - discard a random card from your opponent's hand. until the end of the conflict, reduce the strength of the attacked province by x, where x is the cost of the discarded card.",
+			"traits": [],
 			"type": "event",
 			"unicity": false
 		},
@@ -20139,6 +22020,47 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "crab",
+			"cost": 0,
+			"deck_limit": 3,
+			"id": "sharpened-tsuruhashi",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "Sharpened Tsuruhashi",
+			"name_canonical": "sharpened tsuruhashi",
+			"pack_cards": [
+				{
+					"flavor": "The builder's axe makes no distinction between wood or skull.",
+					"illustrator": "Carlos Palma Cruchaga",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "81",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+0",
+			"side": "conflict",
+			"text": "<b>Interrupt:</b> When attached character is sacrificed - return this card to your hand.",
+			"text_canonical": "interrupt: when attached character is sacrificed - return this card to your hand.",
+			"traits": [
+				"weapon"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"phoenix"
 			],
 			"clan": "phoenix",
@@ -21218,6 +23140,42 @@
 				"scorpion"
 			],
 			"clan": "scorpion",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "shosuro-ibuki",
+			"is_restricted": false,
+			"military": "4",
+			"name": "Shosuro Ibuki",
+			"name_canonical": "shosuro ibuki",
+			"pack_cards": [
+				{
+					"flavor": "So long as they fear the knife's subtlety, you can trust you will remain safe in court.",
+					"illustrator": "Isuardi Therianto",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "57",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "Disguised <em>Courtier</em>.\n<b>Reaction:</b> After this character wins a conflict - remove 1 fate from each other participating character.",
+			"text_canonical": "disguised courtier.\nreaction: after this character wins a conflict - remove 1 fate from each other participating character.",
+			"traits": [
+				"bushi",
+				"yojimbo"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"scorpion"
+			],
+			"clan": "scorpion",
 			"cost": 3,
 			"deck_limit": 3,
 			"glory": 1,
@@ -21448,6 +23406,40 @@
 			],
 			"type": "character",
 			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crane"
+			],
+			"clan": "crane",
+			"cost": 2,
+			"deck_limit": 3,
+			"id": "shukujo",
+			"is_restricted": false,
+			"military_bonus": "+2",
+			"name": "Shukujo",
+			"name_canonical": "shukujo",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Carlos Palma Cruchaga",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "104",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+3",
+			"side": "conflict",
+			"text": "Attach to a unique [clan-crane] character you control. Ancestral. Restricted.\nIf attached character has the <em>Champion</em> trait, it gains \"<b>Action:</b> During a conflict in which this character is participating – switch the conflict type.\"",
+			"text_canonical": "attach to a unique [clan-crane] character you control. ancestral. restricted.\nif attached character has the champion trait, it gains \"action: during a conflict in which this character is participating - switch the conflict type.\"",
+			"traits": [
+				"weapon"
+			],
+			"type": "attachment",
+			"unicity": true
 		},
 		{
 			"allowed_clans": [
@@ -22323,7 +24315,7 @@
 			"deck_limit": 3,
 			"id": "spyglass",
 			"influence_cost": 2,
-			"is_restricted": false,
+			"is_restricted": true,
 			"military_bonus": "+0",
 			"name": "Spyglass",
 			"name_canonical": "spyglass",
@@ -22415,6 +24407,39 @@
 			"traits": [],
 			"type": "event",
 			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"deck_limit": 1,
+			"id": "starry-heaven-sanctuary",
+			"is_restricted": false,
+			"name": "Starry Heaven Sanctuary",
+			"name_canonical": "starry heaven sanctuary",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Frej Agelh",
+					"image_url": "",
+					"pack": {
+						"id": "the-children-of-heaven"
+					},
+					"position": "76",
+					"quantity": 3
+				}
+			],
+			"side": "dynasty",
+			"strength_bonus": "+1",
+			"text": "Limit 1 per deck.\n<b>Reaction:</b> After fate is removed from characters in the fate phase. If 4 or more fate was removed - gain 2 fate.",
+			"text_canonical": "limit 1 per deck.\nreaction: after fate is removed from characters in the fate phase. if 4 or more fate was removed - gain 2 fate.",
+			"traits": [
+				"temple",
+				"void"
+			],
+			"type": "holding",
+			"unicity": true
 		},
 		{
 			"allowed_clans": [
@@ -22899,6 +24924,48 @@
 		},
 		{
 			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "phoenix",
+			"cost": 2,
+			"deck_limit": 3,
+			"id": "stride-the-waves",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "Stride the Waves",
+			"name_canonical": "stride the waves",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Shen Fei",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "64",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+1",
+			"side": "conflict",
+			"text": "Attach to a character you control.\n<b>Action:</b> During a conflict, if you have the [element-water] ring claimed - move attached character to the conflict or home from the conflict. (Limit twice per round.)",
+			"text_canonical": "attach to a character you control.\naction: during a conflict, if you have the [element-water] ring claimed - move attached character to the conflict or home from the conflict. (limit twice per round.)",
+			"traits": [
+				"spell",
+				"water"
+			],
+			"type": "attachment",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
 				"crab"
 			],
 			"clan": "crab",
@@ -22913,7 +24980,7 @@
 			"pack_cards": [
 				{
 					"flavor": "",
-					"illustrator": "",
+					"illustrator": "Ilich Henriquez",
 					"image_url": "",
 					"pack": {
 						"id": "the-children-of-heaven"
@@ -22929,6 +24996,43 @@
 			"traits": [
 				"shugenja",
 				"earth"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 2,
+			"deck_limit": 3,
+			"glory": 3,
+			"id": "student-of-esoterica",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Student of Esoterica",
+			"name_canonical": "student of esoterica",
+			"pack_cards": [
+				{
+					"flavor": "\"Isawa Koutomo writes as if the Yobanjin could invoke spells without appealing to the kami. Surely this could not be the case?\"",
+					"illustrator": "Felipe Gaona",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "118",
+					"quantity": 3
+				}
+			],
+			"political": "1",
+			"side": "dynasty",
+			"text": "You may spend fate from this character to pay for <em>Spell</em> cards.",
+			"text_canonical": "you may spend fate from this character to pay for spell cards.",
+			"traits": [
+				"shugenja",
+				"earth",
+				"scholar"
 			],
 			"type": "character",
 			"unicity": false
@@ -24311,6 +26415,42 @@
 				"dragon"
 			],
 			"clan": "dragon",
+			"cost": 4,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "togashi-ichi",
+			"is_restricted": false,
+			"military": "4",
+			"name": "Togashi Ichi",
+			"name_canonical": "togashi ichi",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Jorge Matar",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "115",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "Disguised <em>Monk</em>.\n<b>Action:</b> During a conflict in which this character is attacking, if 10 or more cards have been played during this conflict and if the attacked province is not a stronghold province - break that province.",
+			"text_canonical": "disguised monk.\naction: during a conflict in which this character is attacking, if 10 or more cards have been played during this conflict and if the attacked province is not a stronghold province - break that province.",
+			"traits": [
+				"monk",
+				"tattooed"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
 			"cost": 1,
 			"deck_limit": 3,
 			"glory": 2,
@@ -24764,6 +26904,41 @@
 				"dragon"
 			],
 			"clan": "dragon",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "trusted-advisor",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Trusted Advisor",
+			"name_canonical": "trusted advisor",
+			"pack_cards": [
+				{
+					"flavor": "\"I am privileged that you would seek my insights in uncovering the truth of such a bizarre matter.\"",
+					"illustrator": "Joyce Maureira",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "51",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Reaction:</b> After you gain fate from a ring during a conflict in which this character is participating - draw 1 card.",
+			"text_canonical": "reaction: after you gain fate from a ring during a conflict in which this character is participating - draw 1 card.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"dragon"
+			],
+			"clan": "dragon",
 			"cost": 2,
 			"deck_limit": 3,
 			"glory": 1,
@@ -24829,6 +27004,47 @@
 			"text_canonical": "action: during a conflict in which you control a participating honored courtier character, choose an attacking character - move that character home.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "dragon",
+			"cost": 1,
+			"deck_limit": 3,
+			"id": "two-heavens-technique",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"military_bonus": "+1",
+			"name": "Two-Heavens Technique",
+			"name_canonical": "two-heavens technique",
+			"pack_cards": [
+				{
+					"flavor": "\"One man, one sword, one strike.\" - Kakita\n \"Two hands.\" - Mirumoto",
+					"illustrator": "Mario Wibisono",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "38",
+					"quantity": 3
+				}
+			],
+			"political_bonus": "+0",
+			"side": "conflict",
+			"text": "Attach to a <em>Bushi</em> character.\nWhile there are exactly 2 <em>Weapon</em> attachments on attached character, attached character gains covert.",
+			"text_canonical": "attach to a bushi character.\nwhile there are exactly 2 weapon attachments on attached character, attached character gains covert.",
+			"traits": [
+				"technique"
+			],
+			"type": "attachment",
 			"unicity": false
 		},
 		{
@@ -24909,6 +27125,80 @@
 			"traits": [
 				"bushi",
 				"yojimbo"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"cost": 2,
+			"deck_limit": 3,
+			"id": "unfulfilled-duty",
+			"influence_cost": 2,
+			"is_restricted": false,
+			"name": "Unfulfilled Duty",
+			"name_canonical": "unfulfilled duty",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "44",
+					"quantity": 3
+				}
+			],
+			"role_restriction": "earth",
+			"side": "conflict",
+			"text": "<em>Earth</em> role only.\n<b>Action:</b> Choose any number of characters with no fate that have a total printed cost of 6 or lower - ready each of those characters.",
+			"text_canonical": "earth role only.\naction: choose any number of characters with no fate that have a total printed cost of 6 or lower - ready each of those characters.",
+			"traits": [],
+			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"lion"
+			],
+			"clan": "lion",
+			"cost": 5,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "unified-company",
+			"is_restricted": false,
+			"military": "6",
+			"name": "Unified Company",
+			"name_canonical": "unified company",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Marius Bota",
+					"image_url": "",
+					"pack": {
+						"id": "a-champion-s-foresight"
+					},
+					"position": "98",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "No attachments except <em>Weapon</em>.\n<b>Reaction:</b> After this character wins a conflict, if you have fewer cards in you hand than your opponent - put a non-unique <em>Bushi</em> character with printed cost 2 or less into play from your dynasty discard pile.",
+			"text_canonical": "no attachments except weapon.\nreaction: after this character wins a conflict, if you have fewer cards in you hand than your opponent - put a non-unique bushi character with printed cost 2 or less into play from your dynasty discard pile.",
+			"traits": [
+				"bushi",
+				"army"
 			],
 			"type": "character",
 			"unicity": false
@@ -25070,6 +27360,37 @@
 			"text_canonical": "action: during a [conflict-political] conflict - dishonor each participating non-courtier character.",
 			"traits": [],
 			"type": "event",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
+			"deck_limit": 1,
+			"element": "earth",
+			"id": "untamed-steppe",
+			"is_restricted": false,
+			"name": "Untamed Steppe",
+			"name_canonical": "untamed steppe",
+			"pack_cards": [
+				{
+					"flavor": "TO DO",
+					"illustrator": "Nele Diel",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "24",
+					"quantity": 1
+				}
+			],
+			"side": "province",
+			"strength": "6",
+			"text": "<b>Action:</b> During a conflict at this province, choose another unbroken province - turn that province facedown.",
+			"text_canonical": "action: during a conflict at this province, choose another unbroken province - turn that province facedown.",
+			"traits": [],
+			"type": "province",
 			"unicity": false
 		},
 		{
@@ -25310,6 +27631,44 @@
 				"unicorn"
 			],
 			"clan": "unicorn",
+			"cost": 5,
+			"deck_limit": 3,
+			"glory": 3,
+			"id": "utaku-rumaru",
+			"is_restricted": false,
+			"military": "4",
+			"name": "Utaku Rumaru",
+			"name_canonical": "utaku rumaru",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "32",
+					"quantity": 3
+				}
+			],
+			"political": "4",
+			"side": "dynasty",
+			"text": "Each honored character you control gets +1 glory. Each dishonored character you control gets -1 glory.\n<b>Reaction:</b> After this character wins a conflict, discard a card from your hand. Choose another participating character - honor that character.",
+			"text_canonical": "each honored character you control gets +1 glory. each dishonored character you control gets -1 glory.\nreaction: after this character wins a conflict, discard a card from your hand. choose another participating character - honor that character.",
+			"traits": [
+				"bushi",
+				"cavalry",
+				"battle-maiden",
+				"daimyo"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"unicorn"
+			],
+			"clan": "unicorn",
 			"cost": 3,
 			"deck_limit": 3,
 			"glory": 1,
@@ -25378,6 +27737,41 @@
 			],
 			"type": "character",
 			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"phoenix"
+			],
+			"clan": "phoenix",
+			"cost": 1,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "valiant-oathkeeper",
+			"is_restricted": false,
+			"military": "2",
+			"name": "Valiant Oathkeeper",
+			"name_canonical": "valiant oathkeeper",
+			"pack_cards": [
+				{
+					"flavor": "\"If the Isawa cannot be at peace, then of what value is my blade? If I would not die to uphold my oath, then of what value is my word? If you think me faithless, then your know nothing of the Shiba.\"",
+					"illustrator": "TO DO",
+					"image_url": "",
+					"pack": {
+						"id": "bonds-of-blood"
+					},
+					"position": "29",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "dynasty",
+			"text": "",
+			"text_canonical": "",
+			"traits": [
+				"bushi"
+			],
+			"type": "character",
+			"unicity": false
 		},
 		{
 			"allowed_clans": [
@@ -25914,6 +28308,48 @@
 				"scorpion",
 				"unicorn"
 			],
+			"clan": "crab",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 1,
+			"id": "warden-of-the-damned",
+			"influence_cost": 3,
+			"is_restricted": false,
+			"military": "2",
+			"name": "Warden of the Damned",
+			"name_canonical": "warden of the damned",
+			"pack_cards": [
+				{
+					"flavor": "The wardens who attend to the Damned are as ruthless as they are courgaeous. They must stand ready to cut down the very companions whose humanity they seek to preserve.",
+					"illustrator": "Derek D. Edgell",
+					"image_url": "",
+					"pack": {
+						"id": "justice-for-satsume"
+					},
+					"position": "60",
+					"quantity": 3
+				}
+			],
+			"political": "2",
+			"side": "conflict",
+			"text": "<b>Forced Interrupt:</b> When the conflict phase ends - each player must sacrifice a dishonored character, if able.",
+			"text_canonical": "forced interrupt: when the conflict phase ends - each player must sacrifice a dishonored character, if able.",
+			"traits": [
+				"monk"
+			],
+			"type": "character",
+			"unicity": false
+		},
+		{
+			"allowed_clans": [
+				"crab",
+				"crane",
+				"dragon",
+				"lion",
+				"phoenix",
+				"scorpion",
+				"unicorn"
+			],
 			"clan": "neutral",
 			"cost": 1,
 			"deck_limit": 3,
@@ -26381,10 +28817,10 @@
 			],
 			"clan": "unicorn",
 			"deck_limit": 3,
-			"id": "wayfinder-s-camp",
+			"id": "wayfarer-s-camp",
 			"is_restricted": false,
-			"name": "Wayfinder's Camp",
-			"name_canonical": "wayfinder's camp",
+			"name": "Wayfarer's Camp",
+			"name_canonical": "wayfarer's camp",
 			"pack_cards": [
 				{
 					"flavor": "",
@@ -26852,6 +29288,41 @@
 				"crab"
 			],
 			"clan": "crab",
+			"cost": 3,
+			"deck_limit": 3,
+			"glory": 2,
+			"id": "yasuki-hatsu",
+			"is_restricted": false,
+			"military": "1",
+			"name": "Yasuki Hatsu",
+			"name_canonical": "yasuki hatsu",
+			"pack_cards": [
+				{
+					"flavor": "",
+					"illustrator": "Lin Hsiang",
+					"image_url": "",
+					"pack": {
+						"id": "shoju-s-duty"
+					},
+					"position": "112",
+					"quantity": 3
+				}
+			],
+			"political": "3",
+			"side": "dynasty",
+			"text": "<b>Action:</b> During a conflict in which this character is participating, if you are less honorable than your opponent - search the top 5 cards of your conflict deck for an attachment, reveal it, and add it to your hand. Shuffle.",
+			"text_canonical": "action: during a conflict in which this character is participating, if you are less honorable than your opponent - search the top 5 cards of your conflict deck for an attachment, reveal it, and add it to your hand. shuffle.",
+			"traits": [
+				"courtier"
+			],
+			"type": "character",
+			"unicity": true
+		},
+		{
+			"allowed_clans": [
+				"crab"
+			],
+			"clan": "crab",
 			"cost": 2,
 			"deck_limit": 3,
 			"glory": 1,
@@ -27081,7 +29552,7 @@
 			"name_canonical": "yogo preserver",
 			"pack_cards": [
 				{
-					"flavor": "",
+					"flavor": "TO DO",
 					"illustrator": "Pavel Kolomeyets",
 					"image_url": "",
 					"pack": {
@@ -27303,6 +29774,6 @@
 			"unicity": false
 		}
 	],
-	"size": 727,
+	"size": 794,
 	"success": true
 }

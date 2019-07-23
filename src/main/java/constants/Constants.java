@@ -40,4 +40,11 @@ public class Constants {
     public static final String PROVINCE = "Province";
     public static final String STRONGHOLD = "Stronghold";
     public static final String CHARACTER = "character";
+
+/* Discard packs */
+    public static final String[] DICARD_PACKS = {"\"the-emperor-s-legion\"",
+        "\"justice-for-satsume\"",
+        "\"the-children-of-heaven\"",
+        "\"a-champion-s-foresight\"",
+        "\"shojou-s-duty\""};
 }

@@ -28,6 +28,7 @@ class CollectionL5R {
 
     private final String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
     private final Integer TIMEOUT = 3000;
+    private final String[] DICARD_PACKS = Constants.DICARD_PACKS;
 
     private List<ConflictCard> conflictCardList;
     private List<DynastyCard> dynastyCardList;
@@ -74,6 +75,9 @@ class CollectionL5R {
                 return "SCORPION CLAN PACK";
             case "children-of-the-empire":
                 return "PREMIUM EXPANSIONS #1";
+            case "for-the-empire":
+            case "bonds-of-blood":
+                return "INHERITANCE CYCLE";
             default:
                 return null;
         }
@@ -304,17 +308,19 @@ class CollectionL5R {
                             }.getType();
                             List<JsonPackCards> packCards = gson.fromJson(card.getPack_cards(),
                                     type);
-                            return packCards.size() == 0
-                                    || "\"the-emperor-s-legion\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"bonds-of-blood\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"justice-for-satsume\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"the-children-of-heaven\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"a-champion-s-foresight\"".equals(packCards.get(0).getPack().get("id").toString())
-                                    || "\"shojou-s-duty\"".equals(packCards.get(0).getPack().get("id").toString());
+                            return packCards.size() == 0 || notInCollection(packCards);
                         }
                 ).forEach(card -> this.allCards.remove(card));
         System.out.println("Total number of cards " + this.allCards.size());
 
+    }
+
+    private boolean notInCollection(List<JsonPackCards> packCards) {
+        for(String pack : DICARD_PACKS) {
+            if(pack.equals(packCards.get(0).getPack().get("id").toString()))
+                return true;
+        }
+        return false;
     }
 
     void initializeConflictCardList() {
