@@ -28,6 +28,8 @@ public class StartGame {
     private final Integer MAX_PROVINCE_CARDS = Constants.MAX_PROVINCE_CARDS;
     private final Integer MAX_CARD_COPIES = Constants.MAX_CARD_COPIES;
 
+    private final String NULL = "null";
+
     private Deck player1;
     private Deck player2;
 
@@ -168,7 +170,7 @@ public class StartGame {
         if(!cardSelected.getUnicity())
             return true;
         String idConflictCard = cardSelected.getIdFiveRingsDB();
-        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals("null")) {
+        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals(NULL)) {
             idConflictCard = cardSelected.getIdFiveRingsDB().substring(0,idConflictCard.length()-2);
         }
         for(DynastyCard card : player.getDynastyCardDeck()) {
@@ -209,10 +211,10 @@ public class StartGame {
                                 && (card.getClan().equals(player.getClan())
                                 || isAllowedClan(player, card))
                                 && (card.getRoleLimit() == null
-                                || card.getRoleLimit().equals("null")
+                                || card.getRoleLimit().equals(NULL)
                                 || card.getRoleLimit().equals(player.getRoleCard().getRole()))
                                 && (card.getElementLimit() == null
-                                || card.getElementLimit().equals("null")
+                                || card.getElementLimit().equals(NULL)
                                 || card.getElementLimit().equals(player.getElement()))
                 )
                 .collect(Collectors.toList());
@@ -229,7 +231,7 @@ public class StartGame {
             return false;
         }
         String idConflictCard = conflictCard.getIdFiveRingsDB();
-        if(conflictCard.getName_extra() != null && !conflictCard.getName_extra().equals("null")) {
+        if(conflictCard.getName_extra() != null && !conflictCard.getName_extra().equals(NULL)) {
             idConflictCard = conflictCard.getIdFiveRingsDB().substring(0,idConflictCard.length()-2);
         }
         for(DynastyCard card : player.getDynastyCardDeck()) {
@@ -269,11 +271,11 @@ public class StartGame {
 
     private boolean splashConditions(Deck player, ConflictCard card) {
         return player.getSplash() != null
-                && !player.getSplash().equals("null")
+                && !player.getSplash().equals(NULL)
                 && isAllowedClan(player.getClan(), card.getAllowed_clans())
                 && card.getClan().equals(player.getSplash())
                 && card.getInfluence() != null
-                && !card.getInfluence().equals("null")
+                && !card.getInfluence().equals(NULL)
                 && card.getInfluence() >= 1
                 && player.getInfluence() >= 1
                 && card.getInfluence() <= player.getInfluence();
@@ -367,7 +369,7 @@ public class StartGame {
         if(!cardSelected.getUnicity())
             return true;
         String idDynastyCard = cardSelected.getIdFiveRingsDB();
-        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals("null")) {
+        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals(NULL)) {
             idDynastyCard = cardSelected.getIdFiveRingsDB().substring(0,idDynastyCard.length()-2);
         }
         for(DynastyCard card : player.getDynastyCardDeck()) {
@@ -387,13 +389,13 @@ public class StartGame {
                         .filter(card -> !dynastyCardIsPresent(player, card)
                                 && !alreadyUnicityDynastyCard(player,card)
                                 && isAllowedCard(player, card)
-                                && (card.getClan().equals("neutral")
+                                && (card.getClan().equals(Constants.NEUTRAL)
                                 || card.getClan().equals(player.getClan()))
                                 && (card.getRoleLimit() == null
-                                || card.getRoleLimit().equals("null")
+                                || card.getRoleLimit().equals(NULL)
                                 || card.getRoleLimit().equals(player.getRoleCard().getRole()))
                                 && (card.getElementLimit() == null
-                                || card.getElementLimit().equals("null")
+                                || card.getElementLimit().equals(NULL)
                                 || card.getElementLimit().equals(player.getElement())))
                         .collect(Collectors.toList());
         int[] rndArray = createArrayNumbers(selection.size());
@@ -409,7 +411,7 @@ public class StartGame {
             return false;
         }
         String idDynastyCard = dynastyCard.getIdFiveRingsDB();
-        if(dynastyCard.getName_extra() != null && !dynastyCard.getName_extra().equals("null")) {
+        if(dynastyCard.getName_extra() != null && !dynastyCard.getName_extra().equals(NULL)) {
             idDynastyCard = dynastyCard.getIdFiveRingsDB().substring(0,idDynastyCard.length()-2);
         }
         for(DynastyCard card : player.getDynastyCardDeck()) {
@@ -499,10 +501,10 @@ public class StartGame {
                                         || card.getClan().equals(Constants.NEUTRAL))
                                         && ((card.getRoleLimit() == null)
                                         || card.getRoleLimit().equals(player.getRoleCard().getRole())
-                                        || card.getRoleLimit().equals("null"))
+                                        || card.getRoleLimit().equals(NULL))
                                         && ((card.getElementLimit() == null)
                                         || card.getElementLimit().equals(player.getRoleCard().getElement())
-                                        || card.getElementLimit().equals("null")))
+                                        || card.getElementLimit().equals(NULL)))
                         .collect(Collectors.toList());
         int[] rndArray = createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {

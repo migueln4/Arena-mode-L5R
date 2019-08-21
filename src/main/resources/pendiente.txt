@@ -3,3 +3,4 @@
 - Añadir un gitignore.
 - Hacer un generador automático de mazos.
 - Importar todas las opciones desde un archivo de configuración que se lea al arrancar la aplicación.
+- Hacer un mapa con los nombres de cada pack de expansión.

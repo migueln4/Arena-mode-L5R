@@ -3,4 +3,4 @@
 - Añadir un gitignore.
 - Hacer un generador automático de mazos.
 - Importar todas las opciones desde un archivo de configuración que se lea al arrancar la aplicación.
-- Meter como constante un array de todos los packs que no tengo aún para que se descarten en la selección de las cartas.
+- Hacer un mapa con los nombres de cada pack de expansión.

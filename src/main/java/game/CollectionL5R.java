@@ -28,7 +28,7 @@ class CollectionL5R {
 
     private final String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
     private final Integer TIMEOUT = 3000;
-    private final String[] DICARD_PACKS = Constants.DICARD_PACKS;
+    private final String[] DISCARD_PACKS = Constants.DISCARD_PACKS;
 
     private List<ConflictCard> conflictCardList;
     private List<DynastyCard> dynastyCardList;
@@ -77,6 +77,7 @@ class CollectionL5R {
                 return "PREMIUM EXPANSIONS #1";
             case "for-the-empire":
             case "bonds-of-blood":
+            case "justice-for-satsume":
                 return "INHERITANCE CYCLE";
             default:
                 return null;
@@ -316,7 +317,7 @@ class CollectionL5R {
     }
 
     private boolean notInCollection(List<JsonPackCards> packCards) {
-        for(String pack : DICARD_PACKS) {
+        for(String pack : DISCARD_PACKS) {
             if(pack.equals(packCards.get(0).getPack().get("id").toString()))
                 return true;
         }
