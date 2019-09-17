@@ -78,6 +78,7 @@ class CollectionL5R {
             case "for-the-empire":
             case "bonds-of-blood":
             case "justice-for-satsume":
+            case "the-children-of-heaven":
                 return "INHERITANCE CYCLE";
             default:
                 return null;

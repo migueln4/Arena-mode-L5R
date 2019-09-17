@@ -1970,6 +1970,43 @@
         "phoenix"
       ],
       "clan": "phoenix",
+      "cost": 4,
+      "deck_limit": 3,
+      "glory": 2,
+      "id": "asako-togama",
+      "is_restricted": false,
+      "military": "2",
+      "name": "Asako Togama",
+      "name_canonical": "asako togama",
+      "pack_cards": [
+        {
+          "flavor": "\"Never overlook knowledge when you find it, no matter how lowly its source.\"",
+          "illustrator": "Carlos Palma Cruchaga",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "13",
+          "quantity": 3
+        }
+      ],
+      "political": "5",
+      "side": "dynasty",
+      "text": "<b>Action:</b> During a conflict in which this character is participating, choose an unclaimed ring - switch that ring with a ring in your claimed ring pool and gain all fate on it. <i>(Retain the ring's conflict type.)</i>",
+      "text_canonical": "action: during a conflict in which this character is participating, choose an unclaimed ring - switch that ring with a ring in your claimed ring pool and gain all fate on it. (retain the ring's conflict type.)",
+      "traits": [
+        "courtier",
+        "daimyo",
+        "scholar"
+      ],
+      "type": "character",
+      "unicity": true
+    },
+    {
+      "allowed_clans": [
+        "phoenix"
+      ],
+      "clan": "phoenix",
       "cost": 2,
       "deck_limit": 3,
       "glory": 2,
@@ -2183,6 +2220,42 @@
       "traits": [
         "courtier",
         "imperial"
+      ],
+      "type": "character",
+      "unicity": false
+    },
+    {
+      "allowed_clans": [
+        "dragon"
+      ],
+      "clan": "dragon",
+      "cost": 3,
+      "deck_limit": 3,
+      "glory": 0,
+      "id": "austere-exemplar",
+      "is_restricted": false,
+      "military": "2",
+      "name": "Austere Exemplar",
+      "name_canonical": "austere exemplar",
+      "pack_cards": [
+        {
+          "flavor": "\"To understand the world is to understand the rhythm of the breath.\"",
+          "illustrator": "Zezhou Chen",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "6",
+          "quantity": 3
+        }
+      ],
+      "political": "3",
+      "side": "dynasty",
+      "text": "<b>Action:</b> During a conflict in which this character is attacking, spend 1 fate to an unclaimed ring - take 3 actions. (Max 1 per conflict.)",
+      "text_canonical": "action: during a conflict in which this character is attacking, spend 1 fate to an unclaimed ring - take 3 actions. (max 1 per conflict.)",
+      "traits": [
+        "monk",
+        "tattooed"
       ],
       "type": "character",
       "unicity": false
@@ -6367,6 +6440,47 @@
         "scorpion",
         "unicorn"
       ],
+      "clan": "dragon",
+      "cost": 2,
+      "deck_limit": 3,
+      "id": "dragon-tattoo",
+      "influence_cost": 3,
+      "is_restricted": false,
+      "military_bonus": "+2",
+      "name": "Dragon Tattoo",
+      "name_canonical": "dragon tattoo",
+      "pack_cards": [
+        {
+          "flavor": "",
+          "illustrator": "Matthew Armstrong",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "21",
+          "quantity": 3
+        }
+      ],
+      "political_bonus": "+0",
+      "side": "conflict",
+      "text": "Attach to a character you control. Attached character gains the <em>Tattooed</em> trait.\nRestricted.\n<b>Reaction:</b> After you play an event that chooses attached character as a target - play that event again <i>(paying all costs)</i>. You may choose new targets. Remove that event from the game.",
+      "text_canonical": "attach to a character you control. attached character gains the tattooed trait.\nrestricted.\nreaction: after you play an event that chooses attached character as a target - play that event again (paying all costs). you may choose new targets. remove that event from the game.",
+      "traits": [
+        "tattoo"
+      ],
+      "type": "attachment",
+      "unicity": false
+    },
+    {
+      "allowed_clans": [
+        "crab",
+        "crane",
+        "dragon",
+        "lion",
+        "phoenix",
+        "scorpion",
+        "unicorn"
+      ],
       "clan": "crane",
       "cost": 1,
       "deck_limit": 3,
@@ -10252,6 +10366,41 @@
     },
     {
       "allowed_clans": [
+        "dragon"
+      ],
+      "clan": "dragon",
+      "deck_limit": 1,
+      "fate": 7,
+      "honor": 11,
+      "id": "high-house-of-light",
+      "influence_pool": 7,
+      "is_restricted": false,
+      "name": "High House of Light",
+      "name_canonical": "high house of light",
+      "pack_cards": [
+        {
+          "flavor": "",
+          "illustrator": "Daria Khlebnikova",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "1",
+          "quantity": 1
+        }
+      ],
+      "side": "province",
+      "strength_bonus": "+3",
+      "text": "<b>Action:</b> During a conflict, bow this stronghold. Choose a participating <em>Monk</em> character you control - that character cannot be chosen as the target of an opponent's event during this conflict. If you have played 5 or more cards in this conflict, also move 1 fate from a ring to this character.",
+      "text_canonical": "action: during a conflict, bow this stronghold. choose a participating monk character you control - that character cannot be chosen as the target of an opponent's event during this conflict. if you have played 5 or more cards in this conflict, also move 1 fate from a ring to this character.",
+      "traits": [
+        "temple"
+      ],
+      "type": "stronghold",
+      "unicity": true
+    },
+    {
+      "allowed_clans": [
         "crab",
         "crane",
         "dragon",
@@ -12632,8 +12781,8 @@
       ],
       "political": "5",
       "side": "dynasty",
-      "text": "<b>Reaction:</b> After you play a <em>Water</em> card during a conflict, choose a participating character - swap the base [conflict-military] and [conflict-political] stats of that character until the end of the phase.",
-      "text_canonical": "reaction: after you play a water card during a conflict, choose a participating character - swap the base [conflict-military] and [conflict-political] stats of that character until the end of the phase.",
+      "text": "<b>Reaction:</b> After you play a <em>Water</em> card, choose a character - switch that character's base [conflict-military] and [conflict-political] skill until the end of the phase.",
+      "text_canonical": "reaction: after you play a water card, choose a character - switch that character's base [conflict-military] and [conflict-political] skill until the end of the phase.",
       "traits": [
         "shugenja",
         "water"
@@ -25724,6 +25873,43 @@
       ],
       "clan": "neutral",
       "deck_limit": 1,
+      "id": "support-of-the-dragon",
+      "is_restricted": false,
+      "name": "Support of the Dragon",
+      "name_canonical": "support of the dragon",
+      "pack_cards": [
+        {
+          "flavor": "",
+          "illustrator": "",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "3",
+          "quantity": 1
+        }
+      ],
+      "side": "role",
+      "text": "Increase your deckbuilding influence value by 8. You may only spend influence on [clan-dragon] clan cards.",
+      "text_canonical": "increase your deckbuilding influence value by 8. you may only spend influence on [clan-dragon] clan cards.",
+      "traits": [
+        "dragon"
+      ],
+      "type": "role",
+      "unicity": false
+    },
+    {
+      "allowed_clans": [
+        "crab",
+        "crane",
+        "dragon",
+        "lion",
+        "phoenix",
+        "scorpion",
+        "unicorn"
+      ],
+      "clan": "neutral",
+      "deck_limit": 1,
       "id": "support-of-the-lion",
       "is_restricted": false,
       "name": "Support of the Lion",
@@ -26975,6 +27161,79 @@
       ],
       "type": "character",
       "unicity": false
+    },
+    {
+      "allowed_clans": [
+        "dragon"
+      ],
+      "clan": "dragon",
+      "cost": 3,
+      "deck_limit": 3,
+      "glory": 2,
+      "id": "togashi-gaijutsu",
+      "is_restricted": false,
+      "name": "Togashi Gaijutsu",
+      "name_canonical": "togashi gaijutsu",
+      "pack_cards": [
+        {
+          "flavor": "\"The tattoos I give are gifts from Togashi-no-Kami himself. You were meant to wield this power.\"",
+          "illustrator": "Polar Engine",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "7",
+          "quantity": 3
+        }
+      ],
+      "political": "3",
+      "side": "dynasty",
+      "text": "<b>Reaction:</b> After you play a <em>Tattoo</em> attachment on a character - ready that character.",
+      "text_canonical": "reaction: after you play a tattoo attachment on a character - ready that character.",
+      "traits": [
+        "monk",
+        "tattooed"
+      ],
+      "type": "character",
+      "unicity": true
+    },
+    {
+      "allowed_clans": [
+        "dragon"
+      ],
+      "clan": "dragon",
+      "cost": 6,
+      "deck_limit": 3,
+      "glory": 3,
+      "id": "togashi-hoshi",
+      "is_restricted": false,
+      "military": "5",
+      "name": "Togashi Hoshi",
+      "name_canonical": "togashi hoshi",
+      "pack_cards": [
+        {
+          "flavor": "",
+          "illustrator": "Polar Engine",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "11",
+          "quantity": 3
+        }
+      ],
+      "political": "5",
+      "side": "dynasty",
+      "text": "No attachments except <em>Monk</em> or <em>Tattoo</em>.\n<b>Action:</b> Detach an attachment from a character you control and turn it into a character. If that card has the printed attachment card type, its [conflict-military] and [conflict-political] skills are equal to its printed [conflict-military] and [conflict-political] modifiers and it has 0 glory.",
+      "text_canonical": "no attachments except monk or tattoo.\naction: detach an attachment from a character you control and turn it into a character. if that card has the printed attachment card type, its [conflict-military] and [conflict-political] skills are equal to its printed [conflict-military] and [conflict-political] modifiers and it has 0 glory.",
+      "traits": [
+        "monk",
+        "creature",
+        "fire",
+        "mythic"
+      ],
+      "type": "character",
+      "unicity": true
     },
     {
       "allowed_clans": [
@@ -28520,6 +28779,47 @@
         "bushi"
       ],
       "type": "character",
+      "unicity": false
+    },
+    {
+      "allowed_clans": [
+        "crab",
+        "crane",
+        "dragon",
+        "lion",
+        "phoenix",
+        "scorpion",
+        "unicorn"
+      ],
+      "clan": "dragon",
+      "cost": 0,
+      "deck_limit": 3,
+      "id": "vine-tattoo",
+      "influence_cost": 2,
+      "is_restricted": false,
+      "military_bonus": "+0",
+      "name": "Vine Tattoo",
+      "name_canonical": "vine tattoo",
+      "pack_cards": [
+        {
+          "flavor": "",
+          "illustrator": "Derek D. Edgell",
+          "image_url": "",
+          "pack": {
+            "id": "seekers-of-wisdom"
+          },
+          "position": "20",
+          "quantity": 3
+        }
+      ],
+      "political_bonus": "+1",
+      "side": "conflict",
+      "text": "Attach to a character you control. Attached character gains the <em>Tattooed</em> trait.\nAttached character cannot be chosen as the target of keywords or abilities triggered from characters with an equal or higher printed cost.",
+      "text_canonical": "attach to a character you control. attached character gains the tattooed trait.\nattached character cannot be chosen as the target of keywords or abilities triggered from characters with an equal or higher printed cost.",
+      "traits": [
+        "tattoo"
+      ],
+      "type": "attachment",
       "unicity": false
     },
     {
@@ -30408,6 +30708,6 @@
       "unicity": false
     }
   ],
-  "size": 811,
+  "size": 819,
   "success": true
 }

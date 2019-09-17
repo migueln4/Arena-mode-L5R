@@ -1,10 +1,5 @@
 package constants;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Constants {
 
 /* Constants about elements */
@@ -48,7 +43,8 @@ public class Constants {
 
     /* Discard packs */
     public static final String[] DISCARD_PACKS = {"\"the-emperor-s-legion\"",
-        "\"the-children-of-heaven\"",
         "\"a-champion-s-foresight\"",
-        "\"shojou-s-duty\""};
+        "\"shojou-s-duty\"",
+        "\"seekers-of-wisdom\"",
+        "\"defenders-of-rokugan\""};
 }
