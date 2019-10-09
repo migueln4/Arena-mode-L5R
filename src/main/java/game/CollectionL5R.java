@@ -96,6 +96,13 @@ class CollectionL5R {
         strb.append(number);
         return strb.toString();
     };
+    private Function<JsonArray,List<String>> jsonArrayToList = jsonArray -> {
+        List<String> list = new ArrayList<>();
+        if(jsonArray != null && !jsonArray.isJsonNull()) {
+            jsonArray.forEach(str -> list.add(str.getAsString()));
+        }
+        return list;
+    };
     private Function<JsonCard, DynastyCard> jsonCardToDynastyCard = jsonCard -> {
         DynastyCard newCard = new DynastyCard();
         Type type = new TypeToken<List<JsonPackCards>>() {
@@ -112,6 +119,7 @@ class CollectionL5R {
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
 
+        newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
@@ -136,6 +144,7 @@ class CollectionL5R {
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
 
+        newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
@@ -161,6 +170,7 @@ class CollectionL5R {
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
 
+        newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
 
         newCard.setInfluence(jsonCard.getInfluence_pool());
 
@@ -183,6 +193,7 @@ class CollectionL5R {
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
 
+        newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
 
         JsonArray traits = jsonCard.getTraits();
 
@@ -213,12 +224,9 @@ class CollectionL5R {
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
 
-        JsonArray allowedClans = jsonCard.getAllowed_clans();
-        List<String> allowedClansList = new ArrayList<>();
-        if (allowedClans != null)
-            allowedClans.forEach(clan -> allowedClansList.add(clan.getAsString()));
+        newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
+        newCard.setAllowed_clans(jsonArrayToList.apply(jsonCard.getAllowed_clans()));
 
-        newCard.setAllowed_clans(allowedClansList);
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
