@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import constants.Constants;
 import interfaces.ThreeParametersLambda;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -256,9 +257,18 @@ class CollectionL5R {
         this.strongholdCardList = new ArrayList<>();
         this.parser = new JsonParser();
         this.gson = new Gson();
+        initializeAll();
         readURL();
         deleteExceptions();
         updateResources();
+    }
+
+    private void initializeAll() {
+        initializeConflictCardList();
+        initializeDynastyCardList();
+        initializeProvinceCardList();
+        initializeRoleCardList();
+        initializeStrongholdCardList();
     }
 
     private void readURL() {
@@ -362,31 +372,31 @@ class CollectionL5R {
         return false;
     }
 
-    void initializeConflictCardList() {
+    private void initializeConflictCardList() {
         allCards.stream().filter(card -> card.getSide().equalsIgnoreCase(Constants.CONFLICT)).
                 forEach(card -> conflictCardList.add(jsonCardToConflictCard.apply(card)));
         System.out.println("Conflict Card List: OK (" + this.conflictCardList.size() + " cards)");
     }
 
-    void initializeDynastyCardList() {
+    private void initializeDynastyCardList() {
         allCards.stream().filter(card -> card.getSide().equalsIgnoreCase(Constants.DYNASTY)).
                 forEach(card -> dynastyCardList.add(jsonCardToDynastyCard.apply(card)));
         System.out.println("Dynasty Card List: OK (" + this.dynastyCardList.size() + " cards)");
     }
 
-    void initializeProvinceCardList() {
+    private void initializeProvinceCardList() {
         allCards.stream().filter(card -> card.getType().equalsIgnoreCase(Constants.PROVINCE)).
                 forEach(card -> provinceCardList.add(jsonCardToProvinceCard.apply(card)));
         System.out.println("Province Card List: OK (" + this.provinceCardList.size() + " cards)");
     }
 
-    void initializeRoleCardList() {
+    private void initializeRoleCardList() {
         allCards.stream().filter(card -> card.getSide().equalsIgnoreCase(Constants.ROLE)).
                 forEach(card -> roleCardList.add(jsonCardToRoleCard.apply(card)));
         System.out.println("Role Card List: OK (" + this.roleCardList.size() + " cards)");
     }
 
-    void initializeStrongholdCardList() {
+    private void initializeStrongholdCardList() {
         allCards.stream().filter(card -> card.getType().equalsIgnoreCase(Constants.STRONGHOLD)).
                 forEach(card -> strongholdCardList.add(jsonCardToStrongholdCard.apply(card)));
         System.out.println("Stronghold Card List: OK (" + this.strongholdCardList.size() + " cards)");

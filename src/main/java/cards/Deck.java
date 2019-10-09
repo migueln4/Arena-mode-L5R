@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -34,6 +36,8 @@ public class Deck {
 
     private Boolean containsRestrictedCards;
 
+    private Map<String,Integer> traits;
+
     public Deck(String namePlayer) {
         this.numberCharacters = 0;
         this.numberConflictCards = 0;
@@ -45,6 +49,7 @@ public class Deck {
         this.conflictCardDeck = new ArrayList<>();
         this.dynastyCardDeck = new ArrayList<>();
         this.containsRestrictedCards = Boolean.FALSE;
+        this.traits = new HashMap<>();
     }
 
 }

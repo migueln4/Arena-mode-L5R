@@ -10,14 +10,12 @@ import validation.Validation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
 public class StartGame {
-
-    private static final Scanner READ_CONSOLE = new Scanner(System.in);
 
     private final String[] CLANS = Constants.CLANS;
     private final String[] ELEMENTS = Constants.ELEMENTS;
@@ -45,11 +43,6 @@ public class StartGame {
         this.player2 = new Deck("DOS");
         this.collectionL5R = new CollectionL5R();
         this.restrictedRoles = new RestrictedRoles();
-        this.collectionL5R.initializeConflictCardList();
-        this.collectionL5R.initializeDynastyCardList();
-        this.collectionL5R.initializeProvinceCardList();
-        this.collectionL5R.initializeRoleCardList();
-        this.collectionL5R.initializeStrongholdCardList();
         playerTurn();
         Validation validate = new Validation();
         validate.validateDecks(this.player1, this.player2);
@@ -70,7 +63,18 @@ public class StartGame {
         selectConflictDeck();
     }
 
-
+    private void selectingClan() {
+        Deck[] players = new Deck[]{player1,player2};
+        for(Deck player : players) {
+            System.out.println("Player " + player.getNamePlayer() + ", choose a clan.");
+            ArrayList<String> threeClanList = randomClan();
+            for (int i = 0; i < threeClanList.size(); i++)
+                System.out.println("\t" + (i + 1) + ". " + threeClanList.get(i));
+            int clanNumber = Utils.readInteger(1, NUMBER_OPTIONS);
+            player.setClan(threeClanList.get(clanNumber-1));
+            putTraitOnPlayer(player,player.getClan());
+        }
+    }
 
     private void selectConflictDeck() throws CloneNotSupportedException {
         boolean flagPlayer1 = this.player1.getNumberConflictCards() < MIN_CONFLICT_CARDS;
@@ -590,20 +594,6 @@ public class StartGame {
         return result;
     }
 
-    private void selectingClan() {
-        player1.setClan(selectClan(1));
-        player2.setClan(selectClan(2));
-    }
-
-    private String selectClan(int n) {
-        System.out.println("Player " + n + ", choose a clan");
-        ArrayList<String> selectingClan = randomClan();
-        for (int i = 0; i < selectingClan.size(); i++)
-            System.out.println("\t" + (i + 1) + ". " + selectingClan.get(i));
-        int clanNumber = Utils.readInteger(1, NUMBER_OPTIONS);
-        return selectingClan.get(clanNumber - 1);
-    }
-
     private ArrayList<String> randomClan() {
         ArrayList<String> selectingClan = new ArrayList<>();
         String[] clansRemaining = new String[this.CLANS.length];
@@ -693,5 +683,14 @@ public class StartGame {
         for (int i = 0; i < size; i++)
             result[i] = i;
         return result;
+    }
+
+    private void putTraitOnPlayer(Deck player, String trait) {
+        Map<String,Integer> traits = player.getTraits();
+        if(traits.containsKey(trait)) {
+            traits.put(trait,traits.get(trait)+1);
+        } else {
+            traits.put(trait,1);
+        }
     }
 }
