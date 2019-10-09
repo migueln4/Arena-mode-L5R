@@ -1,21 +1,16 @@
 package game;
 
 import cards.*;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import constants.Constants;
 import interfaces.ThreeParametersLambda;
 import lombok.Data;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,6 +24,11 @@ class CollectionL5R {
     private final String FIVERINGSDB = "https://api.fiveringsdb.com/cards";
     private final Integer TIMEOUT = 3000;
     private final String[] DISCARD_PACKS = Constants.DISCARD_PACKS;
+
+    private final String RRG_VERSION_KEY = Constants.RRG_VERSION;
+    private final String RECORDS_KEY = Constants.RECORDS;
+    private final String SUCCESS_KEY = Constants.SUCCESS;
+    private final String SIZE_KEY = Constants.SIZE;
 
     private List<ConflictCard> conflictCardList;
     private List<DynastyCard> dynastyCardList;
@@ -46,7 +46,12 @@ class CollectionL5R {
     private JsonObject jsonObject;
     private JsonArray records;
 
+    private boolean connectionOK;
+
     private List<JsonCard> allCards;
+    private String size;
+    private String rrgVersion;
+
     private Function<String, String> getPackName = str -> {
         switch (str) {
             case "core":
@@ -245,6 +250,7 @@ class CollectionL5R {
         this.gson = new Gson();
         readURL();
         deleteExceptions();
+        updateResources();
     }
 
     private void readURL() {
@@ -254,12 +260,8 @@ class CollectionL5R {
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(TIMEOUT);
             connection.setReadTimeout(TIMEOUT);
-            try {
-                if (connection.getResponseCode() != 200)
-                    readFile();
-            } catch (SocketTimeoutException e) {
+            if (connection.getResponseCode() != 200)
                 readFile();
-            }
             System.out.println("Connection: OK");
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
@@ -269,6 +271,9 @@ class CollectionL5R {
             }
             in.close();
             readFile(content);
+            this.connectionOK = true;
+        } catch (SocketTimeoutException | SocketException e) {
+            readFile();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -277,21 +282,24 @@ class CollectionL5R {
     private void readFile(StringBuilder content) {
         this.obj = parser.parse(content.toString());
         this.jsonObject = (JsonObject) obj;
-        if (!this.jsonObject.getAsJsonPrimitive("success").getAsBoolean())
+        if (!this.jsonObject.getAsJsonPrimitive(SUCCESS_KEY).getAsBoolean())
             readFile();
-        this.records = jsonObject.getAsJsonArray("records");
+        this.records = jsonObject.getAsJsonArray(RECORDS_KEY);
         Type type = new TypeToken<List<JsonCard>>() {
         }.getType();
         this.allCards = gson.fromJson(records, type);
+        this.size = jsonObject.getAsJsonObject(SIZE_KEY).getAsString();
+        this.rrgVersion = jsonObject.getAsJsonObject(RRG_VERSION_KEY).getAsString();
     }
 
     private void readFile() {
         System.out.println("FAIL Connection --> reading file...");
+        this.connectionOK = false;
         this.file = getCardFileReader.apply("allcards.json");
         try {
             this.obj = parser.parse(new FileReader(file));
             this.jsonObject = (JsonObject) obj;
-            this.records = jsonObject.getAsJsonArray("records");
+            this.records = jsonObject.getAsJsonArray(RECORDS_KEY);
             Type type = new TypeToken<List<JsonCard>>() {
             }.getType();
             this.allCards = gson.fromJson(records, type);
@@ -299,6 +307,27 @@ class CollectionL5R {
             e.printStackTrace();
         }
     }
+
+    private void updateResources() {
+        if(this.connectionOK) {
+            File localFile = getCardFileReader.apply("allcards.json");
+            try {
+                Object object = parser.parse(new FileReader(localFile));
+                JsonObject jsonLocalObject = (JsonObject) object;
+                Boolean success = jsonLocalObject.getAsJsonObject(SUCCESS_KEY).getAsBoolean();
+                if(success) {
+                    String rrgVersion = jsonLocalObject.getAsJsonObject(RRG_VERSION_KEY).getAsString();
+                    String size = jsonLocalObject.getAsJsonObject(SIZE_KEY).getAsString();
+                    if(!rrgVersion.equalsIgnoreCase(this.rrgVersion) || !size.equalsIgnoreCase(size)) {
+                        gson.toJson(this.jsonObject,new FileWriter("allcards.json"));
+                    }
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     private void deleteExceptions() {
         List<JsonCard> newList = new ArrayList<>(this.allCards);

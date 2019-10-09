@@ -2,5 +2,5 @@
 - Convertir las listas de cartas en mapas.
 - Añadir un gitignore.
 - Hacer un generador automático de mazos.
-- Importar todas las opciones desde un archivo de configuración que se lea al arrancar la aplicación.
-- Hacer un mapa con los nombres de cada pack de expansión.
+- Hacer un mapa con los nombres de cada pack de expansión para que se le pongan los nombres.
+- División en clasificadores.

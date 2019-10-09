@@ -1,6 +1,11 @@
 package constants;
 
 public class Constants {
+/* Constants about the api */
+    public static final String RRG_VERSION = "rrg-version";
+    public static final String RECORDS = "records";
+    public static final String SUCCESS = "success";
+    public static final String SIZE = "size";
 
 /* Constants about elements */
     public static final String VOID = "void";
