@@ -257,9 +257,9 @@ class CollectionL5R {
         this.strongholdCardList = new ArrayList<>();
         this.parser = new JsonParser();
         this.gson = new Gson();
-        initializeAll();
         readURL();
         deleteExceptions();
+        initializeAll();
         updateResources();
     }
 

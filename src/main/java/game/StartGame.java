@@ -122,6 +122,7 @@ public class StartGame {
         }
         option = Utils.readInteger(1, option);
         ConflictCard cardSelected = (ConflictCard) cardsAvailables.get(option - 1).clone();
+        putTraitsOnPlayer(player,cardSelected.getTraits());
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
@@ -211,7 +212,7 @@ public class StartGame {
                                 || card.getElementLimit().equals(player.getElement()))
                 )
                 .collect(Collectors.toList());
-        int[] rndArray = createArrayNumbers(selection.size());
+        int[] rndArray = Utils.createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             cardsAvailables.add(selection.get(rndArray[rnd]));
@@ -327,6 +328,7 @@ public class StartGame {
         }
         option = Utils.readInteger(1, option);
         DynastyCard cardSelected = (DynastyCard) cardsAvailables.get(option - 1).clone();
+        putTraitsOnPlayer(player,cardSelected.getTraits());
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
@@ -391,7 +393,7 @@ public class StartGame {
                                 || card.getElementLimit().equals(NULL)
                                 || card.getElementLimit().equals(player.getElement())))
                         .collect(Collectors.toList());
-        int[] rndArray = createArrayNumbers(selection.size());
+        int[] rndArray = Utils.createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             cardsAvailables.add(selection.get(rndArray[rnd]));
@@ -471,6 +473,7 @@ public class StartGame {
         } else {
             this.collectionL5R.getProvinceCardList().get(index).setQuantity(quantity);
         }
+        putTraitsOnPlayer(player,selectedCard.getTraits());
     }
 
     private boolean isRestrictedCard(Card card) {
@@ -499,7 +502,7 @@ public class StartGame {
                                         || card.getElementLimit().equals(player.getRoleCard().getElement())
                                         || card.getElementLimit().equals(NULL)))
                         .collect(Collectors.toList());
-        int[] rndArray = createArrayNumbers(selection.size());
+        int[] rndArray = Utils.createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             provincesAvailables.add(selection.get(rndArray[rnd]));
@@ -547,6 +550,7 @@ public class StartGame {
             this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
             if (quantity == 0)
                 this.collectionL5R.getStrongholdCardList().remove(indexCard);
+            putTraitsOnPlayer(player,selectedCard.getTraits());
         }
     }
 
@@ -577,6 +581,7 @@ public class StartGame {
                 }
                 option = Utils.readInteger(1, option);
                 player.setSplash(CLANS[arrayOptions[option - 1]]);
+                putTraitOnPlayer(player,player.getSplash());
             }
         }
     }
@@ -608,7 +613,7 @@ public class StartGame {
         return selectingClan;
     }
 
-    private void selectRestrictedRole(Deck player) {
+    private RoleCard selectRestrictedRole(Deck player) {
         List<RoleCard> options = this.collectionL5R.getRoleCardList().stream()
                 .filter(card -> this.restrictedRoles.getRestrictedRolesLists().get(player.getClan()).contains(card.getName())).collect(Collectors.toCollection(ArrayList::new));
         System.out.println("Player " + player.getNamePlayer() + ", choose a card: ");
@@ -619,6 +624,7 @@ public class StartGame {
         player.setRoleCard(cardSelected);
         player.setRole(cardSelected.getRole());
         player.setElement(cardSelected.getElement());
+        return cardSelected;
     }
 
     private void selectingRole() throws CloneNotSupportedException {
@@ -626,8 +632,9 @@ public class StartGame {
         players.add(this.player1);
         players.add(this.player2);
         for (Deck player : players) {
+            RoleCard roleCard;
             if (allowRestrictedRoles) {
-                selectRestrictedRole(player);
+                roleCard = selectRestrictedRole(player);
             } else {
                 List<RoleCard> cardsAvailables = new ArrayList<>();
                 makeRoleCardOptions(cardsAvailables, player);
@@ -661,7 +668,9 @@ public class StartGame {
                 this.collectionL5R.getRoleCardList().get(cardSelected).setQuantity(--quantityCard);
                 if (quantityCard == 0)
                     this.collectionL5R.getRoleCardList().remove(cardSelected);
+                roleCard = roleCardSelected;
             }
+            putTraitsOnPlayer(player,roleCard.getTraits());
         }
     }
 
@@ -670,19 +679,12 @@ public class StartGame {
                 this.collectionL5R.getRoleCardList().stream()
                         .filter(card -> !card.getClan().equals(player.getClan()))
                         .collect(Collectors.toList());
-        int[] rndArray = createArrayNumbers(selection.size());
+        int[] rndArray = Utils.createArrayNumbers(selection.size());
         for (int i = 0; i < NUMBER_OPTIONS; i++) {
             int rnd = (int) (Math.random() * (rndArray.length - 1 - i));
             rolesAvailables.add(selection.get(rndArray[rnd]));
             rndArray[rnd] = rndArray[rndArray.length - 1 - i];
         }
-    }
-
-    private int[] createArrayNumbers(int size) {
-        int[] result = new int[size];
-        for (int i = 0; i < size; i++)
-            result[i] = i;
-        return result;
     }
 
     private void putTraitOnPlayer(Deck player, String trait) {
@@ -692,5 +694,11 @@ public class StartGame {
         } else {
             traits.put(trait,1);
         }
+        player.setTraits(traits);
+    }
+
+    private void putTraitsOnPlayer(Deck player, List<String> traits) {
+        if(traits.size()>0)
+            traits.forEach(trait -> putTraitOnPlayer(player,trait));
     }
 }
