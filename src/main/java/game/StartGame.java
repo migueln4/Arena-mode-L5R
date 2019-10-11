@@ -122,7 +122,7 @@ public class StartGame {
         }
         option = Utils.readInteger(1, option);
         ConflictCard cardSelected = (ConflictCard) cardsAvailables.get(option - 1).clone();
-        putTraitsOnPlayer(player,cardSelected.getTraits());
+        putTraitsOnPlayer(player,cardSelected);
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
@@ -328,7 +328,7 @@ public class StartGame {
         }
         option = Utils.readInteger(1, option);
         DynastyCard cardSelected = (DynastyCard) cardsAvailables.get(option - 1).clone();
-        putTraitsOnPlayer(player,cardSelected.getTraits());
+        putTraitsOnPlayer(player,cardSelected);
         int addQuantity = 1;
         if (cardSelected.getDeckLimit() != 1
                 && cardSelected.getQuantity() > 1
@@ -473,7 +473,7 @@ public class StartGame {
         } else {
             this.collectionL5R.getProvinceCardList().get(index).setQuantity(quantity);
         }
-        putTraitsOnPlayer(player,selectedCard.getTraits());
+        putTraitsOnPlayer(player,selectedCard);
     }
 
     private boolean isRestrictedCard(Card card) {
@@ -550,7 +550,7 @@ public class StartGame {
             this.collectionL5R.getStrongholdCardList().get(indexCard).setQuantity(--quantity);
             if (quantity == 0)
                 this.collectionL5R.getStrongholdCardList().remove(indexCard);
-            putTraitsOnPlayer(player,selectedCard.getTraits());
+            putTraitsOnPlayer(player,selectedCard);
         }
     }
 
@@ -670,7 +670,7 @@ public class StartGame {
                     this.collectionL5R.getRoleCardList().remove(cardSelected);
                 roleCard = roleCardSelected;
             }
-            putTraitsOnPlayer(player,roleCard.getTraits());
+            putTraitsOnPlayer(player,roleCard);
         }
     }
 
@@ -700,5 +700,31 @@ public class StartGame {
     private void putTraitsOnPlayer(Deck player, List<String> traits) {
         if(traits.size()>0)
             traits.forEach(trait -> putTraitOnPlayer(player,trait));
+    }
+
+    private void putTraitsOnPlayer(Deck player, Card card) {
+        //Generic traits for player
+        putTraitsOnPlayer(player,card.getTraits());
+        if(card.getRoleLimit() != null && !card.getRoleLimit().isEmpty() && !card.getRoleLimit().equalsIgnoreCase(NULL)) {
+            putTraitOnPlayer(player,card.getRoleLimit());
+        }
+        if(!card.getClan().equalsIgnoreCase(Constants.NEUTRAL) && card.getClan() != null && !card.getClan().isEmpty() ) {
+            putTraitOnPlayer(player,card.getClan());
+        }
+
+        //Specific traits for player
+        if (card instanceof ProvinceCard) {
+            putTraitOnPlayer(player,((ProvinceCard) card).getElement());
+        } else if (card instanceof ConflictCard) {
+            if(((ConflictCard) card).getCharacter() && card.getUnicity()) {
+                String family = card.getName().split("\\s+")[0];
+                putTraitOnPlayer(player,family);
+            }
+        } else if (card instanceof DynastyCard) {
+            if(((DynastyCard) card).getCharacter() && card.getUnicity()) {
+                String family = card.getName().split("\\s+")[0];
+                putTraitOnPlayer(player,family);
+            }
+        }
     }
 }

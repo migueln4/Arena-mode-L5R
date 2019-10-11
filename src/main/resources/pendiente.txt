@@ -4,3 +4,5 @@
 - Hacer un generador automático de mazos.
 - Hacer un mapa con los nombres de cada pack de expansión para que se le pongan los nombres.
 - División en clasificadores.
+
+- Crear un modo de selección de cartas por afinidad.

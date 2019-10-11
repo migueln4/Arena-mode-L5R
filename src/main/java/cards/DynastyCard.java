@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class DynastyCard extends Card implements Cloneable {
 
     private String element;
+    private Boolean character;
 
     @Override
     public Object clone() throws

@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import constants.Constants;
 import interfaces.ThreeParametersLambda;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -126,6 +125,12 @@ class CollectionL5R {
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
 
         newCard.setElement(newCard.getElementLimit());
+
+        if (Constants.CHARACTER.equalsIgnoreCase(jsonCard.getType()))
+            newCard.setCharacter(Boolean.TRUE);
+        else
+            newCard.setCharacter(Boolean.FALSE);
+
 
         return newCard;
     };
