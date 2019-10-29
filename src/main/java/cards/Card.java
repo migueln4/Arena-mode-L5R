@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -23,4 +24,6 @@ public class Card {
     private Boolean unicity;
     private String name_extra;
     private List<String> traits;
+    private Map<String,Integer> affinities;
+    private String text;
 }

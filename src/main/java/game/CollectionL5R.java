@@ -14,6 +14,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -118,8 +119,10 @@ class CollectionL5R {
         newCard.setIsRestricted(jsonCard.getIs_restricted());
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
+        newCard.setText(jsonCard.getText());
 
         newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
+        newCard.setAffinities(new HashMap<>());
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
@@ -130,7 +133,6 @@ class CollectionL5R {
             newCard.setCharacter(Boolean.TRUE);
         else
             newCard.setCharacter(Boolean.FALSE);
-
 
         return newCard;
     };
@@ -149,8 +151,10 @@ class CollectionL5R {
         newCard.setIsRestricted(jsonCard.getIs_restricted());
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
+        newCard.setText(jsonCard.getText());
 
         newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
+        newCard.setAffinities(new HashMap<>());
 
         if (jsonCard.getRole_restriction() != null)
             elementAndRoleRestrictions(newCard, jsonCard.getRole_restriction());
@@ -175,8 +179,10 @@ class CollectionL5R {
         newCard.setIsRestricted(jsonCard.getIs_restricted());
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
+        newCard.setText(jsonCard.getText());
 
         newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
+        newCard.setAffinities(new HashMap<>());
 
         newCard.setInfluence(jsonCard.getInfluence_pool());
 
@@ -198,8 +204,10 @@ class CollectionL5R {
         newCard.setIsRestricted(jsonCard.getIs_restricted());
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
+        newCard.setText(jsonCard.getText());
 
         newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
+        newCard.setAffinities(new HashMap<>());
 
         JsonArray traits = jsonCard.getTraits();
 
@@ -229,8 +237,10 @@ class CollectionL5R {
         newCard.setIsRestricted(jsonCard.getIs_restricted());
         newCard.setUnicity(jsonCard.getUnicity());
         newCard.setName_extra(jsonCard.getName_extra());
+        newCard.setText(jsonCard.getText());
 
         newCard.setTraits(jsonArrayToList.apply(jsonCard.getTraits()));
+        newCard.setAffinities(new HashMap<>());
         newCard.setAllowed_clans(jsonArrayToList.apply(jsonCard.getAllowed_clans()));
 
 

@@ -4,5 +4,7 @@
 - Hacer un generador automático de mazos.
 - Hacer un mapa con los nombres de cada pack de expansión para que se le pongan los nombres.
 - División en clasificadores.
+- Cambiar la selección del clan por la selección de una fortaleza, que es lo que te da el clan.
 
 - Crear un modo de selección de cartas por afinidad.
+

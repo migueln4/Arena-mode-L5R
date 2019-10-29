@@ -8,10 +8,7 @@ import utils.Utils;
 import validation.Export;
 import validation.Validation;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
@@ -28,6 +25,8 @@ public class StartGame {
     private final Integer MAX_CARD_COPIES = Constants.MAX_CARD_COPIES;
 
     private final String NULL = "null";
+    private final String EM_TAG_BEFORE = "<em>";
+    private final String EM_TAG_AFTER = "</em>";
 
     private Deck player1;
     private Deck player2;
@@ -134,7 +133,7 @@ public class StartGame {
                     && MAX_CONFLICT_CARDS >= player.getNumberConflictCards() + i
                     && i <= MAX_CARD_COPIES
                     && i <= cardSelected.getDeckLimit()
-                    && maxConflictCardUnicity(i,player,cardSelected)
+                    && maxCardUnicity(i,player,cardSelected)
                     && oneMoreCharacter(player, cardSelected, i)
                     && oneMoreSplashCard(player, cardSelected, i); i++) {
                 System.out.print(i + ", ");
@@ -160,23 +159,7 @@ public class StartGame {
             this.collectionL5R.getConflictCardList().get(index).setQuantity(quantity);
     }
 
-    private boolean maxConflictCardUnicity(int quantity, Deck player, ConflictCard cardSelected) {
-        if(!cardSelected.getUnicity())
-            return true;
-        String idConflictCard = cardSelected.getIdFiveRingsDB();
-        if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals(NULL)) {
-            idConflictCard = cardSelected.getIdFiveRingsDB().substring(0,idConflictCard.length()-2);
-        }
-        for(DynastyCard card : player.getDynastyCardDeck()) {
-            if(card.getUnicity() //la carta es única
-                    && card.getIdFiveRingsDB().startsWith(idConflictCard) //la carta tiene el mismo nombre que la que evalúo
-                    && card.getQuantity()+quantity >= card.getDeckLimit()
-                    && card.getQuantity()+quantity >= cardSelected.getDeckLimit()) { //hay tantas cartas como el máximo permitido
-                return false;
-            }
-        }
-        return true;
-    }
+
 
     private boolean oneMoreSplashCard(Deck player, ConflictCard card, int i) {
         if (card.getClan() == null
@@ -338,7 +321,7 @@ public class StartGame {
             for (int i = 1; i <= cardSelected.getQuantity()
                     && MAX_CONFLICT_CARDS >= player.getNumberDynastyCards() + i
                     && i <= cardSelected.getDeckLimit()
-                    && maxDynastyCardUnicity(i,player,cardSelected)
+                    && maxCardUnicity(i,player,cardSelected)
                     && i <= MAX_CARD_COPIES; i++) {
                 System.out.print(i + ", ");
                 addQuantity = i;
@@ -360,19 +343,33 @@ public class StartGame {
         }
     }
 
-    private boolean maxDynastyCardUnicity(int quantity, Deck player, DynastyCard cardSelected) {
+    private boolean maxCardUnicity(int quantity, Deck player, Card cardSelected) {
         if(!cardSelected.getUnicity())
             return true;
-        String idDynastyCard = cardSelected.getIdFiveRingsDB();
+        String id = cardSelected.getIdFiveRingsDB();
+        String extra_name = "";
         if(cardSelected.getName_extra() != null && !cardSelected.getName_extra().equals(NULL)) {
-            idDynastyCard = cardSelected.getIdFiveRingsDB().substring(0,idDynastyCard.length()-2);
+            extra_name = cardSelected.getName_extra();
+            extra_name = "-"+extra_name.substring(extra_name.indexOf("(")+1,extra_name.indexOf(")"));
+            id = cardSelected.getIdFiveRingsDB().substring(0,id.indexOf(extra_name));
         }
-        for(DynastyCard card : player.getDynastyCardDeck()) {
-            if(card.getUnicity() //la carta es única
-                    && card.getIdFiveRingsDB().startsWith(idDynastyCard) //la carta tiene el mismo nombre que la que evalúo
-                    && card.getQuantity()+quantity >= card.getDeckLimit()
-                    && card.getQuantity()+quantity >= cardSelected.getDeckLimit()) { //hay tantas cartas como el máximo permitido
-                return false;
+        if(cardSelected instanceof DynastyCard) {
+            for(DynastyCard card : player.getDynastyCardDeck()) {
+                if(card.getUnicity() //la carta es única
+                        && card.getIdFiveRingsDB().startsWith(id) //la carta tiene el mismo nombre que la que evalúo
+                        && card.getQuantity()+quantity >= card.getDeckLimit()
+                        && card.getQuantity()+quantity >= cardSelected.getDeckLimit()) { //hay tantas cartas como el máximo permitido
+                    return false;
+                }
+            }
+        } else if(cardSelected instanceof ConflictCard) {
+            for(ConflictCard card : player.getConflictCardDeck()) {
+                if(card.getUnicity() //la carta es única
+                        && card.getIdFiveRingsDB().startsWith(id) //la carta tiene el mismo nombre que la que evalúo
+                        && card.getQuantity()+quantity >= card.getDeckLimit()
+                        && card.getQuantity()+quantity >= cardSelected.getDeckLimit()) { //hay tantas cartas como el máximo permitido
+                    return false;
+                }
             }
         }
         return true;
@@ -526,9 +523,7 @@ public class StartGame {
     }
 
     private void selectStronghold() throws CloneNotSupportedException {
-        List<Deck> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
+        Deck[] players = new Deck[]{player1,player2};
         for (Deck player : players) {
             ArrayList<StrongholdCard> strongholdValidList = new ArrayList<>();
             this.collectionL5R.getStrongholdCardList().stream()
@@ -555,9 +550,7 @@ public class StartGame {
     }
 
     private void selectSplash() {
-        List<Deck> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
+        Deck[] players = new Deck[] {player1,player2};
         for (Deck player : players) {
             if (player.getSplash() == null) {
                 String mainClan = player.getClan();
@@ -628,9 +621,7 @@ public class StartGame {
     }
 
     private void selectingRole() throws CloneNotSupportedException {
-        List<Deck> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
+        Deck[] players = new Deck[]{player1,player2};
         for (Deck player : players) {
             RoleCard roleCard;
             if (allowRestrictedRoles) {
@@ -704,27 +695,22 @@ public class StartGame {
 
     private void putTraitsOnPlayer(Deck player, Card card) {
         //Generic traits for player
+        List<String> cardTraits = new ArrayList<>();
         putTraitsOnPlayer(player,card.getTraits());
         if(card.getRoleLimit() != null && !card.getRoleLimit().isEmpty() && !card.getRoleLimit().equalsIgnoreCase(NULL)) {
             putTraitOnPlayer(player,card.getRoleLimit());
+            cardTraits.add(card.getRoleLimit());
         }
-        if(!card.getClan().equalsIgnoreCase(Constants.NEUTRAL) && card.getClan() != null && !card.getClan().isEmpty() ) {
+        if(card.getClan() != null && !card.getClan().isEmpty() && !card.getClan().equalsIgnoreCase(Constants.NEUTRAL)) {
             putTraitOnPlayer(player,card.getClan());
         }
 
-        //Specific traits for player
+        //Specific traits for cards
         if (card instanceof ProvinceCard) {
             putTraitOnPlayer(player,((ProvinceCard) card).getElement());
-        } else if (card instanceof ConflictCard) {
-            if(((ConflictCard) card).getCharacter() && card.getUnicity()) {
-                String family = card.getName().split("\\s+")[0];
-                putTraitOnPlayer(player,family);
-            }
-        } else if (card instanceof DynastyCard) {
-            if(((DynastyCard) card).getCharacter() && card.getUnicity()) {
-                String family = card.getName().split("\\s+")[0];
-                putTraitOnPlayer(player,family);
-            }
+        } else if (card.getUnicity()) {
+            String family = card.getName().split("\\s")[0];
+            putTraitOnPlayer(player,family);
         }
     }
 }

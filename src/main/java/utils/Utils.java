@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
@@ -21,5 +22,4 @@ public class Utils {
             result[i] = i;
         return result;
     }
-
 }

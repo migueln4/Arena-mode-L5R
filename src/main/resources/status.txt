@@ -1,0 +1,12 @@
+- Ya se actualizan los treats en la afinidad del mazo de cada jugador.
+- Las cartas tienen un mapa para las afinidades.
+- Los mazos también tienen un mapa para las afinidades.
+
+QUÉ FALTA:
+- Asignación de traits en el texto destacados con <em> y [element- o [clan-. Hay que comprobar que eso no se haya comprobado ya anteriormente y
+ejecutarlo.
+¡¡Que cada carta tenga sus traits en una lista que se guarde al principio!! Así, me ahorro trabajo.
+- Que se actualice la afinidad de cada mazo (de las cartas posibles a elegir) antes de empezar a elegir la primera carta.
+- Que se haga una lista en la que se pondere la importancia de cada carta de acuerdo con su afinidad con el jugador que la elige. --> ¿Creando una
+lista auxiliar intermedia y manejando los identificadores?
+- Que se actualice la afinidad de cada carta cada vez que un jugador escoja una.

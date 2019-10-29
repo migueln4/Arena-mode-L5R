@@ -23,8 +23,9 @@ public class DynastyCard extends Card implements Cloneable {
         return "[Name: " + super.getName() +
                 ", Clan: " + super.getClan() +
                 ", ID: " + super.getId() +
-                ", Limit: " + super.getDeckLimit() + "]" +
-                ", Restricted: " + this.getIsRestricted() +
+                ", Limit: " + super.getDeckLimit() +
+                ", Unicity: " + super.getUnicity() +
+                ", Restricted: " + this.getIsRestricted() + "]" +
                 "---> " + super.getQuantity() + " copies";
     }
 

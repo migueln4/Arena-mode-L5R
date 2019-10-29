@@ -36,7 +36,7 @@ public class Deck {
 
     private Boolean containsRestrictedCards;
 
-    private Map<String,Integer> traits;
+    private Map<String,Integer> traits; //Afinidad con los rasgos de las cartas.
 
     public Deck(String namePlayer) {
         this.numberCharacters = 0;

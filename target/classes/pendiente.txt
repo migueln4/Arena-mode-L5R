@@ -6,3 +6,5 @@
 - División en clasificadores.
 
 - Crear un modo de selección de cartas por afinidad.
+
+- Cambiar la selección del clan por la selección de una fortaleza, que es lo que te da el clan.
