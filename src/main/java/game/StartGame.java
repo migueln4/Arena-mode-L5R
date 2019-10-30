@@ -697,11 +697,13 @@ public class StartGame {
         //Generic traits for player
         List<String> cardTraits = new ArrayList<>();
         putTraitsOnPlayer(player,card.getTraits());
+        String roleLimit = "";
         if(card.getRoleLimit() != null && !card.getRoleLimit().isEmpty() && !card.getRoleLimit().equalsIgnoreCase(NULL)) {
             putTraitOnPlayer(player,card.getRoleLimit());
             cardTraits.add(card.getRoleLimit());
+            roleLimit = card.getRoleLimit();
         }
-        if(card.getClan() != null && !card.getClan().isEmpty() && !card.getClan().equalsIgnoreCase(Constants.NEUTRAL)) {
+        if(card.getClan() != null && !card.getClan().isEmpty() && !card.getClan().equalsIgnoreCase(Constants.NEUTRAL) && !card.getClan().equalsIgnoreCase(roleLimit)) {
             putTraitOnPlayer(player,card.getClan());
         }
 
