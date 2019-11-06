@@ -2,6 +2,7 @@ package utils;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -21,5 +22,9 @@ public class Utils {
         for (int i = 0; i < size; i++)
             result[i] = i;
         return result;
+    }
+
+    public static List<Integer> orderMinToMax(List<Integer> indexes) {
+        return indexes.stream().sorted().collect(Collectors.toList());
     }
 }

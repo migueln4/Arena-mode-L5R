@@ -13,11 +13,10 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
+
+import static utils.Utils.orderMinToMax;
 
 @Data
 class CollectionL5R {
@@ -467,6 +466,20 @@ class CollectionL5R {
             default:
                 break;
         }
+    }
+
+    private void assignTraits(Card card) {
+        List<String> traits = new ArrayList<>();
+        traits.addAll(card.getTraits());
+        String text = card.getText();
+        List<String> traitsFromText = new ArrayList<>();
+        while(text.contains(Constants.EM_TAG_OPEN) || text.contains(Constants.ELEMENT_TAG_OPEN) || text.contains(Constants.CLAN_TAG_OPEN)) {
+            int emIndex = text.indexOf(Constants.EM_TAG_OPEN);
+            int elementIndex = text.indexOf(Constants.ELEMENT_TAG_OPEN);
+            int clanIndex = text.indexOf(Constants.CLAN_TAG_OPEN);
+            List<Integer> coincidences = orderMinToMax(Arrays.asList(emIndex,elementIndex,clanIndex));
+        }
+
     }
 
 }

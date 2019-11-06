@@ -46,9 +46,15 @@ public class Constants {
     public static final String STRONGHOLD = "Stronghold";
     public static final String CHARACTER = "character";
 
+/* Constants about trait selection */
+    public static final String EM_TAG_OPEN = "<em>";
+    public static final String EM_TAG_CLOSE = "</em>";
+    public static final String ELEMENT_TAG_OPEN = "[element-";
+    public static final String CLAN_TAG_OPEN = "[clan-";
+    public static final String TAG_CLOSE = "]";
+
     /* Discard packs */
     public static final String[] DISCARD_PACKS = {"\"the-emperor-s-legion\"",
-        "\"a-champion-s-foresight\"",
         "\"shojou-s-duty\"",
         "\"seekers-of-wisdom\"",
         "\"defenders-of-rokugan\""};
