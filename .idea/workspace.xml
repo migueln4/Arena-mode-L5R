@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3dc552b7-25a4-4978-8d08-48e1a2765243" name="Default Changelist" comment="Haciendo las cosas bien.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pendiente.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pendiente.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/status.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/status.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/StartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="699" column="20" selection-start-line="699" selection-start-column="20" selection-end-line="699" selection-end-column="20" />
+            <state relative-caret-position="373">
+              <caret line="705" column="163" selection-start-line="705" selection-start-column="163" selection-end-line="705" selection-end-column="163" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/pendiente.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="95" selection-start-line="6" selection-start-column="95" selection-end-line="6" selection-end-column="95" />
+            <state relative-caret-position="140">
+              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -77,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/status.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="7" column="99" selection-start-line="7" selection-start-column="99" selection-end-line="7" selection-end-column="99" />
+            <state relative-caret-position="340">
+              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -122,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/allcards.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516340">
-              <caret line="25817" column="20" selection-start-line="25817" selection-start-column="6" selection-end-line="25817" selection-end-column="20" />
+            <state relative-caret-position="601280">
+              <caret line="30064" column="6" selection-start-line="30063" selection-start-column="34" selection-end-line="30064" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -140,7 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>UNIC</find>
       <find>DISCARD_PACKS</find>
       <find>ThreeParametersLambda</find>
       <find>FileWriter</find>
@@ -170,6 +171,7 @@
       <find>putTraitOnPlayer</find>
       <find>&quot;side&quot;: &quot;role&quot;</find>
       <find>setname_extra</find>
+      <find>&quot;role_restriction&quot;</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\miguel.garcia.munoz\IdeaProjects\Arena-mode-L5R\src\main\java</dir>
@@ -425,7 +427,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49902534" visible="true" weight="0.1932886" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49902534" visible="true" weight="0.17248322" />
       <window_info id="Structure" order="1" sideWeight="0.50097466" side_tool="true" weight="0.21744967" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -439,7 +441,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32719547" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.16713881" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.10056657" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5020243" side_tool="true" weight="0.74600357" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.27903682" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49878544" weight="0.2407932" />
@@ -704,13 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pendiente.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="95" selection-start-line="6" selection-start-column="95" selection-end-line="6" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cards/ConflictCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -750,25 +745,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/allcards.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516340">
-          <caret line="25817" column="20" selection-start-line="25817" selection-start-column="6" selection-end-line="25817" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/status.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="7" column="99" selection-start-line="7" selection-start-column="99" selection-end-line="7" selection-end-column="99" />
+        <state relative-caret-position="601280">
+          <caret line="30064" column="6" selection-start-line="30063" selection-start-column="34" selection-end-line="30064" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="699" column="20" selection-start-line="699" selection-start-column="20" selection-end-line="699" selection-end-column="20" />
+        <state relative-caret-position="373">
+          <caret line="705" column="163" selection-start-line="705" selection-start-column="163" selection-end-line="705" selection-end-column="163" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/pendiente.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/status.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
         </state>
       </provider>
     </entry>

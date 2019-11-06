@@ -5,6 +5,7 @@
 - Hacer un mapa con los nombres de cada pack de expansión para que se le pongan los nombres.
 - División en clasificadores.
 - Cambiar la selección del clan por la selección de una fortaleza, que es lo que te da el clan.
+- Migrar a Java 11.
 
 - Crear un modo de selección de cartas por afinidad.
 
